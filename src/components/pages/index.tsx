@@ -12,7 +12,11 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full bg-background">
       <div className="flex flex-col items-center justify-center w-full bg-black/70  h-screen">
+<<<<<<< HEAD
         <div className="flex flex-col items-center p-5 lg:p-10 lg:px-24 gap-6 lg:w-1/2 w-11/12 bg-white rounded-lg">
+=======
+        <div className="flex flex-col items-center p-5 lg:p-10 lg:px-24 gap-6 w-11/12 lg:w-2/5 bg-white rounded-lg">
+>>>>>>> 64f9dd1 (fix: quick push)
           <img
             alt="[object Object] Illustration"
             loading="lazy"
