@@ -1,0 +1,8 @@
+export { default as Home } from './index';
+export { default as About } from './about';
+export { default as Career } from './career';
+export { default as News } from './updates';
+export { default as NewsDetail } from './updatesDetail';
+export { default as Services } from './services';
+export { default as Booking } from './booking';
+export { default as NotFound } from './notFound';
