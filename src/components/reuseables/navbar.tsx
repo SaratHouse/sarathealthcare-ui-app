@@ -1,23 +1,31 @@
 import { NavLink } from 'react-router-dom';
-
 import logo from '../../assets/images/logo.png';
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState, useRef } from 'react';
 
 const Navbar = () => {
-  const [showMenu, SetShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navRef = useRef(null);
   
+  const lastScrollY = useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 0 && lastScrollY.current === 0) {
         setIsScrolled(true);
-      } else {
+      } else if (currentScrollY === 0 && lastScrollY.current > 0) {
         setIsScrolled(false);
       }
+      
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    handleScroll();
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -25,70 +33,135 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`flex flex-col fixed items-center w-full z-50 bg-black text-white ${isScrolled ? 'border-b border-gray-300' : ''}`}>
-      <div className='flex flex-col lg:w-8/12 w-11/12  relative'>
-        <div className='flex flex-row justify-between items-center w-full py-5 lg:py-8'>
-          <NavLink  to='/'>
-            <img src={logo} alt='logo' className='h-10'/>
+    <nav 
+      ref={navRef}
+      className={`flex flex-col fixed items-center w-full z-50  ${
+        isScrolled 
+          ? 'bg-white border-b text-[#1663a3] border-black shadow-lg' 
+          : 'bg-transparent text-white'
+      } transition-all duration-300`}
+    >
+      <div className='flex flex-col lg:w-8/12 w-11/12 relative'>
+        <div className='flex flex-row justify-between items-center w-full py-5'>
+          <NavLink to='/'>
+            <img src={logo} alt='logo' className='h-14'/>
           </NavLink>
+          
+          {/* Desktop Navigation */}
           <div className="hidden lg:block">
-            <div className={`tracking-wide flex flex-row gap-[4rem] text-sm items-center`}>
-              <NavLink to='/'>
+            <div className={`tracking-widest flex flex-row gap-5 text-md items-end font-semibold`}>
+              <NavLink to='/' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Home
               </NavLink>
-              <NavLink to='/services'>
-                Services
-              </NavLink>
-              <NavLink to='/about'>
+              <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 About us
               </NavLink>
-              <NavLink to='/careers'>
-                Careers
+              <NavLink to='/g' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
+                Services
               </NavLink>
-              <NavLink to='/updates'>
+              <NavLink to='/sa' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
+                Jobs
+              </NavLink>
+              <NavLink to='/sq' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
+                Contact Us
+              </NavLink>
+              <NavLink to='/s' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Updates
               </NavLink>
             </div>
           </div>
-          <div className="lg:hidden block">
-            <div className={` text-white flex flex-row gap-4 items-center`}>
-              <i onClick={() => SetShowMenu(true)} className='fi fi-rr-menu-burger cursor-pointer'></i>
-            </div>
-          </div>
           
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden block">
+            <button 
+              onClick={() => setShowMenu(true)}
+              className={`${isScrolled ? 'text-[#1663a3]' : 'text-white'} flex items-center justify-center w-10 h-10`}
+              aria-label="Open menu"
+            >
+              <i className='fi fi-rr-menu-burger text-xl'></i>
+            </button>
+          </div>
         </div>
-        {showMenu && 
-          <div className='flex flex-col fixed top-0 right-0 w-screen h-screen bg-white bg-opacity-70 z-50'>
-            <div className='flex flex-col w-full relative bg-black'>
-              <div className='flex flex-row items-center justify-between w-full py-3 px-5 border-b border-gray-200'>
+        
+        {/* Mobile Menu */}
+        {showMenu && (
+          <div className='fixed inset-0 bg-black/70 z-50'>
+            <div className='flex flex-col w-4/5 h-full relative bg-white'>
+              <div className='flex flex-row items-center justify-between w-full py-3 px-5 border-b border-gray-700'>
                 <NavLink to='/'>
                   <img src={logo} alt='logo' className='h-10'/>
                 </NavLink>
-                <i onClick={() => SetShowMenu(false)} className='fi fi-rr-cross text-white cursor-pointer'></i>
+                <button 
+                  onClick={() => setShowMenu(false)}
+                  className="text-[#1663a3] font-semibold flex items-center justify-center w-10 h-10"
+                  aria-label="Close menu"
+                >
+                  <i className='fi fi-rr-cross text-xl'></i>
+                </button>
               </div>
-              <div className='flex flex-col tracking-wide w-full gap-[2rem] uppercase p-5 text-white'>
-                <NavLink onClick={() => SetShowMenu(false)} to='/'>
+              <div className='flex flex-col tracking-wide w-full gap-6 uppercase p-5 text-[#1663a3] font-semibold'>
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }: { isActive: boolean }) => 
+                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
+                  }
+                  onClick={() => setShowMenu(false)}
+                >
                   Home
                 </NavLink>
-                <NavLink onClick={() => SetShowMenu(false)} to='/services'>
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }: { isActive: boolean }) => 
+                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
+                  }
+                  onClick={() => setShowMenu(false)}
+                >
+                  About Us
+                </NavLink>
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }: { isActive: boolean }) => 
+                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
+                  }
+                  onClick={() => setShowMenu(false)}
+                >
                   Services
                 </NavLink>
-                <NavLink onClick={() => SetShowMenu(false)} to='/about'>
-                  About us
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }: { isActive: boolean }) => 
+                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
+                  }
+                  onClick={() => setShowMenu(false)}
+                >
+                  Jobs
                 </NavLink>
-                <NavLink onClick={() => SetShowMenu(false)} to='/careers'>
-                  Careers
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }: { isActive: boolean }) => 
+                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
+                  }
+                  onClick={() => setShowMenu(false)}
+                >
+                  Contact Us
                 </NavLink>
-                <NavLink onClick={() => SetShowMenu(false)} to='/updates'>
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }: { isActive: boolean }) => 
+                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
+                  }
+                  onClick={() => setShowMenu(false)}
+                >
                   Updates
                 </NavLink>
+                
               </div>
             </div>
           </div>
-        }
+        )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
