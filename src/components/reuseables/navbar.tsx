@@ -110,7 +110,7 @@ const Navbar = () => {
                   Home
                 </NavLink>
                 <NavLink 
-                  to='/' 
+                  to='/about' 
                   className={({ isActive }: { isActive: boolean }) => 
                     `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
                   }
