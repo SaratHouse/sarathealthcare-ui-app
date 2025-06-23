@@ -65,9 +65,6 @@ const Navbar = () => {
               <NavLink to='/contact-us' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Contact Us
               </NavLink>
-              <NavLink to='/s' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
-                Updates
-              </NavLink>
             </div>
           </div>
           
@@ -145,16 +142,6 @@ const Navbar = () => {
                 >
                   Contact Us
                 </NavLink>
-                <NavLink 
-                  to='/' 
-                  className={({ isActive }: { isActive: boolean }) => 
-                    `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
-                  }
-                  onClick={() => setShowMenu(false)}
-                >
-                  Updates
-                </NavLink>
-                
               </div>
             </div>
           </div>
