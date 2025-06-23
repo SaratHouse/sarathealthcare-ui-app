@@ -28,7 +28,8 @@ const IndexRoutes = () => {
             <Route path="/updates" element={<News/>} />
             <Route path="/updates/:id" element={<NewsDetail/>} />
             <Route path="/services" element={<Services/>} />
-            <Route path="/about" element={<About/>} />
+            <Route path="/about-us" element={<About/>} />
+            {/* <Route path="/contact-us" element={<Contact/>} /> */}
             <Route path="/careers" element={<Career/>} />
             <Route path="/booking" element={<Booking/>} />
             <Route path="/*" element={<NotFound/>} />

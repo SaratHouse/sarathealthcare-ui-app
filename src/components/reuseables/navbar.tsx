@@ -53,16 +53,16 @@ const Navbar = () => {
               <NavLink to='/' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Home
               </NavLink>
-              <NavLink to='/about' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
+              <NavLink to='/about-us' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 About us
               </NavLink>
-              <NavLink to='/g' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
+              <NavLink to='/services' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Services
               </NavLink>
               <NavLink to='/sa' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Jobs
               </NavLink>
-              <NavLink to='/sq' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
+              <NavLink to='/contact-us' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
                 Contact Us
               </NavLink>
               <NavLink to='/s' className={({ isActive }) => (isActive ? 'text-[#e67238]' : '')}>
@@ -110,7 +110,7 @@ const Navbar = () => {
                   Home
                 </NavLink>
                 <NavLink 
-                  to='/about' 
+                  to='/about-us' 
                   className={({ isActive }: { isActive: boolean }) => 
                     `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
                   }
@@ -119,7 +119,7 @@ const Navbar = () => {
                   About Us
                 </NavLink>
                 <NavLink 
-                  to='/' 
+                  to='/services' 
                   className={({ isActive }: { isActive: boolean }) => 
                     `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
                   }
@@ -137,7 +137,7 @@ const Navbar = () => {
                   Jobs
                 </NavLink>
                 <NavLink 
-                  to='/' 
+                  to='/contact-us' 
                   className={({ isActive }: { isActive: boolean }) => 
                     `${isActive ? 'text-[#e67238]' : ''} py-3 border-b border-gray-700 hover:text-red-300 transition-colors`
                   }
