@@ -50,7 +50,7 @@ export default function TestimonialCarousel() {
         <div className="uppercase tracking-widest">Client's opinions matter to us</div>
         <div className="flex items-center justify-center mt-5 w-full">
           <div className="flex flex-nowrap relative items-center justify-center lg:space-x-4 w-full overflow-hidden">
-            <div className="w-[30rem] opacity-60 transition-opacity duration-300 hidden md:block">
+            <div className="w-[30rem] border border-[#e67238] border-l-8 rounded-md opacity-60 transition-opacity duration-300 hidden md:block">
               {testimonials.length > 0 && (
                 <div className="bg-[#fefcfc] flex flex-col items-center border border-gray-300 rounded-lg p-4 shadow-md">
                   <p className="text-gray-500 italic text-xs text-center w-4/5">
@@ -63,10 +63,10 @@ export default function TestimonialCarousel() {
               )}
             </div>
 
-            <div className="lg:w-[50rem] w-full relative transition-opacity duration-300">
+            <div className="lg:w-[60rem] w-full relative transition-opacity duration-300">
               {testimonials.length > 0 && (
                 <div className="w-full flex justify-end">
-                  <div className="border hover:border-[#1663a3] hover:border-l-8 rounded-md p-5 py-7 text-sm flex flex-col relative gap-4">
+                  <div className="w-full border border-[#1663a3] border-l-8 rounded-md p-5 py-7 text-sm flex flex-col relative gap-4">
                     <div className="max-w-[430px] leading-6 text-lg lg:text-left text-center">
                       {testimonials[current]?.quote}
                     </div>
@@ -109,7 +109,7 @@ export default function TestimonialCarousel() {
             {/* Next Testimonial */}
             <div className="w-[30rem] opacity-60 transition-opacity duration-300 hidden md:block">
               {testimonials.length > 0 && (
-                <div className="bg-[#fefcfc] flex flex-col items-center border border-gray-300 rounded-lg p-4 shadow-md">
+                <div className="border border-[#e67238] border-l-8 rounded-md flex flex-col items-center  p-4 shadow-md">
                   <p className="text-gray-500 italic text-xs text-center w-4/5">
                     "{testimonials[(current + 1) % testimonials.length]?.quote}"
                   </p>

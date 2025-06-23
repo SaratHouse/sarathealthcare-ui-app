@@ -153,7 +153,7 @@ const Home = () => {
             </div>
             <div className="text-lg text-gray-500 lg:mx-4">
               We are Care Quality Commission regulated, Click the button below to see our CQC report.
-              <a href="https://www.cqc.org.uk/location/1-11817828876" target="_blank" rel="noreferrer" className="flex flex-col lg:w-1/3 w-1/2 p-3 items-center gap-2 rounded-lg mt-3 bg-[#1663a3] text-white ">
+              <a href="https://www.cqc.org.uk/location/1-11817828876" target="_blank" rel="noreferrer" className="flex flex-col w-1/2 p-3 items-center gap-2 rounded-lg mt-3 bg-[#1663a3] text-white ">
                 See CQC Report
               </a>
             </div>

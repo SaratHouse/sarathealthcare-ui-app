@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { ComplexCare, DementiaCare, EndofLifeCare, LiveInCare, PersonalCare, RespiteCare } from "../../constant/images";
 
 interface Service {
@@ -40,10 +41,14 @@ const serviceList: Service[] = [
 ]
 
 export default function ServiceCarousel() {
+  const {pathname}  = useLocation();
+  
   return (
-    <div className="w-full flex justify-center bg-[#f4e8e3] mt-10 py-14">
+    <div className={`${pathname !== '/services' ? 'mt-10' : ''} w-full flex justify-center bg-[#f4e8e3] py-14`}>
       <div className="flex flex-col gap-10 lg:w-8/12 w-11/12">
-        <div className="font-semibold tracking-wider lg:text-[2.8rem] text-4xl lg:leading-[3rem] leading-7 text-[#1663a3]"><span className="block lg:text-3xl text-xl text-[#e67238]">Our</span>Service</div>           
+        { pathname !== '/services' && (
+          <div className="font-semibold tracking-wider lg:text-[2.8rem] text-4xl lg:leading-[3rem] leading-7 text-[#1663a3]"><span className="block lg:text-3xl text-xl text-[#e67238]">Our</span>Service</div>
+        )}
         <div className="flex items-center justify-center w-full">
           <div className="flex flex-nowrap relative items-center justify-center lg:space-x-4 w-full overflow-hidden">
             <div className="grid lg:grid-cols-3  gap-5 w-full relative duration-300">
