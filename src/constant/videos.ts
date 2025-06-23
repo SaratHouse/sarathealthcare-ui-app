@@ -1,0 +1,1 @@
+export { default as SendUpIcon } from '../assets/images/send-up.svg';

@@ -16,7 +16,6 @@ export { default as biAnalysisGif } from '../assets/images/bi-analysis.gif';
 export { default as AIGif } from '../assets/images/AI_&_ML.gif';
 export { default as CloudDataGif } from '../assets/images/cloudData.gif';
 
-export { default as quoteIcon } from '../assets/images/quote.svg';
 export { default as arrowIcon } from '../assets/images/arrow.svg';
 
 export { default as bgPattern } from '../assets/images/bg-pattern(dark-mode).png';
@@ -37,8 +36,6 @@ export { default as snowflakeImage } from '../assets/images/snowflake.png';
 export { default as tableauImage } from '../assets/images/tableau.png';
 
 
-export { default as Logo } from '../assets/images/logo.png';
-export { default as bgM } from '../assets/images/bgM.png';
 export { default as dashboardImage } from '../assets/images/dashboard.svg';
 export { default as BarclayLogo } from '../assets/images/barclays_logo_bw.jpeg';
 export { default as LloydLogo } from '../assets/images/lloydsBankLogo_bw.png';
@@ -48,3 +45,18 @@ export { default as DftLogo } from '../assets/images/dft logo_bw.png';
 export { default as DiscoveryLogo } from '../assets/images/discovery_bw.png';
 export { default as RollsroyceLogo } from '../assets/images/rolls royce_bw.png';
 export { default as GskLogo } from '../assets/images/gsk_bw.svg';
+
+
+export { default as quoteIcon } from '../assets/images/quote.svg';
+
+export { default as Logo } from '../assets/images/logo.png';
+export { default as bgM } from '../assets/images/bgM.png';
+export { default as elderlyCare } from '../assets/images/elderly-care.jpg';
+export { default as CQC } from '../assets/images/CQC-Img33.png';
+
+export { default as RespiteCare } from '../assets/images/respite-care.png';
+export { default as DementiaCare } from '../assets/images/dementia-care.png';
+export { default as PersonalCare } from '../assets/images/personal-care.png';
+export { default as LiveInCare } from '../assets/images/live-in-care.png';
+export { default as ComplexCare } from '../assets/images/complex-care.png';
+export { default as EndofLifeCare } from '../assets/images/end-of-life-care.png';
