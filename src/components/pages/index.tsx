@@ -35,9 +35,9 @@ const Home = () => {
         {/* Overlay Content */}
         <div className="relative z-10 flex flex-col justify-center items-center h-full bg-black/70 text-white">
           <div className="flex flex-col items-center gap-7 lg:w-8/12 w-11/12">
-            <div className="text-lg">
+            {/* <div className="text-lg">
               Welcome to
-            </div>
+            </div> */}
             <div className="text-4xl lg:text-[2.6rem] hover:text-white text-[#1663a3] font-semibold tracking-widest">
               Sarat Healthcare.
             </div>
