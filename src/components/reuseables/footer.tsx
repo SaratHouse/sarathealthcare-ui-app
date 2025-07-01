@@ -2,7 +2,7 @@ import { useState } from "react";
 import Disclaimer from './disclaimer';
 
 import { NavLink } from "react-router-dom";
-import { FaArrowRight, FaDiscord, FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaMobileScreenButton, FaPhone, FaRegClock, FaXTwitter } from "react-icons/fa6";
+import { FaArrowRight, FaDiscord, FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaMobileScreenButton, FaRegClock, FaXTwitter } from "react-icons/fa6";
 import { CQC, Logo } from "../../constant/images";
 
 
@@ -19,38 +19,32 @@ const Footer = () => {
     }
 
     return (
-        <footer className="bg-[#121c35] text-white w-full flex flex-col items-center py-20">
+        <footer className="bg-[#2e3c61] text-white w-full flex flex-col items-center py-12">
             <div className="lg:w-8/12 w-11/12 relative px-4 flex flex-col">
-                <div className="grid grid-cols-1 gap-8 text-sm lg:grid-cols-4 lg:gap-0 pb-10">
+                <div className="grid grid-cols-1 gap-8 text-sm lg:grid-cols-3 lg:gap-5 pb-10">
                     <div className="space-y-4">
                         <img src={Logo} alt='logo' className='h-16'/>
-                        <div className="">Get in Touch Today</div>
                         <div className={`flex flex-col gap-3 pt-4 text-sm`}>
                             <div className="flex flex-row items-center gap-2">
-                                <FaLocationDot size={18} color="#e67238" />
-                                <span className="tracking-wider">1234 Sarat Street, City, Country</span>
+                                <FaLocationDot size={18} color="white" />
+                                <span className="tracking-wider"><span className="font-semibold">Address: </span>1234 Sarat Street, City, Country</span>
                             </div>
                             <div className="flex flex-row items-center gap-2">
-                                <FaEnvelope size={18} color="#e67238" />
-                                <span className="tracking-wider">info@sarathealthcare.co.uk</span>
+                                <FaEnvelope size={18} color="white" />
+                                <span className="tracking-wider"><span className="font-semibold">Email: </span>info@sarathealthcare.co.uk</span>
                             </div>
                             <div className="flex flex-row items-center gap-2">
-                                <FaPhone size={18} color="#e67238" />
-                                <span className="tracking-wider">023 8192 4908</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-2">
-                                <FaMobileScreenButton size={18} color="#e67238" />
-                                <span className="tracking-wider">023 8192 4908</span>
+                                <FaMobileScreenButton size={18} color="white" />
+                                <span className="tracking-wider"><span className="font-semibold">Phone: </span>023 8192 4908</span>
                             </div>
                         </div>
-                        <div className="">We have the right staff for you.</div>
                     </div>
-                    <div className="space-y-4 lg:space-y-8">
-                        <div className="flex flex-col gap-4">
-                            <div className="text-xl tracking-widest uppercase font-bold">Quick Links</div>
+                    <div className="space-y-4">
+                        <div className="flex flex-col gap-2">
+                            <div className="text-xl tracking-widest uppercase font-bold">Useful Links</div>
                             <div className="border-b-2 border-[#e67238] w-1/4"></div>
                         </div>
-                        <div className={`flex flex-col gap-5 text-sm`}>
+                        <div className={`flex flex-col gap-4 text-sm`}>
                             <NavLink to='/about' className="flex flex-row items-center gap-2">
                                 <FaArrowRight size={13} color="#e67238" />
                                 <span className="tracking-wider">About Us</span>
@@ -73,48 +67,12 @@ const Footer = () => {
                             </NavLink>
                         </div>
                     </div>
-                    <div className="space-y-4 lg:space-y-8">
-                        <div className="flex flex-col gap-4">
-                            <div className="text-xl tracking-widest uppercase font-bold">Our Services</div>
-                            <div className="border-b-2 border-[#e67238] w-1/4"></div>
-                        </div>
-                        <div className={`flex flex-col gap-5 text-sm`}>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Dementia Care</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Personal Care</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Respite Care</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Live-in Care</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Companionship</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Advice and Support</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Mental Health</span>
-                            </NavLink>
-                        </div>
-                    </div>
-                    <div className="space-y-4 lg:space-y-8">
-                        <div className="flex flex-col gap-4">
+                    <div className="space-y-4">
+                        <div className="flex flex-col gap-2">
                             <div className="text-xl tracking-widest uppercase font-bold">Work Hours</div>
                             <div className="border-b-2 border-[#e67238] w-1/4"></div>
                         </div>
-                        <div className={`flex flex-col gap-5 text-sm`}>
+                        <div className={`flex flex-col gap-4 text-sm`}>
                             <div className="flex flex-row items-center gap-2">
                                 <FaRegClock  size={13} color="#e67238" />
                                 <span className="tracking-wider">09:00 - 17:00 , Monday - Friday (Office)</span>

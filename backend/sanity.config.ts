@@ -5,12 +5,15 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'datawork-backend',
+  title: 'sarathealthcare',
 
-  projectId: 'o5b5lrk6',
+  projectId: '0afiti4i',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool(),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,

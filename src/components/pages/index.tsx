@@ -20,7 +20,7 @@ import parse from 'html-react-parser';
 const Home = () => {
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="relative w-full h-[42rem]">
+      <div className="w-full h-[42rem] relative">
         <video 
           autoPlay 
           loop 
@@ -33,11 +33,8 @@ const Home = () => {
         </video>
         
         {/* Overlay Content */}
-        <div className="relative z-10 flex flex-col justify-center items-center h-full bg-black/70 text-white">
-          <div className="flex flex-col items-center gap-7 lg:w-8/12 w-11/12">
-            {/* <div className="text-lg">
-              Welcome to
-            </div> */}
+        <div className="z-10 absolute flex flex-col justify-end items-start h-full bg-red-950/40">
+          <div className="flex flex-col gap-3 items-center w-1/2 p-10 rounded-tr-[4rem] bg-[#e67238] text-lg">
             <div className="text-4xl lg:text-[2.6rem] hover:text-white text-[#1663a3] font-semibold tracking-widest">
               Sarat Healthcare.
             </div>
@@ -116,7 +113,7 @@ const Home = () => {
       
       <TestimonialCarousel/>
 
-      <div className="flex flex-col items-center bg-[#f4e8e3] gap-3 w-full mt-10 py-16">
+      <div className="flex flex-col items-center bg-[#f4e8e3] gap-3 w-full py-16">
         <div className="grid scroll-mt-32 grid-cols-1 items-start gap-16 md:grid-cols-2 md:gap-16 lg:w-8/12 w-11/12">
           <div className="flex flex-col text-sm mx-auto space-y-2 lg:mx-0 order-1 md:order-1">
             <p className="whitespace-pre-wrap text-lg text-gray-600 lg:w-4/5">
