@@ -35,40 +35,82 @@ const serviceList: Service[] = [
   },
   {
     icon: EndofLifeCare,
-    description: "Our end-of-life care services focus on providing comfort, dignity, and emotional support during life’s final stages. We work closely with families and healthcare providers to ensure compassionate care that honors your loved one’s wishes.",
+    description: "Our end-of-life care services focus on providing comfort, dignity, and emotional support during life's final stages. We work closely with families and healthcare providers to ensure compassionate care that honors your loved one's wishes.",
     title: "End-of-life Care",
   },
 ]
 
 export default function ServiceCarousel() {
   const {pathname}  = useLocation();
+  const isServicesPage = pathname === '/services';
   
   return (
-    <div className={`${pathname !== '/services' ? 'mt-10' : ''} w-full flex justify-center bg-[#f4e8e3] py-14`}>
-      <div className="flex flex-col gap-10 lg:w-8/12 w-11/12">
-        { pathname !== '/services' && (
-          <div className="font-semibold tracking-wider lg:text-[2.8rem] text-4xl lg:leading-[3rem] leading-7 text-[#1663a3]"><span className="block lg:text-3xl text-xl text-[#e67238]">Our</span>Service</div>
-        )}
-        <div className="flex items-center justify-center w-full">
-          <div className="flex flex-nowrap relative items-center justify-center lg:space-x-4 w-full overflow-hidden">
-            <div className="grid lg:grid-cols-3  gap-5 w-full relative duration-300">
-              {serviceList.length > 0 && serviceList?.map((service, index) =>  (
-                <div key={index} className="bg-white text-[#1663a3] hover:text-[#1663a3] hover:bg-[#e67238] flex flex-col items-center translate-1/4 border border-gray-300 rounded-lg gap-5 p-5 lg:h-[25rem] h-[22rem] shadow-lg shadow-slate-350 relative">
-                  <img
-                    src={service?.icon}
-                    alt="Company Logo"
-                    className="h-20"
-                  />
-                  <div className="text-[1rem] text-black text-center">
-                    {service?.description}
-                  </div>
-                  <div className="absolute mt-10 bottom-3 left-4 font-bold text-left text-2xl w-full">
-                    {service?.title}
-                  </div>
-                </div>
-              ))}
+    <div className={`${!isServicesPage ? '' : ''} w-full flex justify-center bg-[#f4e8e3] py-14 lg:py-24 px-4`}>
+      <div className="flex flex-col lg:gap-10 w-full max-w-7xl">
+        { !isServicesPage && (
+          <div className="text-left">
+            <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-2">
+              Our Services
             </div>
+            <h2 className="font-bold tracking-wide text-2xl lg:text-4xl text-[#1663a3]">
+              Special High-quality Services
+            </h2>
           </div>
+        )}
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          {serviceList.map((service, index) => (
+            <ServiceCard 
+              key={index} 
+              service={service} 
+              isServicesPage={isServicesPage}
+            />
+          ))}
+        </div>
+        
+        {!isServicesPage && (
+          <div className="mt-8 text-center">
+            <a 
+              href="/services" 
+              className="text-[#e67238] font-bold text-lg hover:underline mx-4"
+            >
+              READ MORE
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Service Card Component
+function ServiceCard({ service, isServicesPage }: { 
+  service: Service; 
+  isServicesPage: boolean;
+}) {
+  return (
+    <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-[#1663a3] transition-all duration-300 hover:shadow-xl">
+      <div className="flex flex-col h-full">
+        <h3 className="font-bold text-xl text-[#1663a3] mb-3">
+          {service.title}
+        </h3>
+        
+        <p className="text-gray-600 mb-5 flex-grow">
+          {isServicesPage 
+            ? service.description 
+            : `${service.description.substring(0, 120)}...`}
+        </p>
+        
+        <div className="mt-auto">
+          <a 
+            href="/services" 
+            className="text-[#e67238] font-semibold hover:underline flex items-center"
+          >
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </div>

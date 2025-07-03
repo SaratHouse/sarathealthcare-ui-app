@@ -52,6 +52,8 @@ export { default as quoteIcon } from '../assets/images/quote.svg';
 export { default as Logo } from '../assets/images/logo.png';
 export { default as bgM } from '../assets/images/bgM.png';
 export { default as elderlyCare } from '../assets/images/elderly-care.jpg';
+export { default as recruitment } from '../assets/images/recruitment.jpg';
+export { default as caregiver } from '../assets/images/caregiver.jpg';
 export { default as CQC } from '../assets/images/CQC-Img33.png';
 
 export { default as RespiteCare } from '../assets/images/respite-care.png';

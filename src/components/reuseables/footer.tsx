@@ -20,7 +20,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-[#2e3c61] text-white w-full flex flex-col items-center py-12">
-            <div className="lg:w-8/12 w-11/12 relative px-4 flex flex-col">
+            <div className="w-full max-w-7xl relative px-4 flex flex-col">
                 <div className="grid grid-cols-1 gap-8 text-sm lg:grid-cols-3 lg:gap-5 pb-10">
                     <div className="space-y-4">
                         <img src={Logo} alt='logo' className='h-16'/>
@@ -97,7 +97,7 @@ const Footer = () => {
                     <div className="space-y-8 text-sm text-gray-11">
                         <p className="text-gray-08">Copyright ©  {date.getFullYear()} Sarathealthcare,  Inc. All rights reserved.</p>
                     </div>
-                    <div className={`flex flex-row gap-10 text-sm items-center lg:justify-end`}>
+                    <div className={`flex flex-row gap-10 text-sm items-center lg:justify-end justify-between`}>
                         <NavLink to='/'>
                             Terms and Conditions
                         </NavLink>

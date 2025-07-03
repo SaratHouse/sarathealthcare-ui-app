@@ -48,13 +48,13 @@ export default function TestimonialCarousel() {
   const isSingleColumn = testimonials.length === 1;
 
   return (
-    <div className="w-full flex justify-center py-24 px-4 bg-blue-100/30">
-      <div className="flex flex-col items-center gap-5 w-full max-w-7xl">
-        <div className="text-left w-full mb-8">
+    <div className="w-full flex justify-center lg:py-40 py-16 px-4 bg-blue-100/30">
+      <div className="flex flex-col items-center w-full max-w-7xl">
+        <div className="lg:text-left text-center w-full mb-20">
           <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-2">
             Testimonial
           </div>
-          <h2 className="font-bold tracking-wide text-4xl lg:text-4xl text-[#1663a3] mb-4">
+          <h2 className="font-bold tracking-wide text-2xl lg:text-4xl text-[#1663a3] mb-4">
             What Our Client Say
           </h2>
         </div>
@@ -63,7 +63,7 @@ export default function TestimonialCarousel() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
+            className="hidden lg:absolute -left-4 lg:top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
             aria-label="Previous testimonial"
           >
             <FaArrowLeft size={16} />
@@ -71,15 +71,15 @@ export default function TestimonialCarousel() {
 
           <button
             onClick={nextSlide}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
+            className="hidden lg:absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
             aria-label="Next testimonial"
           >
             <FaArrowRight size={16} />
           </button>
 
           {/* Dual Column Testimonials */}
-          <div className={`grid grid-cols-1 ${isSingleColumn ? '' : 'md:grid-cols-2'} gap-6 transition-all duration-500`}>
-            {/* First Column */}
+          <div className={`grid grid-cols-1 ${isSingleColumn ? '' : 'md:grid-cols-2'} lg:gap-6 gap-20 transition-all duration-500`}>
+            {/* First Column */}  
             <TestimonialCard 
               testimonial={testimonials[currentIndex]} 
               isActive={true}
@@ -93,6 +93,24 @@ export default function TestimonialCarousel() {
               />
             )}
           </div>
+        </div>
+        <div className="w-full lg:hidden flex justify-end mt-7 gap-2">
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
+            aria-label="Previous testimonial"
+          >
+            <FaArrowLeft size={16} />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
+            aria-label="Next testimonial"
+          >
+            <FaArrowRight size={16} />
+          </button>
         </div>
       </div>
     </div>

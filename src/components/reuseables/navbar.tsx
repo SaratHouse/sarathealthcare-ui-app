@@ -69,7 +69,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className='flex flex-col justify-between items-center md:bg-[#1663a3] w-full lg:py-5 py-3'>
+        <div className='flex flex-col justify-between items-center md:bg-[#1663a3] w-full lg:py-5 py-3 lg:px-0 px-3'>
           <div className='flex flex-row justify-between items-center w-full max-w-7xl'>
             <NavLink to='/' className='block lg:hidden'>
               <img src={logo} alt='logo' className='lg:h-14 h-10'/>
@@ -115,8 +115,8 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {showMenu && (
           <div className='fixed inset-0 bg-black/70 z-50'>
-            <div className='flex flex-col w-4/5 h-full relative bg-white'>
-              <div className='flex flex-row items-center justify-between w-full py-3 px-5 border-b-2 border-[#1663a3]'>
+            <div className='flex flex-col w-4/5 h-full bg-white z-50'>
+              <div className='flex flex-row items-center justify-between w-full p-3 border-b-2 border-[#1663a3]'>
                 <NavLink to='/'>
                   <img src={logo} alt='logo' className='h-10'/>
                 </NavLink>
@@ -176,7 +176,7 @@ const Navbar = () => {
                 </NavLink>
               </div>
 
-              <div className='absolute bottom-0 flex flex-col gap-3 text-xs p-5 bg-orange-100/50 rounded-lg'>
+              <div className='mt-10 flex flex-col gap-3 text-xs p-5 bg-orange-100/50 rounded-lg'>
                 <div className='flex gap-3 font-semibold items-center'>
                   <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
                     <FaLocationDot color='#1663a3'/>
