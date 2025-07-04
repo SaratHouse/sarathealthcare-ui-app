@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   caregiver,
 } from "../../constant/images";
@@ -21,7 +21,6 @@ const About = () => {
   }, [location]);
   return (
     <div className="flex flex-col items-center w-full">
-      
       <div className="w-full h-[35rem] relative">
         <video 
           autoPlay 
@@ -37,7 +36,14 @@ const About = () => {
         {/* Overlay Content */}
         <div className="z-10 absolute flex flex-col justify-center items-center h-full w-full bg-black/30">
           <div className="flex flex-col gap-3 text-white justify-center items-center lg:w-1/2 p-10 text-lg">
-            <div className="text-4xl text-center hover:text-white text-[#006dad] hover:bg-[#006dad] bg-white/60 px-10 p-4 font-bold tracking-widest">
+            <div className="text-lg text-center text-[#006dad] font-semibold lg:w-3/5">
+              <NavLink to="/">
+                <span className="hover:text-white">
+                  Home
+                </span>
+              </NavLink> / About Us
+            </div>
+            <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 px-10 p-4 font-bold tracking-widest">
               About Us
             </div>
           </div>

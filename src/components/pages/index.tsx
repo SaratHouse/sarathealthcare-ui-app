@@ -28,7 +28,7 @@ const Home = () => {
             <div className="text-lg text-center lg:w-3/5">
               We Are Here For You
             </div>
-            <div className="text-4xl text-center hover:text-white text-[#006dad] hover:bg-[#006dad] bg-white/60 px-10 p-4 font-bold tracking-widest">
+            <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 px-10 p-4 font-bold tracking-widest">
               Professional and Friendly <br/> Health Care For You
             </div>
             <div className="text-lg text-center w-4/5">

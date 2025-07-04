@@ -8,7 +8,7 @@ interface InputProps {
 }
 
 const TextareaField = forwardRef<HTMLTextAreaElement, InputProps>(
-  ({ title, placeholder, readonly = false, isRequired = false }, ref) => {
+  ({ title, placeholder,  readonly = false, isRequired = false }, ref) => {
     return (
       <div className="flex flex-col gap-1 text-sm w-full">
         {title && <div className="font-bold tracking-wide">{title} {isRequired && <span className="font-bold text-sm text-red-600">*</span>} </div>}

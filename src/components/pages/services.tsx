@@ -22,7 +22,7 @@ const Services = () => {
         {/* Overlay Content */}
         <div className="z-10 absolute flex flex-col justify-center items-center h-full w-full bg-black/30">
           <div className="flex flex-col gap-3 text-white justify-center items-center lg:w-1/2 p-10 text-lg">
-            <div className="text-4xl text-center hover:text-white text-[#006dad] hover:bg-[#006dad] bg-white/60 px-10 p-4 font-bold tracking-widest">
+            <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 px-10 p-4 font-bold tracking-widest">
               Services
             </div>
             <div className="flex flex-col md:flex-row gap-5 mt-5">
