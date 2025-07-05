@@ -1,4 +1,3 @@
-import { bgPattern, SendUpIcon } from "../../constant/images";
 import InputField from "../reuseables/input";
 import { useRef, useState } from "react";
 import TextareaField from "../reuseables/textarea";
@@ -7,6 +6,7 @@ import { useAlert } from "../../utils/notification/alertcontext";
 import { validateEmail } from "../../utils/common";
 import { errorMessageMap, ErrorTypes } from "../../constant";
 import { ERROR_EMAIL_INVALID } from "../../constant/errors";
+import { caregiver } from "../../constant/images";
 // Removed invalid import of createDocument from '@sanity/client'
 
 const Booking = () => {
@@ -71,7 +71,7 @@ const Booking = () => {
     <div className="flex flex-col items-center lg:gap-[5rem] gap-10 w-full">
       <div className="grid scroll-mt-32 grid-cols-1 items-center gap-16 lg:grid-cols-2 md:gap-16 lg:w-8/12 w-11/12 py-[5rem] !pt-[7rem]">
         <div className="lg:flex justify-center items-center hidden">
-          <img src={bgPattern} className="object-fill" alt="background" />
+          <img src={caregiver} className="object-fill" alt="background" />
         </div>
         <div className="flex flex-col gap-5 items-center">
           <div className="grid lg:grid-cols-2 gap-7 w-full">
@@ -129,7 +129,7 @@ const Booking = () => {
               disabled={isSubmitting}
             >
               <span className="opacity-80">{!isSubmitting ? 'Book a session' : 'Booking you a session ....'}</span>{" "}
-              <img src={SendUpIcon} className="h-2" alt="SendUpIcon" />
+              {/* <img src={SendUpIcon} className="h-2" alt="SendUpIcon" /> */}
             </button>
           </div>
         </div>

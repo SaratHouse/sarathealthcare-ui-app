@@ -3,7 +3,7 @@ import { awsImage, gcloudImage, azureImage, powerbiImage, databrickImage, CQC } 
 
 export default function Partners() {
   return (
-    <div className="flex flex-col items-center w-full lg:py-36 py-16">
+    <div className="flex flex-col items-center w-full py-16">
         <div className="flex flex-col gap-10 lg:w-8/12 w-11/12">
           <div className="flex flex-row items-center justify-between lg:justify-center flex-wrap text-sm mx-auto gap-5 w-full space-y-2 mb-6 lg:mx-0 lg:max-w-none">
             {[

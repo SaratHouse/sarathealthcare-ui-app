@@ -2,7 +2,7 @@ import { useState } from "react";
 import Disclaimer from './disclaimer';
 
 import { NavLink } from "react-router-dom";
-import { FaArrowRight, FaDiscord, FaEnvelope, FaGithub, FaLinkedin, FaLocationDot, FaMobileScreenButton, FaRegClock, FaXTwitter } from "react-icons/fa6";
+import { FaDiscord, FaEnvelope, FaFacebookF, FaGithub, FaLinkedin, FaLocationDot, FaMobileScreenButton, FaRegClock, FaXTwitter } from "react-icons/fa6";
 import { CQC, Logo } from "../../constant/images";
 
 
@@ -27,15 +27,15 @@ const Footer = () => {
                         <div className={`flex flex-col gap-3 pt-4 text-sm`}>
                             <div className="flex flex-row items-center gap-2">
                                 <FaLocationDot size={18} color="white" />
-                                <span className="tracking-wider"><span className="font-semibold">Address: </span>1234 Sarat Street, City, Country</span>
+                                <span className="tracking-wider"><span className="font-semibold">Address: </span>Jhumat House, 160 London Road, Barking, IG11 8BB</span>
                             </div>
                             <div className="flex flex-row items-center gap-2">
                                 <FaEnvelope size={18} color="white" />
-                                <span className="tracking-wider"><span className="font-semibold">Email: </span>info@sarathealthcare.co.uk</span>
+                                <a href="mailto:homecare@sarathealthcare.co.uk" target="_blank" rel="noreferrer" className="tracking-wider"><span className="font-semibold">Email: </span>homecare@sarathealthcare.co.uk</a>
                             </div>
                             <div className="flex flex-row items-center gap-2">
                                 <FaMobileScreenButton size={18} color="white" />
-                                <span className="tracking-wider"><span className="font-semibold">Phone: </span>023 8192 4908</span>
+                                <span className="tracking-wider"><span className="font-semibold">Phone: </span>020 3667 3616, 077 3736 1681</span>
                             </div>
                         </div>
                     </div>
@@ -46,23 +46,18 @@ const Footer = () => {
                         </div>
                         <div className={`flex flex-col gap-4 text-sm`}>
                             <NavLink to='/about' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
                                 <span className="tracking-wider">About Us</span>
                             </NavLink>
                             <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
                                 <span className="tracking-wider">Services</span>
                             </NavLink>
                             <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
-                                <span className="tracking-wider">Book an Assessment</span>
+                                <span className="tracking-wider">Career</span>
                             </NavLink>
                             <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
                                 <span className="tracking-wider">Jobs</span>
                             </NavLink>
                             <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <FaArrowRight size={13} color="#e67238" />
                                 <span className="tracking-wider">Contact Us</span>
                             </NavLink>
                         </div>
@@ -75,13 +70,16 @@ const Footer = () => {
                         <div className={`flex flex-col gap-4 text-sm`}>
                             <div className="flex flex-row items-center gap-2">
                                 <FaRegClock  size={13} color="#e67238" />
-                                <span className="tracking-wider">09:00 - 17:00 , Monday - Friday (Office)</span>
+                                <span className="tracking-wider">09:00 am - 6:00 pm, Monday - Friday (Office)</span>
                             </div>
                             <div className="flex flex-row items-center gap-2">
                                 <FaMobileScreenButton size={13} color="#e67238" />
                                 <span className="tracking-wider">24/7 On-call Daily</span>
                             </div>
                             <div className="flex space-x-4 opacity-50">
+                                <a href="https://www.facebook.com/profile.php?id=61560262184384" target="_blank" rel="noreferrer">
+                                    <FaFacebookF size={20}/>
+                                </a>
                                 <FaXTwitter size={20}/>
                                 <FaLinkedin size={20}/>
                                 <FaGithub  size={20}/>

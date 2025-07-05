@@ -4,7 +4,6 @@ import Pagination from "../reuseables/pagination";
 import { newsQuery, newSearchQuery } from "../../utils/data";
 import { client } from "../../utils/client";
 
-import pixelImage from '../../assets/images/bg-pattern-right(light-mode).svg';
 import { getFormattedDate } from "../../utils/common"; 
 
 interface NewInfo{
@@ -87,7 +86,6 @@ const News = () => {
             </div>
         </div>
 
-        <img src={pixelImage} className="lg:max-h-[30rem] w-full object-cover hidden lg:block" alt="pixel footer graphic"/>
       </div>
 
       <div className='flex flex-col items-center bg-white lg:w-8/12 w-11/12 z-30'>

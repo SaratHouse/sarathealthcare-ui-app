@@ -47,29 +47,23 @@ const Navbar = () => {
           <NavLink to='/'>
             <img src={logo} alt='logo' className='h-14'/>
           </NavLink>
-          <div className='flex items-center justify-end w-full max-w-2xl text-xs'>
-            <div className='flex gap-3 font-semibold items-center justify-between pr-5 border-r'>
-              <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
-                <FaLocationDot color='#1663a3'/>
-              </div>
-              <div className=''>121 Waldeck Street,<br/> NY, USA</div>
+          <div className='flex items-center gap-4 justify-end w-7/12 text-xs'>
+            <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
+              <FaLocationDot color='#1663a3'/>
             </div>
-            <div className='flex gap-3 font-semibold items-center justify-around px-5 border-r'>
-              <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
-                <FaPhone color='#1663a3'/>
-              </div>
-              <div className=''>Call Us 24/7 <br/> +80(234)12356712</div>
+            <div className='pr-5 border-r-2 border-[#e67238]'>Jhumat House, 160 London Road, <br/> Barking, IG11 8BB</div>
+            <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
+              <FaPhone color='#1663a3'/>
             </div>
-            <div className='flex gap-3 font-semibold items-center justify-between pl-5'>
-              <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
-                <FaClock color='#1663a3'/>
-              </div>
-              <div className=''>Mon - Fri: 8:00 - 20:00<br/> Sat - Sun: 9:00 - 16:00</div>
+            <div className='pr-5 border-r-2 border-[#e67238]'>Call Us 24/7 <br/> 020 3667 3616, 077 3736 1681</div>
+            <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
+              <FaClock color='#1663a3'/>
             </div>
+            <div className=''>Mon – Fri: <br/> 9:00 AM – 6:00 PM</div>
           </div>
         </div>
 
-        <div className='flex flex-col justify-between items-center md:bg-[#1663a3] w-full lg:py-5 py-3 lg:px-0 px-3'>
+        <div className='flex flex-col justify-between items-center lg:bg-[#1663a3] w-full lg:py-5 py-3 lg:px-0 px-3'>
           <div className='flex flex-row justify-between items-center w-full max-w-7xl'>
             <NavLink to='/' className='block lg:hidden'>
               <img src={logo} alt='logo' className='lg:h-14 h-10'/>
@@ -77,20 +71,20 @@ const Navbar = () => {
             
             {/* Desktop Navigation */}
             <div className="hidden lg:block">
-              <div className={`tracking-widest flex flex-row gap-5 text-md items-end font-semibold text-white`}>
-                <NavLink to='/' className={({ isActive }) => (isActive ? 'text-[#e67238] font-semibold' : '')}>
+              <div className={`tracking-widest flex flex-row gap-5 text-md items-center font-semibold text-white`}>
+                <NavLink to='/' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   Home
                 </NavLink>
-                <NavLink to='/about-us' className={({ isActive }) => (isActive ? 'text-[#e67238] font-semibold' : '')}>
+                <NavLink to='/about-us' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   About us
                 </NavLink>
-                <NavLink to='/services' className={({ isActive }) => (isActive ? 'text-[#e67238] font-semibold' : '')}>
+                <NavLink to='/services' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   Services
                 </NavLink>
-                <NavLink to='/sa' className={({ isActive }) => (isActive ? 'text-[#e67238] font-semibold' : '')}>
+                <NavLink to='/sa' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   Jobs
                 </NavLink>
-                <NavLink to='/contact-us' className={({ isActive }) => (isActive ? 'text-[#e67238] font-semibold' : '')}>
+                <NavLink to='/contact-us' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   Contact Us
                 </NavLink>
               </div>
@@ -181,19 +175,19 @@ const Navbar = () => {
                   <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
                     <FaLocationDot color='#1663a3'/>
                   </div>
-                  <div className=''>121 Waldeck Street, NY, USA</div>
+                  <div className=''>Jhumat House, 160 London Road, Barking, IG11 8BB</div>
                 </div>
                 <div className='flex gap-3 font-semibold items-center'>
                   <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
                     <FaPhone color='#1663a3'/>
                   </div>
-                  <div className=''>Call Us 24/7 +80(234)12356712</div>
+                  <div className=''>Call Us 24/7 020 3667 3616, 077 3736 1681</div>
                 </div>
                 <div className='flex gap-3 font-semibold items-center'>
                   <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
                     <FaClock color='#1663a3'/>
                   </div>
-                  <div className=''>Mon - Fri: 8:00 - 20:00 Sat - Sun: 9:00 - 16:00</div>
+                  <div className=''>Mon – Fri: 9:00 AM – 6:00 PM</div>
                 </div>
               </div>
             </div>

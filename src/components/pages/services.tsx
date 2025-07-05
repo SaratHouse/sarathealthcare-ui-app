@@ -25,16 +25,6 @@ const Services = () => {
             <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 px-10 p-4 font-bold tracking-widest">
               Services
             </div>
-            <div className="flex flex-col md:flex-row gap-5 mt-5">
-              <NavLink
-                className="flex h-[3rem] tracking-wider items-center justify-center rounded-lg px-10 font-semibold text-lg text-white bg-[#e67238] hover:!bg-[#1663a3] space-x-2"
-                to="/"
-              >
-                <span className="">
-                  Book Now
-                </span>
-              </NavLink>
-            </div>
           </div>
         </div>
       </div>
@@ -45,7 +35,6 @@ const Services = () => {
       </div>
 
       <ServiceCarousel/>
-      <Recruitment/>
       <TestimonialCarousel/>
       <Partners/>
     </div>

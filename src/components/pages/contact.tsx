@@ -1,14 +1,11 @@
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FaCircleCheck, FaClock, FaEnvelope, FaHandHoldingHeart, FaLocationDot, FaPhone, FaUsers } from "react-icons/fa6";
-import { isMobile } from "react-device-detect";
-import parse from 'html-react-parser';
+import { FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 import Disclaimer from "../reuseables/disclaimer";
 
 import { useAlert } from "../../utils/notification/alertcontext";
 import { EMAIL_REGEX } from "../../utils/regex";
 import { client } from "../../utils/client";
-import { awsImage, azureImage, databrickImage, dbtImage, elderlyCare, gcloudImage, lookerImage, powerbiImage, qlikImage, sapImage, tableauImage } from "../../constant/images";
 import TestimonialCarousel from "../reuseables/testimonialCarousel";
 import Partners from "../reuseables/partners";
 import InputField from "../reuseables/input";
@@ -123,7 +120,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Phone</div>
-                <div className='text-black/50 text-base'>+80(234)12356712</div>
+                <div className='text-black/50 text-base'>020 3667 3616 , 077 3736 1681</div>
               </div>
             </div>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
@@ -134,7 +131,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Email</div>
-                <div className='text-black/50 text-base'>info@sarathealthcare.co.uk</div>
+                <div className='text-black/50 text-base'>homecare@sarathealthcare.co.uk</div>
               </div>
             </div>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
@@ -145,7 +142,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Address</div>
-                <div className='text-black/50 text-base'>121 Waldeck Street, USA</div>
+                <div className='text-black/50 text-base'>Jhumat House, 160 London Road, Barking, IG11 8BB</div>
               </div>
             </div>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
@@ -156,7 +153,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Working Hours</div>
-                <div className='text-black/50 text-base'>Mon - Fri: 8:00 - 20:00<br/> Sat - Sun: 9:00 - 16:00</div>
+                <div className='text-black/50 text-base'>Mon – Fri: 9:00 AM – 6:00 PM</div>
               </div>
             </div>
           </div>
@@ -164,7 +161,7 @@ const Contact = () => {
           <div className='flex flex-col w-full justify-between'>            
             <div className='flex flex-col gap-6 w-full rounded-lg  bg-white shadow-md shadow-black'>
               <div className="font-bold tracking-widest uppercase text-white text-left text-lg rounded-t-lg px-10 py-5 bg-[#e67238]">
-                Leave us a message
+                Get In Touch
               </div>
               <div className='flex flex-col w-full p-10 gap-5 items-center'>
                 <InputField

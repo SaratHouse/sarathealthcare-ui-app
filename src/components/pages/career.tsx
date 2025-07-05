@@ -1,4 +1,3 @@
-import { arrowIcon } from "../../constant/images";
 import { BsEnvelopeAt } from "react-icons/bs";
 
 const Career = () => {
@@ -47,7 +46,6 @@ const Career = () => {
       <div className="flex lg:flex-row flex-col lg:gap-10 gap-4 lg:w-1/2 w-11/12 pb-20">
         <div className="w-1/2 flex justify-between items-center">
           <div className="lg:text-[2rem] text-lg font-medium">HOW TO APPLY</div>
-          <img src={arrowIcon} className="h-4" alt="arrowIcon" />
         </div>
         <div className="lg:w-1/2 flex flex-col gap-1 lg:text-lg text-sm ">
           <div className="text-sm text-gray-500">
