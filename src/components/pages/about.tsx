@@ -36,7 +36,7 @@ const About = () => {
         {/* Overlay Content */}
         <div className="z-10 absolute flex flex-col justify-center items-center h-full w-full bg-black/30">
           <div className="flex flex-col gap-3 text-white justify-center items-center lg:w-1/2 p-10 text-lg">
-            <div className="text-lg text-center text-[#006dad] font-semibold lg:w-3/5">
+            <div className="text-lg text-center text-white font-semibold lg:w-3/5">
               <NavLink to="/">
                 <span className="hover:text-white">
                   Home
@@ -103,7 +103,6 @@ const About = () => {
             We create care plans in partnership with our service users and their families to ensure every preference, belief, and goal is respected and reflected in our delivery. Our CQC "Overall Good" rating is a reflection of our dedication to maintaining high standards in care, compliance, and quality assurance.
           </p>
         </div>
-
       </div>
 
       <div className="w-full flex flex-col items-center text-white bg-[#006dad] py-14 lg:py-24 px-4">

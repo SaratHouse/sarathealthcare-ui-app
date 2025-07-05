@@ -18,11 +18,10 @@ const IndexRoutes = () => {
   }, [pathname]);
   
   return (
-    <div className='bg-white flex flex-col items-center w-full relative min-h-screen'>
+    <div className='bg-white flex flex-col items-center w-full overflow-auto h-screen'>
       <AlertProvider>
         <Navbar/>
         <Alert />  
-        <main className='w-full'>
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/updates" element={<News/>} />
@@ -34,7 +33,6 @@ const IndexRoutes = () => {
             <Route path="/booking" element={<Booking/>} />
             <Route path="/*" element={<NotFound/>} />
           </Routes>
-        </main>
         <Footer />
       </AlertProvider>
     </div>

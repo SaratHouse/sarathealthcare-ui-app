@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import TestimonialCarousel from "../reuseables/testimonialCarousel";
-import ServiceCarousel from "../reuseables/serviceCarousel";
+import ServiceCarouselAlt from "../reuseables/serviceCarouselAlt";
 import Partners from "../reuseables/partners";
 import Recruitment from "../reuseables/recruitment";
+import { caregiver } from "../../constant/images";
 
 const Services = () => {
   return (
@@ -21,20 +22,25 @@ const Services = () => {
         
         {/* Overlay Content */}
         <div className="z-10 absolute flex flex-col justify-center items-center h-full w-full bg-black/30">
-          <div className="flex flex-col gap-3 text-white justify-center items-center lg:w-1/2 p-10 text-lg">
-            <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 px-10 p-4 font-bold tracking-widest">
-              Services
+          <div className="flex flex-col gap-3 text-white justify-center items-center lg:w-1/2 lg:p-10 text-lg">
+            <div className="text-lg text-center text-white font-semibold lg:w-3/5">
+              <NavLink to="/">
+                <span className="hover:text-white">
+                  Home
+                </span>
+              </NavLink> / Our Services
+            </div>
+            <div className="text-3xl lg:text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 lg:px-10 mx-3 lg:mx-0 p-4 font-bold tracking-widest">
+              Tailored, Comprehensive Care
+            </div>
+            <div className="lg:text-lg text-base text-center lg:w-4/5">
+              We provide a broad range of CQC-regulated care services tailored to each individual’s health, social, and emotional needs. Our team consists of experienced and empathetic professionals committed to delivering the highest standards of care.
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full grid lg:grid-cols-3 p-4 justify-center h-32 bg-[#e67238] text-white text-center font-bold">
-        <div className="lg:border-r h-full">Something here</div>
-        <div className="lg:border-r h-full">Something here</div>
-        <div className="h-full">Something here</div>
-      </div>
 
-      <ServiceCarousel/>
+      <ServiceCarouselAlt/>
       <TestimonialCarousel/>
       <Partners/>
     </div>

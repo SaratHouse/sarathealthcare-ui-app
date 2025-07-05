@@ -4,19 +4,21 @@ import { FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
 import Disclaimer from "../reuseables/disclaimer";
 
 import { useAlert } from "../../utils/notification/alertcontext";
-import { EMAIL_REGEX } from "../../utils/regex";
 import { client } from "../../utils/client";
 import TestimonialCarousel from "../reuseables/testimonialCarousel";
 import Partners from "../reuseables/partners";
 import InputField from "../reuseables/input";
 import TextareaField from "../reuseables/textarea";
+import { validateEmail } from "../../utils/common";
+import { errorMessageMap, ErrorTypes } from "../../constant";
+import { ERROR_EMAIL_INVALID } from "../../constant/errors";
 
 
 interface ContactDocument {
   _type: string;
-  name: string;
+  fullname: string;
   email: string;
-  phone: string;
+  mobile: string;
   message: string;
 }
 
@@ -24,55 +26,55 @@ const Contact = () => {
   const { addAlert } = useAlert();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [handleDisclaimerPopUp, setHandleDisclaimerPopUp] = useState(false);
-  const [formInfo, setFormInfo] = useState({name: '', email: '', phone: '', message:''});
   const fullNameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const mobileRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
   const handleToggleModal = (newValue : boolean) => {    
     setHandleDisclaimerPopUp(newValue);
   };
 
-  const handleSubmit = async () => {  
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    const { name, email, phone, message} = formInfo;
-  
-    // const requiredFields = [
-    //   { field: email, message: 'Please add email' },
-    //   { field: phone, message: 'Please add mobile' },
-    //   { field: name, message: 'Please add price' },
-    //   { field: message, message: 'Please select message' },
-    // ];
-  
-    // for (const { field, message } of requiredFields) {
-    //   if (!field) {
-    //     setIsSubmitting(false);
-    //     return addAlert({ message, type: 'error' });
-    //   }
-    // }
+    const newBody = {
+      fullname: fullNameRef.current?.value || "",
+      message: messageRef.current?.value || "",
+      mobile: mobileRef.current?.value || "",
+      email: emailRef.current?.value || "",
+    };
 
-    // if(!EMAIL_REGEX.test(email)) {
-    //   setIsSubmitting(false);
-    //   return addAlert({ message:'Invalid email provided', type: 'error' });
-    // }
+    const errors: string[] = []; // Collect all error messages
     
+    Object.entries(newBody).forEach(([key, value]) => {      
+      if (!value) errors.push(errorMessageMap[key as ErrorTypes]);
+      if (key === "email" && value && !validateEmail(value)) errors.push(ERROR_EMAIL_INVALID);
+    });
     
-    // let doc: ContactDocument = {
-    //   _type: 'contact',
-    //   name,
-    //   email,
-    //   phone,
-    //   message
-    // };  
+    if (errors.length > 0) {
+      errors.forEach(msg => addAlert({ message: msg, type: "error" }));
+      setIsSubmitting(false);
+      return;
+    }
+  
     
-    // try {
-    //   await client.create(doc)
-    //   setFormInfo({name: '', email: '', phone: '', message:''})
-    //   setIsSubmitting(false);
-    //   addAlert({ message: 'Contact form submitted successfully', type: 'success' });
-    // } catch (error) {
-    //   console.log(error);
-    //   setIsSubmitting(false);
-    //   addAlert({ message:'error occurred while submitting form', type: 'error' });
-    // }
+    let doc: ContactDocument = {
+      _type: 'contact',
+      ...newBody
+    };
+    
+    try {
+      await client.create(doc)
+      if (fullNameRef.current) fullNameRef.current.value = "";
+      if (messageRef.current) messageRef.current.value = "";
+      if (mobileRef.current) mobileRef.current.value = "";
+      if (emailRef.current) emailRef.current.value = ""
+      setIsSubmitting(false);
+      addAlert({ message: 'Contact form submitted successfully', type: 'success' });
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+      addAlert({ message:'error occurred while submitting form', type: 'error' });
+    }
   };
 
   if (handleDisclaimerPopUp) {
@@ -110,7 +112,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className={`flex flex-col lg:flex-row items-center gap-5 w-full max-w-7xl px-4 lg:py-24 py-16`}>
+      <div className={`flex flex-col lg:flex-row items-center lg:gap-5 gap-10 w-full max-w-7xl px-4 lg:py-24 py-16`}>
           <div className={`flex flex-col gap-7 items-start w-full`}>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
               <div className='bg-[#e67238]/55 p-1 rounded-full flex items-center justify-center'>
@@ -120,7 +122,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Phone</div>
-                <div className='text-black/50 text-base'>020 3667 3616 , 077 3736 1681</div>
+                <div className='text-black/50 text-sm lg:text-base'>020 3667 3616 , 077 3736 1681</div>
               </div>
             </div>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
@@ -131,7 +133,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Email</div>
-                <div className='text-black/50 text-base'>homecare@sarathealthcare.co.uk</div>
+                <div className='text-black/50 text-sm lg:text-base'>homecare@sarathealthcare.co.uk</div>
               </div>
             </div>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
@@ -142,7 +144,7 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Address</div>
-                <div className='text-black/50 text-base'>Jhumat House, 160 London Road, Barking, IG11 8BB</div>
+                <div className='text-black/50 text-sm lg:text-base'>Jhumat House, 160 London Road, Barking, IG11 8BB</div>
               </div>
             </div>
             <div className="bg-[#006dad]/10 flex flex-row lg:w-3/4 w-full items-center gap-5 rounded-2xl p-5">
@@ -153,17 +155,17 @@ const Contact = () => {
               </div>
               <div className=''>
                 <div className='font-semibold text-lg'>Working Hours</div>
-                <div className='text-black/50 text-base'>Mon – Fri: 9:00 AM – 6:00 PM</div>
+                <div className='text-black/50 text-sm lg:text-base'>Mon – Fri: 9:00 AM – 6:00 PM</div>
               </div>
             </div>
           </div>
           
           <div className='flex flex-col w-full justify-between'>            
-            <div className='flex flex-col gap-6 w-full rounded-lg  bg-white shadow-md shadow-black'>
-              <div className="font-bold tracking-widest uppercase text-white text-left text-lg rounded-t-lg px-10 py-5 bg-[#e67238]">
+            <div className='flex flex-col gap-6 w-full rounded-lg bg-white shadow-md shadow-black'>
+              <div className="font-bold tracking-widest uppercase text-white text-left text-lg rounded-t-lg lg:px-10 p-5 bg-[#e67238]">
                 Get In Touch
               </div>
-              <div className='flex flex-col w-full p-10 gap-5 items-center'>
+              <div className='flex flex-col w-full lg:p-10 p-5 gap-5 items-center'>
                 <InputField
                   type="text"
                   title="Full Name"
@@ -177,14 +179,14 @@ const Contact = () => {
                     title="Email Address"
                     iconName="fi-sr-envelopes"
                     placeholder="Enter your email"
-                    ref={fullNameRef}
+                    ref={emailRef}
                   />
                   <InputField
                     type="tel"
                     title="Phone Number"
                     iconName="fi-sr-phone-call"
                     placeholder="Enter your phone no."
-                    ref={fullNameRef}
+                    ref={mobileRef}
                   />
                 </div>
                 <TextareaField
