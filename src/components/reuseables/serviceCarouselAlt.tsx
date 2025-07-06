@@ -1,5 +1,5 @@
-import { useLocation } from "react-router-dom";
 import parse from 'html-react-parser';
+import { FaUserNurse, FaHome, FaBrain, FaHandHoldingHeart, FaUtensils } from 'react-icons/fa';
 
 interface Service {
   description: string;
@@ -9,8 +9,8 @@ interface Service {
 const serviceList: Service[] = [
   {
     description: `
-      <div className='flex flex-col w-full gap-5 px-5'>
-        <ul className="list-oustide list-disc gap-2">
+      <div className='flex flex-col w-full gap-3'>
+        <ul className="space-y-2">
           <li><b>Assistance with bathing, grooming, hygiene:</b> Helping service users maintain self-care and feel confident in their appearance.</li>
           <li><b>Dressing, continence care:</b> Ensuring comfort, cleanliness, and dignity every day.</li>
           <li><b>Medication reminders and administration:</b> Timely and safe medication support following care plans and prescriptions.</li>
@@ -22,8 +22,8 @@ const serviceList: Service[] = [
   },
   {
     description: `
-      <div className='flex flex-col w-full gap-5 px-5'>
-        <ul className="list-outside list-disc">
+      <div className='flex flex-col w-full gap-3'>
+        <ul className="space-y-2">
           <li><b>24/7 home-based care:</b> Peace of mind and uninterrupted care in the comfort of home.</li>
           <li><b>Flexible, round-the-clock assistance:</b> Adapting to your needs at any time, day or night.</li>
           <li><b>Daily living support and companionship:</b> From routines to relationships, our carers are true companions.</li>
@@ -34,8 +34,8 @@ const serviceList: Service[] = [
   },
   {
     description: `
-      <div className='flex flex-col w-full gap-5 px-5'>
-        <ul className="list-outside list-disc">
+      <div className='flex flex-col w-full gap-3'>
+        <ul className="space-y-2">
           <li><b>Specialist care for dementia and mental health conditions:</b> Delivered by trained professionals who understand behavioural and emotional needs.</li>
           <li><b>Activities to promote wellbeing:</b> We create structured routines to stimulate memory, engagement and mood.</li>
           <li><b>Support managing challenging behaviours:</b> With patience, skill and respect.</li>
@@ -46,8 +46,8 @@ const serviceList: Service[] = [
   },
   {
     description: `
-      <div className='flex flex-col w-full gap-5 px-5'>
-        <ul className="list-outside list-disc">
+      <div className='flex flex-col w-full gap-3'>
+        <ul className="space-y-2">
           <li><b>Symptom management and compassionate support:</b> Enhancing quality of life during difficult periods.</li>
           <li><b>Dignified care through life's final stages:</b> Respectful, gentle, and loving care.</li>
           <li><b>Family support:</b> We’re there for families with practical and emotional guidance.</li>
@@ -58,8 +58,8 @@ const serviceList: Service[] = [
   },
   {
     description: `
-      <div className='flex flex-col w-full gap-5 px-5'>
-        <ul className="list-outside list-disc">
+      <div className='flex flex-col w-full gap-3'>
+        <ul className="space-y-2">
           <li><b>Dietary support:</b> Healthy, personalised meals served with care.</li>
           <li><b>Light housekeeping and laundry:</b> Ensuring a clean, safe, and comforting home environment.</li>
           <li><b>Social outings and companionship:</b> Reducing loneliness, promoting joy, and improving wellbeing.</li>
@@ -70,49 +70,82 @@ const serviceList: Service[] = [
   },
 ]
 
+// Icon mapping for services
+const serviceIcons = {
+  "Personal Care": FaUserNurse,
+  "Live-In and Supported Living": FaHome,
+  "Dementia and Mental Health Support": FaBrain,
+  "Palliative, Respite & End-of-Life Care": FaHandHoldingHeart,
+  "Nutrition, Domestic & Social Support": FaUtensils,
+};
+
 export default function ServiceCarouselAlt() {
-  
   return (
-    <div className={`w-full flex justify-center items-end py-14 lg:py-24 px-4 bg-background`}>
-      <div className="flex flex-col lg:gap-10 w-full max-w-7xl">
-      <div className="text-left">
-        <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-2">
-          Our Services
+    <div className="w-full flex justify-center bg-gradient-to-br from-[#f4e8e3] to-[#e6f0fa] py-16 px-4">
+      <div className="w-full max-w-7xl">
+        <div className="text-center mb-16">
+          <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-3">
+            Our Care Services
+          </div>
+          <h2 className="font-bold text-3xl md:text-4xl text-[#1663a3] mb-4">
+            Special High-quality Services
+          </h2>
+          <div className="w-24 h-1 bg-[#e67238] mx-auto"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-lg">
+            Comprehensive care solutions tailored to individual needs with compassion and expertise
+          </p>
         </div>
-        <h2 className="font-bold tracking-wide text-2xl lg:text-4xl text-[#1663a3]">
-          Special High-quality Services
-        </h2>
-      </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-8 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {serviceList.map((service, index) => (
             <ServiceCard 
               key={index} 
               service={service} 
+              index={index}
             />
           ))}
         </div>
+        
       </div>
     </div>
   );
 }
 
-// Service Card Component
-function ServiceCard({ service }: { 
+function ServiceCard({ service, index }: { 
   service: Service; 
+  index: number;
 }) {
+  // Get the appropriate icon component for this service
+  const IconComponent = serviceIcons[service.title as keyof typeof serviceIcons];
+  
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-[#1663a3] transition-all duration-300 hover:shadow-xl">
-      <div className="flex flex-col h-full">
-        <h3 className="font-bold text-xl text-[#1663a3] mb-3">
+    <div className="bg-white relative w-full rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+      <div className="relative">
+        {/* Service number badge */}
+        <div className="absolute top-4 right-4 bg-[#e67238] text-white font-bold w-10 h-10 rounded-full flex items-center justify-center z-10">
+          {index + 1}
+        </div>
+        
+        {/* Icon header */}
+        <div className="bg-[#1663a3] p-6 flex justify-center">
+          {IconComponent && (
+            <IconComponent className="text-white text-4xl" />
+          )}
+        </div>
+      </div>
+      
+      <div className="p-6">
+        <h3 className="font-bold text-xl text-[#1663a3] mb-4">
           {service.title}
         </h3>
         
-        <div className='w-full leading-relaxed text-sm'>
+        <div className="text-gray-600 text-sm leading-relaxed mb-10">
           {service.description ? parse(service.description) : '---'}
         </div>
         
-        
+        <div className="absolute left-0 bottom-7 flex flex-col items-center w-full">
+          <div className="w-12 h-1 bg-[#e67238]"></div>
+        </div>
       </div>
     </div>
   );

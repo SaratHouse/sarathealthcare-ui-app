@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AlertProvider } from '../utils/notification/alertcontext';
 import Alert from '../utils/notification/alert';
@@ -8,17 +8,17 @@ import Footer from '../components/reuseables/footer';
 
 const IndexRoutes = () => {
   const { pathname } = useLocation();
+  const containerRef = useRef<HTMLDivElement>(null); // Create ref
 
   useEffect(() => {
-    // Scroll window to top on route change
-    window.scrollTo({
+    containerRef.current?.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }, [pathname]);
   
   return (
-    <div className='bg-white flex flex-col items-center w-full overflow-auto h-screen'>
+    <div ref={containerRef} className='flex flex-col items-center w-full overflow-auto h-screen'>
       <AlertProvider>
         <Navbar/>
         <Alert />  

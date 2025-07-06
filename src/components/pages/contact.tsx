@@ -173,7 +173,7 @@ const Contact = () => {
                   placeholder="Enter your full name"
                   ref={fullNameRef}
                 />
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-full'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full'>
                   <InputField
                     type="email"
                     title="Email Address"

@@ -45,19 +45,16 @@ const Footer = () => {
                             <div className="border-b-2 border-[#e67238] w-1/4"></div>
                         </div>
                         <div className={`flex flex-col gap-4 text-sm`}>
-                            <NavLink to='/about' className="flex flex-row items-center gap-2">
+                            <NavLink to='/about-us' className="flex flex-row items-center gap-2">
                                 <span className="tracking-wider">About Us</span>
                             </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
+                            <NavLink to='/services' className="flex flex-row items-center gap-2">
                                 <span className="tracking-wider">Services</span>
                             </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <span className="tracking-wider">Career</span>
+                            <NavLink to='/careers' className="flex flex-row items-center gap-2">
+                                <span className="tracking-wider">Careers</span>
                             </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
-                                <span className="tracking-wider">Jobs</span>
-                            </NavLink>
-                            <NavLink to='/' className="flex flex-row items-center gap-2">
+                            <NavLink to='/contact-us' className="flex flex-row items-center gap-2">
                                 <span className="tracking-wider">Contact Us</span>
                             </NavLink>
                         </div>

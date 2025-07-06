@@ -81,8 +81,8 @@ const Navbar = () => {
                 <NavLink to='/services' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   Services
                 </NavLink>
-                <NavLink to='/sa' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
-                  Jobs
+                <NavLink to='/careers' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
+                  Careers
                 </NavLink>
                 <NavLink to='/contact-us' className={({ isActive }) => (isActive ? 'border-b-2 border-[#e67238] font-semibold' : '')}>
                   Contact Us
@@ -157,7 +157,7 @@ const Navbar = () => {
                   }
                   onClick={() => setShowMenu(false)}
                 >
-                  Jobs
+                  Careers
                 </NavLink>
                 <NavLink 
                   to='/contact-us' 

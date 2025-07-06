@@ -78,7 +78,7 @@ export default function TestimonialCarousel() {
           </button>
 
           {/* Dual Column Testimonials */}
-          <div className={`grid grid-cols-1 ${isSingleColumn ? '' : 'md:grid-cols-2'} lg:gap-6 gap-20 transition-all duration-500`}>
+          <div className={`grid grid-cols-1 ${isSingleColumn ? '' : 'md:grid-cols-2'} lg:gap-6 md:gap-10 gap-20 transition-all duration-500`}>
             {/* First Column */}  
             <TestimonialCard 
               testimonial={testimonials[currentIndex]} 

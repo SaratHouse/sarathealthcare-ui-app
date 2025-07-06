@@ -4,7 +4,7 @@ import IndexRoutes from './containers/index';
 
 const App = () => {
   return (
-    <div className="flex flex-col items-center lg:gap-[5rem] gap-7 w-full h-screen">
+    <div className="flex flex-col items-center w-full overflow-auto h-screen">
       <Routes>
         <Route path="/*" element={<IndexRoutes/>} />
       </Routes>
