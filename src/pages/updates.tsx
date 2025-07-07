@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Pagination from "../reuseables/pagination";
-import { newsQuery, newSearchQuery } from "../../utils/data";
-import { client } from "../../utils/client";
+import Pagination from "../components/reuseables/pagination";
+import { newsQuery, newSearchQuery } from "../utils/data";
+import { client } from "../utils/client";
 
-import { getFormattedDate } from "../../utils/common"; 
+import { getFormattedDate } from "../utils/common"; 
 
 interface NewInfo{
   _id: string;

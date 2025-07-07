@@ -1,10 +1,10 @@
 import {
   caregiver,
-} from "../../constant/images";
-import ServiceCarousel from "../reuseables/serviceCarousel";
-import TestimonialCarousel from "../reuseables/testimonialCarousel";
-import Partners from "../reuseables/partners";
-import Recruitment from "../reuseables/recruitment";
+} from "../constant/images";
+import ServiceCarousel from "../components/reuseables/serviceCarousel";
+import TestimonialCarousel from "../components/reuseables/testimonialCarousel";
+import Partners from "../components/reuseables/partners";
+import Recruitment from "../components/reuseables/recruitment";
 import { NavLink } from "react-router-dom";
 
 const Home = () => {

@@ -1,17 +1,17 @@
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
-import Disclaimer from "../reuseables/disclaimer";
+import Disclaimer from "../components/reuseables/disclaimer";
 
-import { useAlert } from "../../utils/notification/alertcontext";
-import { client } from "../../utils/client";
-import TestimonialCarousel from "../reuseables/testimonialCarousel";
-import Partners from "../reuseables/partners";
-import InputField from "../reuseables/input";
-import TextareaField from "../reuseables/textarea";
-import { validateEmail } from "../../utils/common";
-import { errorMessageMap, ErrorTypes } from "../../constant";
-import { ERROR_EMAIL_INVALID } from "../../constant/errors";
+import { useAlert } from "../utils/notification/alertcontext";
+import { client } from "../utils/client";
+import TestimonialCarousel from "../components/reuseables/testimonialCarousel";
+import Partners from "../components/reuseables/partners";
+import InputField from "../components/reuseables/input";
+import TextareaField from "../components/reuseables/textarea";
+import { validateEmail } from "../utils/common";
+import { errorMessageMap, ErrorTypes } from "../constant";
+import { ERROR_EMAIL_INVALID } from "../constant/errors";
 
 
 interface ContactDocument {

@@ -1,12 +1,12 @@
-import InputField from "../reuseables/input";
+import InputField from "../components/reuseables/input";
 import { useRef, useState } from "react";
-import TextareaField from "../reuseables/textarea";
-import { client } from "../../utils/client";
-import { useAlert } from "../../utils/notification/alertcontext";
-import { validateEmail } from "../../utils/common";
-import { errorMessageMap, ErrorTypes } from "../../constant";
-import { ERROR_EMAIL_INVALID } from "../../constant/errors";
-import { caregiver } from "../../constant/images";
+import TextareaField from "../components/reuseables/textarea";
+import { client } from "../utils/client";
+import { useAlert } from "../utils/notification/alertcontext";
+import { validateEmail } from "../utils/common";
+import { errorMessageMap, ErrorTypes } from "../constant";
+import { ERROR_EMAIL_INVALID } from "../constant/errors";
+import { caregiver } from "../constant/images";
 // Removed invalid import of createDocument from '@sanity/client'
 
 const Booking = () => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { postDetailQuery, newsDetailMoreQuery } from "../../utils/data";
-import { client } from "../../utils/client";
-import { getFormattedDate } from "../../utils/common";
-import { BlockText } from "../reuseables/blockContent";
+import { postDetailQuery, newsDetailMoreQuery } from "../utils/data";
+import { client } from "../utils/client";
+import { getFormattedDate } from "../utils/common";
+import { BlockText } from "../components/reuseables/blockContent";
 
 interface NewInfo{
   _id: string;

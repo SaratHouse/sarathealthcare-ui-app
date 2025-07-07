@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import TestimonialCarousel from "../reuseables/testimonialCarousel";
-import ServiceCarouselAlt from "../reuseables/serviceCarouselAlt";
-import Partners from "../reuseables/partners";
+import TestimonialCarousel from "../components/reuseables/testimonialCarousel";
+import ServiceCarouselAlt from "../components/reuseables/serviceCarouselAlt";
+import Partners from "../components/reuseables/partners";
 
 const Services = () => {
   return (

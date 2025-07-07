@@ -1,8 +1,6 @@
-import { BsEnvelopeAt } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-import Partners from "../reuseables/partners";
-import TestimonialCarousel from "../reuseables/testimonialCarousel";
-import { caregiver } from "../../constant/images";
+import Partners from "../components/reuseables/partners";
+import TestimonialCarousel from "../components/reuseables/testimonialCarousel";
 
 const Career = () => {
   return (
