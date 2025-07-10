@@ -98,14 +98,14 @@ const Contact = () => {
         {/* Overlay Content */}
         <div className="z-10 absolute flex flex-col justify-center items-center h-full w-full bg-black/30">
           <div className="flex flex-col gap-3 text-white justify-center items-center lg:w-1/2 p-10 text-lg">
-            <div className="text-lg text-center text-[#006dad] font-semibold lg:w-3/5">
+            <div className="text-lg text-center font-semibold lg:w-3/5">
               <NavLink to="/">
                 <span className="hover:text-white">
                   Home
                 </span>
               </NavLink> / Contact Us
             </div>
-            <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 lg:px-10 p-4 font-bold tracking-widest">
+            <div className="text-4xl text-center text-white lg:px-10 p-4 font-bold tracking-widest">
               Contact Us
             </div>
           </div>

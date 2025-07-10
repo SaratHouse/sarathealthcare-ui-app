@@ -10,8 +10,8 @@ const Alert: React.FC = () => {
         <div
           key={alert.id}
           className={`px-4 rounded-md border-l-[.6rem] ${
-            alert.type === 'success' ? 'border-green-700' : 'border-red-700'
-          } bg-white max-w-2xl md:px-8 text-[12px] md:w-[20rem]`}
+            alert.type === 'success' ? 'border-green-700' : 'border-red-700 shadow-red-900'
+          } bg-white shadow-md max-w-2xl md:px-8 text-[12px] w-3/4 md:w-[20rem]`}
         >
           <div className="flex justify-between py-3">
             <div className="flex">

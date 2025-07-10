@@ -63,7 +63,7 @@ export default function TestimonialCarousel() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="hidden lg:absolute -left-4 lg:top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
+            className="hidden lg:block absolute -left-4 lg:top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
             aria-label="Previous testimonial"
           >
             <FaArrowLeft size={16} />
@@ -71,7 +71,7 @@ export default function TestimonialCarousel() {
 
           <button
             onClick={nextSlide}
-            className="hidden lg:absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
+            className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-[#e67238] text-white p-3 rounded-full shadow-lg hover:bg-[#1663a3] transition-all duration-300"
             aria-label="Next testimonial"
           >
             <FaArrowRight size={16} />

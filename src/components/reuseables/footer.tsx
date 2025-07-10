@@ -19,7 +19,7 @@ const Footer = () => {
     }
 
     return (
-        <footer className="bg-[#2e3c61] text-white w-full flex flex-col items-center py-12">
+        <footer className="lg:bg-gradient-to-r bg-gradient-to-br from-[#2e3c61] from-40% to-[#e67238] to-90% text-white w-full flex flex-col items-center py-12">
             <div className="w-full max-w-7xl relative px-4 flex flex-col">
                 <div className="grid grid-cols-1 gap-8 text-sm lg:grid-cols-3 lg:gap-5 pb-10">
                     <div className="space-y-4">
@@ -66,11 +66,11 @@ const Footer = () => {
                         </div>
                         <div className={`flex flex-col gap-4 text-sm`}>
                             <div className="flex flex-row items-center gap-2">
-                                <FaRegClock  size={13} color="#e67238" />
+                                <FaRegClock size={13} className="lg:text-[#e67238] text-white"/>
                                 <span className="tracking-wider">09:00 am - 6:00 pm, Monday - Friday (Office)</span>
                             </div>
                             <div className="flex flex-row items-center gap-2">
-                                <FaMobileScreenButton size={13} color="#e67238" />
+                                <FaMobileScreenButton size={13} className="lg:text-[#e67238] text-white"/>
                                 <span className="tracking-wider">24/7 On-call Daily</span>
                             </div>
                             <div className="flex space-x-4 opacity-50">

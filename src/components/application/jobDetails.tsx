@@ -9,8 +9,8 @@ export const JobDetails = ({ formData, handleChange }: any) => (
       <InputField
         title="Position Applied For"
         type="text"
-        value={formData.positionAppliedFor}
-        onChange={(e) => handleChange('positionAppliedFor', e.target.value)}
+        value={formData.jobDetails.positionAppliedFor}
+        onChange={(e) => handleChange('jobDetails.positionAppliedFor', e.target.value)}
         isRequired
       />
       
@@ -21,18 +21,18 @@ export const JobDetails = ({ formData, handleChange }: any) => (
         <div className="flex flex-wrap gap-4">
           <CheckboxField
             label="Full-time"
-            checked={formData.preferredWorkingArrangements.fullTime}
-            onChange={(checked) => handleChange('preferredWorkingArrangements', {...formData.preferredWorkingArrangements, fullTime: checked})}
-          />
+            checked={formData.jobDetails.preferredWorkingArrangements.fullTime}
+            onChange={(checked) => handleChange('jobDetails.preferredWorkingArrangements.fullTime', checked)}
+            />
           <CheckboxField
             label="Part-time"
-            checked={formData.preferredWorkingArrangements.partTime}
-            onChange={(checked) => handleChange('preferredWorkingArrangements', {...formData.preferredWorkingArrangements, partTime: checked})}
-          />
+            checked={formData.jobDetails.preferredWorkingArrangements.partTime}
+            onChange={(checked) => handleChange('jobDetails.preferredWorkingArrangements.partTime', checked)}
+            />
           <CheckboxField
             label="Job share"
-            checked={formData.preferredWorkingArrangements.jobShare}
-            onChange={(checked) => handleChange('preferredWorkingArrangements', {...formData.preferredWorkingArrangements, jobShare: checked})}
+            checked={formData.jobDetails.preferredWorkingArrangements.jobShare}
+            onChange={(checked) => handleChange('jobDetails.preferredWorkingArrangements.jobShare', checked)}
           />
         </div>
       </div>
@@ -40,8 +40,8 @@ export const JobDetails = ({ formData, handleChange }: any) => (
       <InputField
         title="Location"
         type="text"
-        value={formData.location}
-        onChange={(e) => handleChange('location', e.target.value)}
+        value={formData.jobDetails.location}
+        onChange={(e) => handleChange('jobDetails.location', e.target.value)}
         isRequired
       />
       
@@ -49,8 +49,8 @@ export const JobDetails = ({ formData, handleChange }: any) => (
         title="How did you hear about this vacancy?"
         placeholder="Please state e.g. Indeed, Facebook etc."
         type="text"
-        value={formData.howDidYouHear}
-        onChange={(e) => handleChange('howDidYouHear', e.target.value)}
+        value={formData.jobDetails.howDidYouHear}
+        onChange={(e) => handleChange('jobDetails.howDidYouHear', e.target.value)}
         isRequired
       />
     </div>

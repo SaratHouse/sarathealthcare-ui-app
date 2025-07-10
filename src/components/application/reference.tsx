@@ -18,46 +18,46 @@ export const References = ({ formData, handleChange }: any) => (
     
     {/* Current Employer Reference */}
     <div className="mb-8 p-4 border border-gray-200 rounded-lg">
-      <h3 className="text-lg font-semibold text-[#e67238] mb-4">Current Employer Reference</h3>
+      <h3 className="text-lg font-semibold text-[#e67238] mb-4">Professional Reference</h3>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <InputField
           title="Name"
           type="text"
-          value={formData.references.currentEmployer.name}
-          onChange={(e) => handleChange('references.currentEmployer', 'name', e.target.value)}
+          value={formData.references.professionalReferee.name}
+          onChange={(e) => handleChange('references.professionalReferee.name', e.target.value)}
           isRequired
         />
         
         <InputField
           title="Address"
           type="text"
-          value={formData.references.currentEmployer.address}
-          onChange={(e) => handleChange('references.currentEmployer', 'address', e.target.value)}
+          value={formData.references.professionalReferee.address}
+          onChange={(e) => handleChange('references.professionalReferee.address', e.target.value)}
           isRequired
         />
         
         <InputField
           title="Tel No"
           type="tel"
-          value={formData.references.currentEmployer.tel}
-          onChange={(e) => handleChange('references.currentEmployer', 'tel', e.target.value)}
+          value={formData.references.professionalReferee.tel}
+          onChange={(e) => handleChange('references.professionalReferee.tel', e.target.value)}
           isRequired
         />
         
         <InputField
           title="Occupation"
           type="text"
-          value={formData.references.currentEmployer.occupation}
-          onChange={(e) => handleChange('references.currentEmployer', 'occupation', e.target.value)}
+          value={formData.references.professionalReferee.occupation}
+          onChange={(e) => handleChange('references.professionalReferee.occupation', e.target.value)}
           isRequired
         />
         
         <InputField
           title="Email Address (business only)"
           type="email"
-          value={formData.references.currentEmployer.email}
-          onChange={(e) => handleChange('references.currentEmployer', 'email', e.target.value)}
+          value={formData.references.professionalReferee.email}
+          onChange={(e) => handleChange('references.professionalReferee.email', e.target.value)}
           isRequired
         />
         
@@ -67,79 +67,9 @@ export const References = ({ formData, handleChange }: any) => (
           </div>
           <div className="flex gap-4">
             <CheckboxField
-              label="Yes"
-              checked={formData.references.currentEmployer.contactBeforeInterview}
-              onChange={(checked) => handleChange('references.currentEmployer', {...formData.references.currentEmployer, contactBeforeInterview: checked})}
-            />
-            <CheckboxField
-              label="No"
-              checked={!formData.references.currentEmployer.contactBeforeInterview}
-              onChange={(checked) => handleChange('references.currentEmployer', {...formData.references.currentEmployer, contactBeforeInterview: !checked})}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    {/* Second Employer Reference */}
-    <div className="mb-8 p-4 border border-gray-200 rounded-lg">
-      <h3 className="text-lg font-semibold text-[#e67238] mb-4">Second Employer Reference</h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <InputField
-          title="Name"
-          type="text"
-          value={formData.references.secondEmployer.name}
-          onChange={(e) => handleChange('references.secondEmployer', 'name', e.target.value)}
-          isRequired
-        />
-        
-        <InputField
-          title="Address"
-          type="text"
-          value={formData.references.secondEmployer.address}
-          onChange={(e) => handleChange('references.secondEmployer', 'address', e.target.value)}
-          isRequired
-        />
-        
-        <InputField
-          title="Tel No"
-          type="tel"
-          value={formData.references.secondEmployer.tel}
-          onChange={(e) => handleChange('references.secondEmployer', 'tel', e.target.value)}
-          isRequired
-        />
-        
-        <InputField
-          title="Occupation"
-          type="text"
-          value={formData.references.secondEmployer.occupation}
-          onChange={(e) => handleChange('references.secondEmployer', 'occupation', e.target.value)}
-          isRequired
-        />
-        
-        <InputField
-          title="Email Address (business only)"
-          type="email"
-          value={formData.references.secondEmployer.email}
-          onChange={(e) => handleChange('references.secondEmployer', 'email', e.target.value)}
-          isRequired
-        />
-        
-        <div className="md:col-span-2">
-          <div className="font-semibold tracking-wide mb-2">
-            May we contact this referee prior to interview?
-          </div>
-          <div className="flex gap-4">
-            <CheckboxField
-              label="Yes"
-              checked={formData.references.secondEmployer.contactBeforeInterview}
-              onChange={(checked) => handleChange('references.secondEmployer', {...formData.references.secondEmployer, contactBeforeInterview: checked})}
-            />
-            <CheckboxField
-              label="No"
-              checked={!formData.references.secondEmployer.contactBeforeInterview}
-              onChange={(checked) => handleChange('references.secondEmployer', {...formData.references.secondEmployer, contactBeforeInterview: !checked})}
+              label="If Yes, '✔' in the box"
+              checked={formData.references.professionalReferee.contactBeforeInterview}
+              onChange={(checked) => handleChange('references.professionalReferee.contactBeforeInterview', checked)}
             />
           </div>
         </div>
@@ -155,7 +85,7 @@ export const References = ({ formData, handleChange }: any) => (
           title="Name"
           type="text"
           value={formData.references.personalReferee.name}
-          onChange={(e) => handleChange('references.personalReferee', 'name', e.target.value)}
+          onChange={(e) => handleChange('references.personalReferee.name', e.target.value)}
           isRequired
         />
         
@@ -163,7 +93,7 @@ export const References = ({ formData, handleChange }: any) => (
           title="Address"
           type="text"
           value={formData.references.personalReferee.address}
-          onChange={(e) => handleChange('references.personalReferee', 'address', e.target.value)}
+          onChange={(e) => handleChange('references.personalReferee.address', e.target.value)}
           isRequired
         />
         
@@ -171,7 +101,7 @@ export const References = ({ formData, handleChange }: any) => (
           title="Tel No"
           type="tel"
           value={formData.references.personalReferee.tel}
-          onChange={(e) => handleChange('references.personalReferee', 'tel', e.target.value)}
+          onChange={(e) => handleChange('references.personalReferee.tel', e.target.value)}
           isRequired
         />
         
@@ -179,7 +109,7 @@ export const References = ({ formData, handleChange }: any) => (
           title="Occupation"
           type="text"
           value={formData.references.personalReferee.occupation}
-          onChange={(e) => handleChange('references.personalReferee', 'occupation', e.target.value)}
+          onChange={(e) => handleChange('references.personalReferee.occupation', e.target.value)}
           isRequired
         />
         
@@ -187,7 +117,7 @@ export const References = ({ formData, handleChange }: any) => (
           title="Email Address"
           type="email"
           value={formData.references.personalReferee.email}
-          onChange={(e) => handleChange('references.personalReferee', 'email', e.target.value)}
+          onChange={(e) => handleChange('references.personalReferee.email', e.target.value)}
           isRequired
         />
         
@@ -197,14 +127,9 @@ export const References = ({ formData, handleChange }: any) => (
           </div>
           <div className="flex gap-4">
             <CheckboxField
-              label="Yes"
+              label="If Yes, '✔' in the box"
               checked={formData.references.personalReferee.contactBeforeInterview}
-              onChange={(checked) => handleChange('references.personalReferee', {...formData.references.personalReferee, contactBeforeInterview: checked})}
-            />
-            <CheckboxField
-              label="No"
-              checked={!formData.references.personalReferee.contactBeforeInterview}
-              onChange={(checked) => handleChange('references.personalReferee', {...formData.references.personalReferee, contactBeforeInterview: !checked})}
+              onChange={(checked) => handleChange('references.personalReferee.contactBeforeInterview', checked)}
             />
           </div>
         </div>

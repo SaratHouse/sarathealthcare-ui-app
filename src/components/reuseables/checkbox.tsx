@@ -1,5 +1,3 @@
-import { forwardRef } from "react";
-
 interface CheckboxProps {
   label: string;
   checked: boolean;

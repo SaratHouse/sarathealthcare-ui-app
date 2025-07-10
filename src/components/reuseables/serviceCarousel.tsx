@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface Service {
   description: string;
@@ -45,9 +45,7 @@ const serviceList: Service[] = [
   }
 ]
 
-export default function ServiceCarousel() {
-  const {pathname}  = useLocation();
-  
+export default function ServiceCarousel() {  
   return (
     <div className="relative w-full flex flex-col items-center py-20 px-4 overflow-hidden">
   {/* Background image with overlay */}
@@ -109,24 +107,5 @@ export default function ServiceCarousel() {
     </div>
   </div>
 </div>
-  );
-}
-
-// Service Card Component
-function ServiceCard({ service }: { 
-  service: Service;
-}) {
-  return (
-    <div className="bg-background bg-opacity-10 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
-      <div className="flex flex-col p-6 rounded-lg bg-black/65 h-full">
-        <h3 className="font-bold text-xl text-[#53b1ff] mb-3">
-          {service.title}
-        </h3>
-        
-        <p className="text-white mb-5 flex-grow bottom-0">
-          {service.description}
-        </p>
-      </div>
-    </div>
   );
 }

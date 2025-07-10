@@ -43,7 +43,7 @@ const About = () => {
                 </span>
               </NavLink> / About Us
             </div>
-            <div className="text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 px-10 p-4 font-bold tracking-widest">
+            <div className="text-4xl text-center text-white px-10 p-4 font-bold tracking-widest">
               About Us
             </div>
           </div>

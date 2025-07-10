@@ -28,7 +28,7 @@ const Services = () => {
                 </span>
               </NavLink> / Our Services
             </div>
-            <div className="text-3xl lg:text-4xl text-center text-white hover:bg-[#006dad] bg-black/60 lg:px-10 mx-3 lg:mx-0 p-4 font-bold tracking-widest">
+            <div className="text-3xl lg:text-4xl text-center text-white lg:px-10 mx-3 lg:mx-0 p-4 font-bold tracking-widest">
               Tailored, Comprehensive Care
             </div>
             <div className="lg:text-lg text-base text-center lg:w-4/5">
