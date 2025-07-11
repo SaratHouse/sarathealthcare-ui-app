@@ -1,5 +1,4 @@
-import { awsImage, gcloudImage, azureImage, powerbiImage, databrickImage, CQC } from "../../constant/images";
-
+import { barkImage, connectingBritainImage, carelineImage, atlasImage, cronerImage, homecareImage, NHSImage, nourishImage, newhamImage, towerHamletsImage, QCSImage, skillsImage, CQC } from "../../constant/images";
 
 export default function Partners() {
   return (
@@ -19,11 +18,18 @@ export default function Partners() {
         {/* Logos Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center mb-16">
           {[
-            { src: awsImage, name: "Amazon Web Services" },
-            { src: gcloudImage, name: "Google Cloud" },
-            { src: azureImage, name: "Microsoft Azure" },
-            { src: powerbiImage, name: "Microsoft Power BI" },
-            { src: databrickImage, name: "Databricks" }
+            { src: barkImage, name: "Bark" },
+            { src: connectingBritainImage, name: "Connecting Britain" },
+            { src: carelineImage, name: "Careline" },
+            { src: atlasImage, name: "Atlas" },
+            { src: cronerImage, name: "Croner" },
+            { src: homecareImage, name: "Homecare" },
+            { src: NHSImage, name: "NHS" },
+            { src: nourishImage, name: "Nourish" },
+            { src: newhamImage, name: "Newham" },
+            { src: towerHamletsImage, name: "Tower Hamlets" },
+            { src: QCSImage, name: "QCS" },
+            { src: skillsImage, name: "Skills for Care" },
           ].map((item, index) => (
             <div 
               key={index} 
