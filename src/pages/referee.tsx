@@ -20,7 +20,7 @@ const Referee = () => {
   
   useEffect(() => {
       const CheckIfReferenceFormHasBeenFilled = async () => {
-      const query = `*[_type == 'applicationReference' && token == $link][0]`;
+      const query = `*[_type == 'applicationReference' && token == $link][0]{_id}`;
       const result = await client.fetch(query, { link });
       if (result) {
           setApplication(null);
@@ -36,7 +36,11 @@ const Referee = () => {
 useEffect(() => {
     const fetchApplication = async () => {
       const refPath = `references.${type === "professional" ? type : 'personal' }Referee.personalizedLink`;
-      const query = `*[_type == 'application' && ${refPath} == $link][0]`;
+      const query = `*[_type == 'application' && ${refPath} == $link][0]{
+        personalDetails,
+        jobDetails,
+        "professionalReferee": references.professionalReferee
+      }`;
       const result = await client.fetch(query, { link });
       setApplication(result);
       setLoading(false);

@@ -19,8 +19,8 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       organisation: '',
       applicantName: `${applicantInfo.personalDetails?.forenames} ${applicantInfo.personalDetails?.surname}`,
       postAppliedFor: applicantInfo.jobDetails?.positionAppliedFor,
-      refereeName: applicantInfo.references?.professionalReferee?.name,
-      refereeJobTitle: applicantInfo.references?.professionalReferee?.occupation,
+      refereeName: applicantInfo.professionalReferee?.name,
+      refereeJobTitle: applicantInfo.professionalReferee?.occupation,
     },
     performanceAssessment: {
       ratings: {
@@ -40,7 +40,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       comments: ''
     },
     signature: {
-      name: applicantInfo.references?.name,
+      name: applicantInfo.professionalReferee?.name,
       date: formatDate(new Date().toISOString()),
     }
   });

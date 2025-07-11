@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AlertProvider } from '../utils/notification/alertcontext';
 import Alert from '../utils/notification/alert';
-import { About, Booking, Career, Contact, Home, JobApplication, NotFound, Referee, Services } from '../pages/_route';
+import { About, Career, Contact, Home, JobApplication, NotFound, Referee, Services } from '../pages/_route';
 import Navbar from '../components/reuseables/navbar';
 import Footer from '../components/reuseables/footer';
 
@@ -28,7 +28,6 @@ const IndexRoutes = () => {
             <Route path="/about-us" element={<About/>} />
             <Route path="/contact-us" element={<Contact/>} />
             <Route path="/careers" element={<Career/>} />
-            <Route path="/booking" element={<Booking/>} />
             <Route path="/application" element={<JobApplication/>} />
             <Route path="/referee/:id" element={<Referee/>} />
             <Route path="/*" element={<NotFound/>} />

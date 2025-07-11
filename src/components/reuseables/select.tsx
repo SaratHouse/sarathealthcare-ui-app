@@ -87,7 +87,7 @@ const SelectField: React.FC<SelectProps> = ({
                 onClick={() => handleSelect(el)}
                 className={`${
                   el === recordList.at(-1) ? "" : "border-b border-secondary"
-                } flex flex-row capitalize justify-between items-center text-primary px-3 py-2 cursor-pointer hover:bg-gray-100 ${
+                } flex flex-row capitalize justify-between items-center text-primary px-3 py-2 cursor-pointer hover:text-[#1663a3] hover:bg-gray-100 ${
                   disabled ? "cursor-not-allowed text-gray-400" : ""
                 }`}
               >

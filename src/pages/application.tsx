@@ -228,6 +228,7 @@ const JobApplication = () => {
     if (endorsements && !endorsementsDetails.trim()) {
       errors.push("Please provide endorsement details");
     }
+    
     // setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -365,7 +366,7 @@ const JobApplication = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const nextPage = () => {
+  const nextPage = async () => {
     if (currentPage === 1) {
       const isValid = validateJobDetails();
       if (!isValid) {
@@ -378,6 +379,20 @@ const JobApplication = () => {
       if (!isValid) {
         errors.forEach(msg => addAlert({ message: msg, type: "error" }));
         return;
+      }else {
+        const query = `*[_type == 'application' && personalDetails.email == '${formData.personalDetails.email.trim()}'][0]{_id}`;
+        const result = await client.fetch(query);
+
+        console.log('====================================');
+        console.log(result);
+        console.log('====================================');
+        if (result) {
+          addAlert({ 
+            message: "An application with this email already exists. Please contact support if you need assistance.", 
+            type: "error" 
+          });
+          return;
+        }
       }
     }
     if (currentPage === 3) {
