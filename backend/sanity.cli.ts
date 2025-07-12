@@ -2,7 +2,7 @@ import {defineCliConfig} from 'sanity/cli'
 
 export default defineCliConfig({
   api: {
-    projectId: 'o5b5lrk6',
+    projectId: '0afiti4i',
     dataset: 'production'
   },
   /**
@@ -10,4 +10,5 @@ export default defineCliConfig({
    * Learn more at https://www.sanity.io/docs/cli#auto-updates
    */
   autoUpdates: true,
+  studioHost: 'sarathealthcare-backend',
 })

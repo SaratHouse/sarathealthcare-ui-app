@@ -33,7 +33,7 @@ const AutoScrollCarousel: React.FC<AutoScrollCarouselProps> = ({ images, height 
     <div className="carousel-wrapper items-center" ref={carouselRef}>
       <div className="carousel-images gap-5">
         {images.concat(images).map((image, index) => (
-          <img key={index} src={image} alt={`carousel-img-${index}`} className="carousel-image h-10" />
+          <img key={index} src={image} alt={`carousel-img-${index}`} className="carousel-image lg:h-20 h-12" />
         ))}
       </div>
     </div>

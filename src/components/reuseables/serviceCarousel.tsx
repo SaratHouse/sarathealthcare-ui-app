@@ -1,76 +1,111 @@
-import { useLocation } from "react-router-dom";
-import { ComplexCare, DementiaCare, EndofLifeCare, LiveInCare, PersonalCare, RespiteCare } from "../../constant/images";
+import { NavLink } from "react-router-dom";
 
 interface Service {
-  icon: string;
   description: string;
   title: string;
+  icon: any;
 }
 
 const serviceList: Service[] = [
   {
-    icon: PersonalCare,
-    description: "Our personal care services are designed to support you with daily activities such as bathing, dressing, meal preparation, and mobility. We focus on maintaining your dignity and independence while ensuring your safety and well-being at home.",
-    title: "Personal Care",
+    description: "Bespoke care to help individuals maintain independence while receiving the support they need, either in their homes or supported environments",
+    title: "Personal Care & Supported Living",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#e67238]" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+      </svg>
+    )
   },
   {
-    icon: DementiaCare,
-    description: "We provide specialized dementia care tailored to the unique needs of individuals living with dementia. Our compassionate caregivers are trained to promote safety, comfort, and quality of life, helping clients and their families navigate this journey with confidence.",
-    title: "Dementia Care",
+    title: "Dementia Needs",
+    description: "Specialist care services tailored to those with neurological or developmental conditions, ensuring safety, routine, and dignity.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#e67238]" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-2.727 1.17 1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+      </svg>
+    )
   },
   {
-    icon: LiveInCare,
-    description: "For round-the-clock support, our live-in care services offer a dedicated caregiver who lives with you in your home. This ensures continuous care, companionship, and peace of mind for you and your loved ones. We have the right staff for you at all times.",
-    title: "Live-in Care",
-  },
-  {
-    icon: RespiteCare,
-    description: "Caring for a loved one can be rewarding but challenging. Our respite care services provide temporary relief for family caregivers, ensuring your loved one continues to receive high-quality care while you take a well-deserved break.",
     title: "Respite Care",
+    description: "We design compassionate care that offers comfort, symptom control, and emotional support for clients and families during critical times.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#e67238]" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+      </svg>
+    )
   },
   {
-    icon: ComplexCare,
-    description: "We specialize in providing complex care for individuals with chronic illnesses, disabilities, or medical conditions that require specialized attention. Our highly trained staff work closely with healthcare professionals to deliver quality care.",
-    title: "Complex Care",
-  },
-  {
-    icon: EndofLifeCare,
-    description: "Our end-of-life care services focus on providing comfort, dignity, and emotional support during life’s final stages. We work closely with families and healthcare providers to ensure compassionate care that honors your loved one’s wishes.",
-    title: "End-of-life Care",
-  },
+    title: "Domestic & Companionship",
+    description: "From cooking to cleaning and emotional engagement, we ensure your loved one’s everyday life is easier and brighter.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#e67238]" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
+      </svg>
+    )
+  }
 ]
 
-export default function ServiceCarousel() {
-  const {pathname}  = useLocation();
-  
+export default function ServiceCarousel() {  
   return (
-    <div className={`${pathname !== '/services' ? 'mt-10' : ''} w-full flex justify-center bg-[#f4e8e3] py-14`}>
-      <div className="flex flex-col gap-10 lg:w-8/12 w-11/12">
-        { pathname !== '/services' && (
-          <div className="font-semibold tracking-wider lg:text-[2.8rem] text-4xl lg:leading-[3rem] leading-7 text-[#1663a3]"><span className="block lg:text-3xl text-xl text-[#e67238]">Our</span>Service</div>
-        )}
-        <div className="flex items-center justify-center w-full">
-          <div className="flex flex-nowrap relative items-center justify-center lg:space-x-4 w-full overflow-hidden">
-            <div className="grid lg:grid-cols-3  gap-5 w-full relative duration-300">
-              {serviceList.length > 0 && serviceList?.map((service, index) =>  (
-                <div key={index} className="bg-white text-[#1663a3] hover:text-[#1663a3] hover:bg-[#e67238] flex flex-col items-center translate-1/4 border border-gray-300 rounded-lg gap-5 p-5 lg:h-[25rem] h-[22rem] shadow-lg shadow-slate-350 relative">
-                  <img
-                    src={service?.icon}
-                    alt="Company Logo"
-                    className="h-20"
-                  />
-                  <div className="text-[1rem] text-black text-center">
-                    {service?.description}
-                  </div>
-                  <div className="absolute mt-10 bottom-3 left-4 font-bold text-left text-2xl w-full">
-                    {service?.title}
-                  </div>
-                </div>
-              ))}
+    <div className="relative w-full flex flex-col items-center py-20 px-4 overflow-hidden">
+  {/* Background image with overlay */}
+  <div className="absolute inset-0 z-0">
+    <div className="bg-background bg-cover bg-center w-full h-full " />
+    <div className="absolute inset-0 bg-gradient-to-b from-[#0a3a5f] to-[#0d7bc0] opacity-80" />
+  </div>
+  
+  <div className="relative z-10 w-full max-w-7xl">
+    <div className="text-center mb-16">
+      <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-3">
+        Our Services
+      </div>
+      <h2 className="font-bold text-4xl md:text-5xl text-white mb-4">
+        Special High-quality Care
+      </h2>
+      <div className="w-24 h-1 bg-[#e67238] mx-auto mb-6"></div>
+      <p className="text-[#a0d1ff] max-w-2xl mx-auto text-lg">
+        We provide comprehensive care solutions tailored to individual needs with compassion and expertise
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {serviceList.map((service, index) => (
+        <div 
+          key={index} 
+          className="bg-[#0d7bc0] bg-opacity-30 backdrop-blur-sm rounded-xl border border-[#2a8fd4] p-6 transition-all duration-300 hover:bg-opacity-50 hover:border-[#e67238] group"
+        >
+          <div className="mb-5 flex justify-center">
+            <div className="bg-[#0a3a5f] p-4 rounded-full group-hover:bg-[#e67238] transition-colors duration-300">
+              {service.icon}
             </div>
           </div>
+          
+          <h3 className="text-xl font-bold text-white text-center mb-3">
+            {service.title}
+          </h3>
+          
+          <p className="text-[#c7e4ff] text-center mb-5">
+            {service.description}
+          </p>
+          
+          <div className="text-center">
+            <a href="/services" className="text-white font-semibold hover:text-[#e67238] transition-colors duration-300 flex items-center justify-center mx-auto">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
+    
+    <div className="mt-16 text-center">
+      <NavLink to={'/services'} className="bg-gradient-to-r from-[#e67238] to-[#d45a28] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">
+        View All Services
+      </NavLink>
+    </div>
+  </div>
+</div>
   );
 }

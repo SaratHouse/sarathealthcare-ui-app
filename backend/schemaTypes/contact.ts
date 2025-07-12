@@ -6,13 +6,8 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'firstname',
-      title: 'First Name',
-      type: 'string',
-    }),
-    defineField({
-      name: 'lastname',
-      title: 'Last Name',
+      name: 'fullname',
+      title: 'Full Name',
       type: 'string',
     }),
     defineField({
@@ -26,11 +21,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'company',
-      title: 'Company',
-      type: 'string',
-    }),
-    defineField({
       name: 'message',
       title: 'Message',
       type: 'string',
@@ -38,7 +28,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'firstname',
+      title: 'fullname',
     },
   },
 })
