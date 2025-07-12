@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Partners from "../components/reuseables/partners";
-import TestimonialCarousel from "../components/reuseables/testimonialCarousel";
+import TestimonialCarouselAlt from "../components/reuseables/testimonialCarouselAlt";
 
 const Career = () => {
   return (
@@ -25,7 +25,7 @@ const Career = () => {
                 <span className="hover:text-white">
                   Home
                 </span>
-              </NavLink> /Careers
+              </NavLink> / Careers
             </div>
             <div className="text-3xl lg:text-4xl text-center text-white lg:px-10 mx-3 lg:mx-0 p-4 font-bold tracking-widest">
               Join Our Compassionate Team
@@ -128,7 +128,7 @@ const Career = () => {
           </div>
         </div>
       </div>
-      <TestimonialCarousel/>
+      <TestimonialCarouselAlt/>
       <Partners/>
     </div>
   );

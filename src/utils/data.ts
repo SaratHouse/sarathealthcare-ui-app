@@ -15,6 +15,16 @@ export const testimonalsQuery = () => {
   }`;
   return query;
 };
+export const staffTestimonalsQuery = () => {
+  const query = `*[_type == "staffTestimonal"] | order(_createdAt desc){
+    _id,
+    author,
+    quote,
+    "logo": logo.asset->url,
+    _createdAt
+  }`;
+  return query;
+};
 
 export const professionalDetailQuery = (professionalId: string) => {
   const query = `*[_type == "professional" && name == '${professionalId}']{

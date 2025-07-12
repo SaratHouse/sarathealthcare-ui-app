@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { testimonalsQuery } from "../../utils/data";
+import { staffTestimonalsQuery } from "../../utils/data";
 import { client } from "../../utils/client";
 import { FaArrowLeft, FaArrowRight, FaStar } from "react-icons/fa6";
 import { quoteIcon } from "../../constant/images";
@@ -10,14 +10,14 @@ interface Testimonies {
   author: string;
 }
 
-export default function TestimoniesCarousel() {
+export default function TestimoniesCarouselAlt() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonials, setTestimoniess] = useState<Testimonies[]>([]);
 
   useEffect(() => {
     const fetchTestimoniess = async () => {
       try {
-        const data = await client.fetch(testimonalsQuery());
+        const data = await client.fetch(staffTestimonalsQuery());
         setTestimoniess(data);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
@@ -52,10 +52,10 @@ export default function TestimoniesCarousel() {
       <div className="flex flex-col items-center w-full max-w-7xl">
         <div className="lg:text-left text-center w-full mb-20">
           <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-2">
-            Clients Testimonies
+            Testimonies
           </div>
           <h2 className="font-bold tracking-wide text-2xl lg:text-4xl text-[#1663a3] mb-4">
-            We value Our Clients' Opinion
+            From Our Staff:
           </h2>
         </div>
 
