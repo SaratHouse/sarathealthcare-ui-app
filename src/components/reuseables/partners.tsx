@@ -1,4 +1,4 @@
-import { barkImage, connectingBritainImage, carelineImage, atlasImage, cronerImage, homecareImage, NHSImage, nourishImage, newhamImage, towerHamletsImage, QCSImage, skillsImage, CQCRatings, trainHealthcareImage, towergateImage } from "../../constant/images";
+import { barkImage, connectingBritainImage, carelineImage, atlasImage, cronerImage, NHSImage, newhamImage, QCSImage, CQCRatings, trainHealthcareImage, towergateImage } from "../../constant/images";
 import AutoScrollCarousel from "./autoScrollCarousel";
 
 const imageList = [
