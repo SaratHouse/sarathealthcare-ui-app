@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import { useEffect, useState, useRef } from 'react';
 import { FaClock, FaLocationDot, FaPhone } from 'react-icons/fa6';
+import { CQCRatings } from '../../constant/images';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -47,7 +48,7 @@ const Navbar = () => {
           <NavLink to='/'>
             <img src={logo} alt='logo' className='h-14'/>
           </NavLink>
-          <div className='flex items-center gap-4 justify-end w-7/12 text-xs'>
+          <div className='flex items-center gap-4 justify-end w-9/12 text-xs'>
             <div className='bg-blue-100 p-2 rounded-full flex items-center justify-center'>
               <FaLocationDot color='#1663a3'/>
             </div>
@@ -60,6 +61,11 @@ const Navbar = () => {
               <FaClock color='#1663a3'/>
             </div>
             <div className=''>Mon – Fri: <br/> 9:00 AM – 6:00 PM</div>
+            <img 
+              src={CQCRatings} 
+              alt="Care Quality Commission" 
+              className="h-12"
+            />
           </div>
         </div>
 
@@ -151,7 +157,7 @@ const Navbar = () => {
                   Services
                 </NavLink>
                 <NavLink 
-                  to='/' 
+                  to='/careers' 
                   className={({ isActive }: { isActive: boolean }) => 
                     `${isActive ? 'text-[#e67238]' : ''} hover:text-red-300 transition-colors`
                   }
@@ -188,6 +194,13 @@ const Navbar = () => {
                     <FaClock color='#1663a3'/>
                   </div>
                   <div className=''>Mon – Fri: 9:00 AM – 6:00 PM</div>
+                </div>
+                <div className='flex gap-3 font-semibold items-center'>
+                  <img 
+                    src={CQCRatings} 
+                    alt="Care Quality Commission" 
+                    className="h-20"
+                  />
                 </div>
               </div>
             </div>

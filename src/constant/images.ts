@@ -12,6 +12,8 @@ export { default as newhamImage } from '../assets/images/newham.png';
 export { default as towerHamletsImage } from '../assets/images/tower-hamlets.png';
 export { default as QCSImage } from '../assets/images/QCS.png';
 export { default as skillsImage } from '../assets/images/skills-for-care.png';
+export { default as trainHealthcareImage } from '../assets/images/train-healthcare.jpg';
+export { default as towergateImage } from '../assets/images/towergate.png';
 
 
 export { default as quoteIcon } from '../assets/images/quote.svg';
@@ -21,3 +23,4 @@ export { default as bgM } from '../assets/images/bgM.png';
 export { default as recruitment } from '../assets/images/recruitment.jpg';
 export { default as caregiver } from '../assets/images/caregiver.jpg';
 export { default as CQC } from '../assets/images/CQC-Img33.png';
+export { default as CQCRatings } from '../assets/images/CQC-good-logo.png';

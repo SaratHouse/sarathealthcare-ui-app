@@ -1,22 +1,40 @@
-import { barkImage, connectingBritainImage, carelineImage, atlasImage, cronerImage, homecareImage, NHSImage, nourishImage, newhamImage, towerHamletsImage, QCSImage, skillsImage, CQC } from "../../constant/images";
+import { barkImage, connectingBritainImage, carelineImage, atlasImage, cronerImage, homecareImage, NHSImage, nourishImage, newhamImage, towerHamletsImage, QCSImage, skillsImage, CQCRatings, trainHealthcareImage, towergateImage } from "../../constant/images";
+import AutoScrollCarousel from "./autoScrollCarousel";
 
+const imageList = [
+    barkImage,
+    connectingBritainImage,
+    carelineImage,
+    atlasImage,
+    cronerImage,
+    NHSImage,
+    newhamImage,
+    QCSImage,
+    trainHealthcareImage,
+    towergateImage
+  ]
 export default function Partners() {
   return (
     <div className="w-full flex justify-center bg-white py-16 px-4">
       <div className="w-full max-w-7xl">
         {/* Heading */}
         <div className="text-center mb-16">
-          <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-3">
+          {/* <div className="text-[#e67238] uppercase tracking-widest font-semibold mb-3">
             Trusted Partnerships
-          </div>
+          </div> */}
           <h2 className="font-bold text-3xl md:text-4xl text-[#1663a3] mb-4">
-            Our Technology Ecosystem
+            Trusted Partnerships
           </h2>
           <div className="w-24 h-1 bg-[#e67238] mx-auto"></div>
         </div>
+
+        <div className="mb-16">
+          <AutoScrollCarousel images={imageList} />
+        </div>
+
         
         {/* Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center mb-16">
+        {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-center mb-16 slide-in-right">
           {[
             { src: barkImage, name: "Bark" },
             { src: connectingBritainImage, name: "Connecting Britain" },
@@ -42,7 +60,7 @@ export default function Partners() {
               />
             </div>
           ))}
-        </div>
+        </div> */}
         
         {/* CQC Accreditation */}
         <div className="bg-gradient-to-r from-[#f4e8e3] to-[#e6f0fa] rounded-2xl overflow-hidden border border-[#e67238]/30">
@@ -67,13 +85,13 @@ export default function Partners() {
               href="https://www.cqc.org.uk/location/1-11817828876" 
               target="_blank" 
               rel="noreferrer"
-              className="flex flex-col items-center lg:items-end"
+              className="flex flex-col items-center lg:items-start"
             >
               <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex lg:flex-row flex-col items-center w-full lg:w-auto">
                 <img 
-                  src={CQC} 
+                  src={CQCRatings} 
                   alt="Care Quality Commission" 
-                  className="h-20"
+                  className="h-24"
                 />
                 <div className="ml-4">
                   <div className="font-bold text-[#1663a3]">View Our Rating</div>

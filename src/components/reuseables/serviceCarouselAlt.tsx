@@ -120,16 +120,13 @@ function ServiceCard({ service, index }: {
   
   return (
     <div className="bg-white relative w-full rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-      <div className="relative">
-        {/* Service number badge */}
-        <div className="absolute top-4 right-4 bg-[#e67238] text-white font-bold w-10 h-10 rounded-full flex items-center justify-center z-10">
-          {index + 1}
-        </div>
-        
+      <div className="relative">        
         {/* Icon header */}
-        <div className="bg-[#1663a3] p-6 flex justify-center">
+        <div className={`${index % 2 === 0 ? 'bg-[#1663a3]' : 'bg-[#e67238]'} p-6 flex justify-center`}>
           {IconComponent && (
-            <IconComponent className="text-white text-4xl" />
+            <div className={`${index % 2 === 0 ? 'bg-[#e67238]' : 'bg-[#1663a3]'} text-white w-14 h-14 font-bold rounded-full flex items-center justify-center`}>
+              <IconComponent className="text-white text-4xl" />
+            </div>
           )}
         </div>
       </div>
@@ -144,7 +141,7 @@ function ServiceCard({ service, index }: {
         </div>
         
         <div className="absolute left-0 bottom-7 flex flex-col items-center w-full">
-          <div className="w-12 h-1 bg-[#e67238]"></div>
+          <div className={`${index % 2 === 0 ? 'bg-[#e67238]' : 'bg-[#1663a3]'} w-12 h-1`}></div>
         </div>
       </div>
     </div>

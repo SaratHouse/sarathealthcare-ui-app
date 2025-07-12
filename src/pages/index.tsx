@@ -91,11 +91,11 @@ const Home = () => {
           {/* Content Section */}
           <div className="space-y-6">
             <div className="inline-block text-[#e67238] font-medium tracking-wider uppercase text-sm border-l-4 border-[#e67238] pl-3 py-1">
-              About Our Organization
+              About Our Organisation
             </div>
             
             <h2 className="font-bold text-3xl md:text-4xl text-[#1663a3]">
-              Compassionate Care <span className="text-[#e67238]">Since 2010</span>
+              Compassionate Care
             </h2>
             
             <p className="text-gray-600 leading-relaxed">

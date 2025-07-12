@@ -55,7 +55,7 @@ export default function TestimonialCarousel() {
             Testimonial
           </div>
           <h2 className="font-bold tracking-wide text-2xl lg:text-4xl text-[#1663a3] mb-4">
-            What Our Client Say
+            What Our Clients Say
           </h2>
         </div>
 

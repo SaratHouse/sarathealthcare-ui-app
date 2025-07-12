@@ -93,18 +93,18 @@ export default function Recruitment() {
           {/* Stats Overlay */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
             <div className="grid grid-cols-3 gap-4 text-white">
-              <div className="text-center">
+              {/* <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold">98%</div>
                 <div className="text-xs md:text-sm">Retention Rate</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold">200+</div>
                 <div className="text-xs md:text-sm">Team Members</div>
-              </div>
-              <div className="text-center">
+              </div> */}
+              {/* <div className="text-center">
                 <div className="text-2xl md:text-3xl font-bold">4.8★</div>
                 <div className="text-xs md:text-sm">Satisfaction</div>
-              </div>
+              </div> */}
             </div>
           </div>
           
