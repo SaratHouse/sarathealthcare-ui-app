@@ -2,7 +2,7 @@ import { useState } from "react";
 import Disclaimer from './disclaimer';
 
 import { NavLink } from "react-router-dom";
-import { FaDiscord, FaEnvelope, FaFacebookF, FaGithub, FaLinkedin, FaLocationDot, FaMobileScreenButton, FaRegClock, FaXTwitter } from "react-icons/fa6";
+import { FaEnvelope, FaFacebookF,  FaLocationDot, FaMobileScreenButton, FaRegClock, FaWhatsapp } from "react-icons/fa6";
 import { CQC, Logo } from "../../constant/images";
 
 
@@ -77,10 +77,9 @@ const Footer = () => {
                                 <a href="https://www.facebook.com/profile.php?id=61560262184384" target="_blank" rel="noreferrer">
                                     <FaFacebookF size={20}/>
                                 </a>
-                                <FaXTwitter size={20}/>
-                                <FaLinkedin size={20}/>
-                                <FaGithub  size={20}/>
-                                <FaDiscord size={20}/>
+                                <a href="https://wa.me/qr/HJR2EDSNP5DQP1" target="_blank" rel="noreferrer">
+                                    <FaWhatsapp size={20}/>
+                                </a>
                             </div>
                             <a href="https://www.cqc.org.uk/location/1-11817828876" target="_blank" rel="noreferrer" className="flex flex-row items-center gap-2">
                                 <img src={CQC} alt='CQC' className='h-16'/>

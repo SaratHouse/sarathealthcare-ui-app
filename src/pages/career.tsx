@@ -33,6 +33,27 @@ const Career = () => {
             <div className="lg:text-lg text-base text-center lg:w-4/5">
               If you’re looking for more than just a job, Sarat Healthcare offers a meaningful career where you’re valued, respected, and supported to grow.
             </div>
+            <div className="mt-8 flex md:flex-row flex-col flex-wrap gap-4">
+              <NavLink
+                to="/careers"
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#1663a3] to-[#0d4a7a] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#1663a3]/30"
+              >
+                <span>Join Our Team</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
+                </svg>
+              </NavLink>
+              
+              <NavLink
+                to="/contact-us"
+                className="flex items-center justify-center gap-2 border-2 font-semibold py-3 px-8 rounded-lg transition-all duration-300 bg-[#e67238] text-white"
+              >
+                <span>Book Free Assessment</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>

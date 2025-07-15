@@ -1,4 +1,4 @@
-import { barkImage, connectingBritainImage, carelineImage, atlasImage, cronerImage, NHSImage, newhamImage, QCSImage, CQCRatings, trainHealthcareImage, towergateImage } from "../../constant/images";
+import { barkImage, connectingBritainImage, carelineImage, atlasImage, NHSImage, newhamImage, QCSImage, CQCRatings, trainHealthcareImage, towergateImage } from "../../constant/images";
 import AutoScrollCarousel from "./autoScrollCarousel";
 
 const imageList = [
@@ -6,7 +6,6 @@ const imageList = [
     connectingBritainImage,
     carelineImage,
     atlasImage,
-    cronerImage,
     NHSImage,
     newhamImage,
     QCSImage,
@@ -111,7 +110,7 @@ export default function Partners() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           {[
             { value: "98%", label: "Client Satisfaction" },
-            { value: "200+", label: "Trained Professionals" },
+            { value: "30+", label: "Trained Professionals" },
             { value: "24/7", label: "Support Availability" }
           ].map((stat, index) => (
             <div 

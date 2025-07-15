@@ -33,7 +33,7 @@ export default function Recruitment() {
               { 
                 step: "02", 
                 title: "Skills Assessment", 
-                description: "Verification of clinical competencies"
+                description: "Verification of competencies"
               },
               { 
                 step: "03", 

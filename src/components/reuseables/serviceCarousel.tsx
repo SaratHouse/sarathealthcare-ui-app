@@ -1,3 +1,4 @@
+import { FaBrain, FaWheelchair } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 
 interface Service {
@@ -41,6 +42,20 @@ const serviceList: Service[] = [
       <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-[#e67238]" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
       </svg>
+    )
+  },
+  {
+    title: "Support for Individuals with Learning Disabilities",
+    description: "Empowering independence with compassionate, person-centered care, Sarat Healthcare supports individuals with learning disabilities to live confidently and safely at home. Our expert team fosters choice, celebrates strengths, and builds tailored routines.",
+    icon: (
+      <FaBrain className="h-12 w-12 text-[#e67238]"/>
+    )
+  },
+  {
+    title: "Support for Individuals with Physical Disabilities",
+    description: "We provide practical care outcomes to individuals living with mobility challenges or physical disabilities tailored to fit each person’s unique routines, home setup, and goals. Whether it is stroke, spinal cord injury, muscular dystrophy, or all kinds of physical disabilities, we ensure you're supported in the most empathetic manner.",
+    icon: (
+      <FaWheelchair className="h-12 w-12 text-[#e67238]"/>
     )
   }
 ]

@@ -46,6 +46,27 @@ const About = () => {
             <div className="text-4xl text-center text-white px-10 p-4 font-bold tracking-widest">
               About Us
             </div>
+            <div className="mt-8 flex md:flex-row flex-col flex-wrap gap-4">
+              <NavLink
+                to="/careers"
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#1663a3] to-[#0d4a7a] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#1663a3]/30"
+              >
+                <span>Join Our Team</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
+                </svg>
+              </NavLink>
+              
+              <NavLink
+                to="/contact-us"
+                className="flex items-center justify-center gap-2 border-2 font-semibold py-3 px-8 rounded-lg transition-all duration-300 bg-[#e67238] text-white"
+              >
+                <span>Book Free Assessment</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>
@@ -62,7 +83,7 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 title: "Respect",
@@ -108,6 +129,15 @@ const About = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 )
+              },
+              {
+                title: "Safe",
+                description: "Safety is at the heart of everything we do. We are committed to creating a care environment where every individual feels protected, respected, and free from harm in their own homes.",
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                )
               }
             ].map((value, index) => (
               <div 
@@ -128,56 +158,44 @@ const About = () => {
       </div>
       
       <div className="w-full flex justify-center bg-white py-16 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start w-full max-w-7xl">
           {/* Image Section with Creative Overlay */}
-          <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
-            <img
-              alt="Caregiver with patient"
-              src={caregiver}
-              className="w-full h-full object-cover"
-            />
-            
-            {/* Overlay with Opening Hours */}
-            <div className="absolute bottom-6 right-6 bg-white rounded-xl shadow-lg w-64 p-5 z-20 border-l-4 border-[#e67238]">
-              <div className="text-lg font-bold text-[#1663a3] mb-4">Opening Hours</div>
-              <div className="space-y-3">
-                {[
-                  { day: "Mon - Fri", time: "9:00 AM - 6:00 PM" },
-                ].map((item, index) => (
-                  <div key={index} className="flex justify-between text-sm">
-                    <span className="font-medium text-gray-700">{item.day}</span>
-                    <span className="text-[#e67238] font-semibold">{item.time}</span>
-                  </div>
-                ))}
-              </div>
+          <div className=" flex flex-col space-y-6">
+            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl mb-5">
+              <img
+                alt="Caregiver with patient"
+                src={caregiver}
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Overlay with Opening Hours */}
+              
+              {/* Decorative Elements */}
+              <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-black/30 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
-            
-            {/* Decorative Elements */}
-            <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black/30 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/30 to-transparent"></div>
-          </div>
-          
-          {/* Content Section */}
-          <div className="space-y-6">
-            <div className="inline-block text-[#e67238] font-medium tracking-wider uppercase text-sm border-l-4 border-[#e67238] pl-3 py-1">
-              About Our Organisation
-            </div>
-            
-            <h2 className="font-bold text-3xl md:text-4xl text-[#1663a3]">
-              Compassionate Care
+
+            <h2 className="font-bold text-2xl md:text-3xl text-[#e67238]">
+              Quality & Governance
             </h2>
             
             <p className="text-gray-600 leading-relaxed">
-              Sarat Healthcare Ltd. is an award-winning provider of personalised home care services 
-              for vulnerable adults aged 16 and over. We are passionate about delivering services 
-              that promote independence, dignity, and personal choice.
+              We implement structured care reviews, spot‑checks, audits, and ongoing management oversight. With strong safeguarding and governance systems in place, your safety and satisfaction guide everything we do.
             </p>
-            
-            <p className="text-gray-600 leading-relaxed">
-              We create care plans in partnership with our service users and their families to ensure 
-              every preference, belief, and goal is respected and reflected in our delivery.
-            </p>
-            
+            <div className="space-y-4 w-full pt-6">
+              <div className="bg-white rounded-xl shadow-lg w-full p-5 z-20 border-l-4 border-[#1663a3]">
+                <div className="text-lg font-bold text-[#e67238] mb-4">Mission</div>
+                <div className="flex justify-between text-sm">
+                  <span className="font-medium text-gray-700">To deliver exceptional, personally tailored care enabling clients to thrive in their own homes.</span>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-lg w-full p-5 z-20 border-l-4 border-[#e67238]">
+                <div className="text-lg font-bold text-[#1663a3] mb-4">Vision</div>
+                <div className="flex justify-between text-sm">
+                  <span className="font-medium text-gray-700">To become United Kingdom most trusted homecare provider, renowned for empathy, reliability, and professionalism.</span>
+                </div>
+              </div>
+            </div>
             <div className="mt-6 bg-[#f4e8e3] rounded-xl p-5 border-l-4 border-[#1663a3]">
               <div className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#e67238] mt-1 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -192,6 +210,28 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* Content Section */}
+          <div className="space-y-6">
+            <div className="inline-block text-[#e67238] font-medium tracking-wider uppercase text-sm border-l-4 border-[#e67238] pl-3 py-1">
+              About Our Organisation
+            </div>
+            
+            <h2 className="font-bold text-3xl md:text-4xl text-[#1663a3]">
+              Compassionate Care
+            </h2>
+            
+            <p className="text-gray-600 leading-relaxed">
+              Sarat Healthcare Ltd, is a bespoke homecare provider dedicated to transforming lives through compassionate, personalised and safe homecare services. Proudly based in Barking, England, we support children, adults, and the elderly, empowering vulnerable individuals to live safely with independence, dignity, and joy in the comfort of their own homes. We are rated "Overall Good" by the Care Quality Commission (CQC), our commitment to exceptional care shines through in everything we do.  We believe care is personal, that is why we work closely with you and your loved ones to create tailored care plans that honour your unique preferences, beliefs, and aspirations. Led by a team of experienced, compassionate and caring team, we are here to provide support that feels warm, safe, respectful, and reliable – like an extension of your family. Whether you need assistance with daily tasks, specialised care, or simply a friendly companion, we are here to make every day brighter.  Choose Sarat Healthcare Ltd for care that is as individual as you are, delivered with heart and expertise right at home.
+            </p>
+            
+            <p className="text-gray-600 leading-relaxed">
+              We provide bespoke Domiciliary Care, Live-in and Supported Living Services to children, adults, and the elderly whether it is Personal care, Dementia care, Learning disabilities, Physical disabilities, Sensory impairments, or Substance misuse problems, through day-to-day, specialist care for complex needs, or round-the-clock support, we are here to ensure your wellbeing, independence, and dignity come first.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Sarat Healthcare Ltd. recognises that quality service is one that understands the needs and circumstances of each Service User, carer, the local community and staff members. We fully appreciate that a quality service ensures that Care services are accessible, appropriate, safe and effective for all and that this includes protected characteristic groups. We also believe that workplaces should be free from discrimination so that staff can thrive and deliver excellence.
+            </p>
             
             <div className="flex flex-wrap gap-4 mt-8">
               <NavLink to={'/contact-us'} className="bg-[#1663a3] hover:bg-[#0d4a7a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">

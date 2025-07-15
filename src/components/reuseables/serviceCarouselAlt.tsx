@@ -1,5 +1,6 @@
 import parse from 'html-react-parser';
 import { FaUserNurse, FaHome, FaBrain, FaHandHoldingHeart, FaUtensils } from 'react-icons/fa';
+import { FaPeopleArrows } from 'react-icons/fa6';
 
 interface Service {
   description: string;
@@ -60,13 +61,25 @@ const serviceList: Service[] = [
     description: `
       <div className='flex flex-col w-full gap-3'>
         <ul className="space-y-2">
-          <li><b>Dietary support:</b> Healthy, personalised meals served with care.</li>
-          <li><b>Light housekeeping and laundry:</b> Ensuring a clean, safe, and comforting home environment.</li>
-          <li><b>Social outings and companionship:</b> Reducing loneliness, promoting joy, and improving wellbeing.</li>
+          <li><b>Tailored Light Meal Support:</b> We support service users to stay on their dietary needs, cultural preferences, and medical requirements. Every dish is prepared with care, whether it’s for diabetes management, vegetarian diets, or allergen-sensitive meals.</li>
+          <li><b>Domestic Help & Housekeeping:</b> Light cleaning, laundry, bed-making, and other home upkeep tasks are handled with professionalism, ensuring your space is safe, tidy, and comforting.</li>
+          <li><b>Daily Living Support:</b> From reminders to drink water to encouraging healthy habits, we promote better lifestyle choices through compassionate, unobtrusive care.</li>
         </ul>
       </div>
     `,
-    title: "Nutrition, Domestic & Social Support",
+    title: "Nutrition & Social Support",
+  },
+  {
+    description: `
+      <div className='flex flex-col w-full gap-3'>
+        <ul className="space-y-2">
+          <li><b>One-to-One Companionship Visits:</b> Whether you enjoy a cup of tea and a chat, reading, or doing puzzles, our carers are there to spend quality time, matched to your interests.</li>
+          <li><b>Accompanied Outings:</b> From shopping trips and nature walks to GP appointments and community events, we will support you to stay connected with your world.</li>
+          <li><b>Social Engagement:</b> Encouraging involvement in activities that bring joy, confidence, and stimulation, all while respecting your preferences and routines.</li>
+        </ul>
+      </div>
+    `,
+    title: "Companionship",
   },
 ]
 
@@ -76,7 +89,8 @@ const serviceIcons = {
   "Live-In and Supported Living": FaHome,
   "Dementia and Mental Health Support": FaBrain,
   "Palliative, Respite & End-of-Life Care": FaHandHoldingHeart,
-  "Nutrition, Domestic & Social Support": FaUtensils,
+  "Nutrition & Social Support": FaUtensils,
+  "Companionship": FaPeopleArrows,
 };
 
 export default function ServiceCarouselAlt() {

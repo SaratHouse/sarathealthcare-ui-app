@@ -32,7 +32,7 @@ const Home = () => {
               Compassionate Care Where You Need It Most
             </div>
             <div className="lg:text-lg text-base text-center lg:w-4/5">
-              At Sarat Healthcare Ltd., we provide compassionate, high-quality, CQC-registered domiciliary care across London and its environs.
+              At Sarat Healthcare Ltd, we specialise in delivering bespoke homecare, dementia care, personal care, live in support, respite, companionship and learning disabilities support. <br/>  <br/>  Our team of qualified carers, support workers, and nurses offer compassionate support, enabling clients to live safely and independently at home. We proudly serve individuals, families, local authorities, and direct payment clients across London and environs
             </div>
             <div className="mt-8 flex md:flex-row flex-col flex-wrap gap-4">
               <NavLink
@@ -49,7 +49,7 @@ const Home = () => {
                 to="/contact-us"
                 className="flex items-center justify-center gap-2 border-2 font-semibold py-3 px-8 rounded-lg transition-all duration-300 bg-[#e67238] text-white"
               >
-                <span>Looking for care</span>
+                <span>Book Free Assessment</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                 </svg>
@@ -59,7 +59,7 @@ const Home = () => {
         </div>
       </div>
       <div className="w-full flex justify-center bg-white py-16 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start w-full max-w-7xl">
           {/* Image Section with Creative Overlay */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
             <img
@@ -99,16 +99,15 @@ const Home = () => {
             </h2>
             
             <p className="text-gray-600 leading-relaxed">
-              Sarat Healthcare Ltd. is an award-winning provider of personalised home care services 
-              for vulnerable adults aged 16 and over. We are passionate about delivering services 
-              that promote independence, dignity, and personal choice.
+              Sarat Healthcare Ltd, is a bespoke homecare provider dedicated to transforming lives through compassionate, personalised and safe homecare services. Proudly based in Barking, England, we support children, adults, and the elderly, empowering vulnerable individuals to live safely with independence, dignity, and joy in the comfort of their own homes. We are rated "Overall Good" by the Care Quality Commission (CQC), our commitment to exceptional care shines through in everything we do.  We believe care is personal, that is why we work closely with you and your loved ones to create tailored care plans that honour your unique preferences, beliefs, and aspirations. Led by a team of experienced, compassionate and caring team.
             </p>
-            
-            <p className="text-gray-600 leading-relaxed">
-              We create care plans in partnership with our service users and their families to ensure 
-              every preference, belief, and goal is respected and reflected in our delivery.
-            </p>
-            
+                        
+            <div className="flex flex-wrap gap-4 mt-8">
+              <NavLink to={'/about-us'} className="bg-[#1663a3] hover:bg-[#0d4a7a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">
+                Read more
+              </NavLink>
+            </div>
+
             <div className="mt-6 bg-[#f4e8e3] rounded-xl p-5 border-l-4 border-[#1663a3]">
               <div className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#e67238] mt-1 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -123,13 +122,12 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
             <div className="flex flex-wrap gap-4 mt-8">
-              <NavLink to={'/contact-us'} className="bg-[#1663a3] hover:bg-[#0d4a7a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">
-                Get to Know
-              </NavLink>
               <NavLink to={'/services'} className="border-2 border-[#1663a3] text-[#1663a3] hover:bg-[#1663a3] hover:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">
                 View Our Services
+              </NavLink>
+              <NavLink to={'/contact-us'} className="bg-[#1663a3] hover:bg-[#0d4a7a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">
+                Get to Know
               </NavLink>
             </div>
           </div>
