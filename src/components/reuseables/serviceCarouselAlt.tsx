@@ -12,7 +12,7 @@ const serviceList: Service[] = [
     description: `
       <div className='flex flex-col w-full gap-3'>
         <ul className="space-y-2">
-          <li><b>Assistance with bathing, grooming, hygiene:</b> Helping service users maintain self-care and feel confident in their appearance.</li>
+          <li><b>Assistance with bathing, grooming, hygiene:</b> Supporting service users maintain self-care and feel confident in their appearance.</li>
           <li><b>Dressing, continence care:</b> Ensuring comfort, cleanliness, and dignity every day.</li>
           <li><b>Medication reminders and administration:</b> Timely and safe medication support following care plans and prescriptions.</li>
           <li><b>Mobility support:</b> From walking aids to transfers, we ensure clients move safely.</li>
@@ -102,7 +102,7 @@ export default function ServiceCarouselAlt() {
             Our Care Services
           </div>
           <h2 className="font-bold text-3xl md:text-4xl text-[#1663a3] mb-4">
-            Special High-quality Services
+            Special High-Quality Services
           </h2>
           <div className="w-24 h-1 bg-[#e67238] mx-auto"></div>
           <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-lg">

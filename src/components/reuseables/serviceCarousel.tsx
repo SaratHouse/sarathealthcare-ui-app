@@ -75,7 +75,7 @@ export default function ServiceCarousel() {
         Our Services
       </div>
       <h2 className="font-bold text-4xl md:text-5xl text-white mb-4">
-        Special High-quality Care
+        Special High-Quality Care
       </h2>
       <div className="w-24 h-1 bg-[#e67238] mx-auto mb-6"></div>
       <p className="text-[#a0d1ff] max-w-2xl mx-auto text-lg">
