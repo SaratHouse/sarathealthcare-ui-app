@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Html, Head, Preview, Body, Container, Text, Link } from '@react-email/components';
+const React = require('react');
+const { Html, Head, Preview, Body, Container, Text, Link } = require('@react-email/components');
 
-export const RefereeEmailTemplate = ({
+const RefereeEmailTemplate = ({
   type,
   applicantName,
   refereeName,
@@ -22,16 +22,20 @@ export const RefereeEmailTemplate = ({
         <Container>
           <Text>Dear {refereeName},</Text>
           <Text>
-            {applicantName} has applied for the position of <strong>{position}</strong> and has listed you as their {type} referee.
+            We are currently processing an application from <strong>{applicantName}</strong> for the position of <strong>{position}</strong> at Sarat Healthcare Ltd. As they have listed you as a <strong>{type}</strong> referee, we would be most grateful if you could kindly provide your insights regarding their character and suitability for this role.
           </Text>
           <Text>
-            Please complete the reference form using the secure link below:
+            To assist us in our assessment, we kindly ask that you complete the <strong>{type}</strong> reference form via the link below:
           </Text>
           <Link href={link}>{link}</Link>
-          <Text>Thank you,</Text>
+            <Text> Please be assured that all information provided will be treated in the strictest confidence and used solely for recruitment purposes. </Text>
+          <Text>Thank you for your time and kind assistance</Text>
+          <Text>Kind regards</Text>
           <Text>Sarat Healthcare Team</Text>
         </Container>
       </Body>
     </Html>
   );
 };
+
+module.exports = { RefereeEmailTemplate };

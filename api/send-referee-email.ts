@@ -1,16 +1,14 @@
-// api/send-referee-email.ts
-import { Resend } from 'resend';
-import { RefereeEmailTemplate } from '../src/emails/referee';
-import { NotificationEmailTemplate } from '../src/emails/notification';
+const { Resend } = require('resend');
+const { RefereeEmailTemplate } = require('../src/emails/referee');
+const { NotificationEmailTemplate } = require('../src/emails/notification');
 
-export default async function handler(req: Request): Promise<Response> {
+async function handler(req) {
   if (req.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
   }
 
   try {
     const body = await req.json();
-
     const {
       type,
       email,
@@ -46,3 +44,5 @@ export default async function handler(req: Request): Promise<Response> {
     });
   }
 }
+
+module.exports = handler;

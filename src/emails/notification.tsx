@@ -1,8 +1,7 @@
-// src/emails/NotificationEmailTemplate.tsx
-import * as React from 'react';
-import { Html, Head, Preview, Body, Container, Text } from '@react-email/components';
+const React = require('react');
+const { Html, Head, Preview, Body, Container, Text } = require('@react-email/components');
 
-export const NotificationEmailTemplate = ({
+const NotificationEmailTemplate = ({
   applicantName,
   position
 }: {
@@ -26,3 +25,5 @@ export const NotificationEmailTemplate = ({
     </Html>
   );
 };
+
+module.exports = { NotificationEmailTemplate };
