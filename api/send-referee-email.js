@@ -2,13 +2,21 @@ const { Resend } = require('resend');
 const { RefereeEmailTemplate } = require('../src/emails/referee');
 const { NotificationEmailTemplate } = require('../src/emails/notification');
 
-async function handler(req) {
+async function handler(req, res) {
   if (req.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
+    res.status(405).json({ error: 'Method Not Allowed' });
+    return;
   }
 
   try {
-    const body = await req.json();
+    // Parse JSON body from request stream
+    const buffers = [];
+    for await (const chunk of req) {
+      buffers.push(chunk);
+    }
+    const data = Buffer.concat(buffers).toString();
+    const body = JSON.parse(data);
+
     const {
       type,
       email,
@@ -32,16 +40,10 @@ async function handler(req) {
         : RefereeEmailTemplate({ type, applicantName, refereeName, position, link })
     });
 
-    return new Response(JSON.stringify({ success: true, response }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    res.status(200).json({ success: true, response });
   } catch (error) {
     console.error('Resend Email Error:', error);
-    return new Response(JSON.stringify({ error: 'Failed to send email' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    res.status(500).json({ error: 'Failed to send email' });
   }
 }
 
