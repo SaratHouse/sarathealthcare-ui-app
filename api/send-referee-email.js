@@ -27,7 +27,7 @@ async function handler(req, res) {
       isNotification = false
     } = body;
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.REACT_APP_RESEND_API_KEY);
 
     const response = await resend.emails.send({
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
