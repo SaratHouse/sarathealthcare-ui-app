@@ -69,7 +69,7 @@ useEffect(() => {
                     Reference for: <strong>{applicantName}</strong>
                 </p>
             </div>
-            {!referenceFormHasBeenFilled && type === "professional" ? <ProfessionalReferee token={link} applicantInfo={application}/> :  <CharacterReferee token={link}/>}
+            {!referenceFormHasBeenFilled && type === "professional" ? <ProfessionalReferee token={link} applicantInfo={application}/> :  <CharacterReferee token={link} applicantInfo={application}/>}
         </div>
     </div>
   );

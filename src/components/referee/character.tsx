@@ -3,7 +3,7 @@ import TextareaField from "../reuseables/textarea";
 import { useAlert } from "../../utils/notification/alertcontext";
 import { client } from "../../utils/client";
 
-export const CharacterReferee = ({token} : {token: string}) => {
+export const CharacterReferee = ({token, applicantInfo} : {token: string, applicantInfo : any}) => {
   const { addAlert } = useAlert();
   const [isSubmittedSuccessfully, setIsSubmittedSuccessfully] = useState(false);
   const [formData, setFormData] = useState<any>({
@@ -55,6 +55,10 @@ export const CharacterReferee = ({token} : {token: string}) => {
   };
 
   const submitForm = async () => {
+
+    const refereeName = applicantInfo.professionalReferee?.name
+    const position = applicantInfo.jobDetails?.positionAppliedFor;
+    const applicantName = `${applicantInfo.personalDetails?.forenames} ${applicantInfo.personalDetails?.surname}`;
     
     try {
       const { capacityKnown, yearsKnown, skillsAssessment, unsuitabilityReason, recommendation} = formData.characterReference;
@@ -71,6 +75,23 @@ export const CharacterReferee = ({token} : {token: string}) => {
         _type: 'applicationReference',
         ...formData
       });
+
+      const sendNotificationEmail = async () => {
+        await fetch('/api/referee-notification-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            isNotification: true,
+            email: "info@sarathealthcare.co.uk",
+            type: "professional",
+            applicantName,
+            refereeName,
+            position
+          })
+        });
+      };
+
+      await sendNotificationEmail();
 
       addAlert({ message: 'Reference form submitted successfully!', type: 'success' });
       setIsSubmittedSuccessfully(true)

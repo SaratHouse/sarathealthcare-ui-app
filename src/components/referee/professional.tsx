@@ -301,11 +301,31 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
   );
 
   const submitForm = async () => {
+    const refereeName = applicantInfo.professionalReferee?.name
+    const position = applicantInfo.jobDetails?.positionAppliedFor;
+    const applicantName = `${applicantInfo.personalDetails?.forenames} ${applicantInfo.personalDetails?.surname}`;
     try {
       await client.create({
         _type: 'applicationReference',
         ...formData
       });
+
+      const sendNotificationEmail = async () => {
+        await fetch('/api/referee-notification-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            isNotification: true,
+            email: "info@sarathealthcare.co.uk",
+            type: "professional",
+            applicantName,
+            refereeName,
+            position
+          })
+        });
+      };
+
+      await sendNotificationEmail();
 
       addAlert({ message: 'Reference form submitted successfully!', type: 'success' });
       setIsSubmittedSuccessfully(true)

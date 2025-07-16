@@ -632,54 +632,6 @@ const JobApplication = () => {
       const resend = new Resend(config.resend_apiKey);
 
 
-      // // Email sending helper
-      // const sendRefereeEmail = async (
-      //   type: 'professional' | 'character',
-      //   refData: any
-      // ) => {
-      //   if (!refData?.email) {
-      //     console.warn(`Skipping ${type} referee email - no email address`);
-      //     return;
-      //   }
-
-      //   try {
-      //     await resend.emails.send({
-      //       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
-      //       to: refData.email,
-      //       subject: `${applicantName} has requested a ${type} reference`,
-      //       react: (
-      //         <RefereeEmailTemplate 
-      //           type={type}
-      //           applicantName={applicantName}
-      //           position={position}
-      //           refereeName={refData.name}
-      //           link={refData.personalizedLink}
-      //         />
-      //       )
-      //     });
-      //     console.log(`${type} referee email sent successfully`);
-      //   } catch (error) {
-      //     console.error(`Failed to send ${type} referee email:`, error);
-      //     throw new Error(`EMAIL_FAILED_${type.toUpperCase()}`);
-      //   }
-      // };
-
-      // // Send notification email
-      // const sendNotificationEmail = async () => {
-      //   try {
-      //     await resend.emails.send({
-      //       from: 'Applications <notifications@sarathealthcare.co.uk>',
-      //       to: "samsonajaloleru@gmail.com",
-      //       subject: `New Application: ${applicantName} for ${position}`,
-      //       react: <NotificationEmailTemplate applicantName={applicantName} position={position} />
-      //     });
-      //     console.log('Notification email sent successfully');
-      //   } catch (error) {
-      //     console.error('Failed to send notification email:', error);
-      //     throw new Error('EMAIL_FAILED_NOTIFICATION');
-      //   }
-      // };
-
       const sendRefereeEmail = async (
         type: 'professional' | 'character',
         refData: any
@@ -706,7 +658,7 @@ const JobApplication = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             isNotification: true,
-            email: "samsonajaloleru@gmail.com",
+            email: "info@sarathealthcare.co.uk",
             applicantName,
             position
           })

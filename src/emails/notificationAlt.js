@@ -1,7 +1,9 @@
 const React = require('react');
 const { Html, Head, Preview, Body, Container, Text } = require('@react-email/components');
 
-const NotificationEmailTemplate = ({
+const NotificationEmailAltTemplateAlt = ({
+  type,
+  refereeName,
   applicantName,
   position
 }) => {
@@ -9,14 +11,16 @@ const NotificationEmailTemplate = ({
     Html,
     null,
     React.createElement(Head, null),
-    React.createElement(Preview, null, 'New Job Application Received'),
+    React.createElement(Preview, null, 'New Reference Received'),
     React.createElement(
       Body,
       null,
       React.createElement(
         Container,
         null,
-        React.createElement(Text, null, '📩 New application received'),
+        React.createElement(Text, null, '📩 New Reference received'),
+        React.createElement(Text, null, `Referee: ${refereeName}`),
+        React.createElement(Text, null, `Type: ${type}`),
         React.createElement(Text, null, `Applicant: ${applicantName}`),
         React.createElement(Text, null, `Position: ${position}`),
         React.createElement(Text, null, 'You can view the application in your admin panel.'),
@@ -25,4 +29,4 @@ const NotificationEmailTemplate = ({
   );
 };
 
-module.exports = { NotificationEmailTemplate };
+module.exports = { NotificationEmailAltTemplateAlt };
