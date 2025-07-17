@@ -83,7 +83,7 @@ export const CharacterReferee = ({token, applicantInfo} : {token: string, applic
           body: JSON.stringify({
             isNotification: true,
             email: "info@sarathealthcare.co.uk",
-            type: "professional",
+            type: "character",
             applicantName,
             refereeName,
             position

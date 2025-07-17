@@ -1,5 +1,5 @@
 const { Resend } = require('resend');
-const { RefereeEmailTemplate } = require('../src/emails/referee');
+const { NotificationEmailTemplate } = require('../src/emails/notification');
 
 async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -17,12 +17,9 @@ async function handler(req, res) {
     const body = JSON.parse(data);
 
     const {
-      type,
       email,
       applicantName,
-      refereeName,
       position,
-      link,
     } = body;
 
     const resend = new Resend(process.env.REACT_APP_RESEND_API_KEY);
@@ -30,8 +27,8 @@ async function handler(req, res) {
     const response = await resend.emails.send({
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
       to: email,
-      subject: `${type} Reference Request for ${applicantName}`,
-      react: RefereeEmailTemplate({ type, applicantName, refereeName, position, link })
+      subject: `New Application: ${applicantName} for ${position}`,
+      react: NotificationEmailTemplate({applicantName, position })
     });
 
     res.status(200).json({ success: true, response });

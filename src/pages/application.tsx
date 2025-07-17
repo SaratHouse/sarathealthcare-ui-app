@@ -452,133 +452,6 @@ const JobApplication = () => {
     }));
   };
 
-  // const submitForm = async () => {
-  //   // Validate form
-  //   if (!validateDeclaration()) {
-  //     errors.forEach(msg => addAlert({ message: msg, type: "error" }));
-  //     return;
-  //   }
-
-  //   try {
-  //     // Generate unique tokens
-  //     const professionalToken = uuidv4();
-  //     const personalToken = uuidv4();
-  //     const baseURL = window.location.origin;
-      
-  //     // Prepare applicant info
-  //     const { forenames, surname } = formData.personalDetails;
-  //     const applicantName = `${forenames} ${surname}`;
-  //     const position = formData.jobDetails.positionAppliedFor;
-      
-  //     // Prepare enriched data
-  //     const enrichedFormData = {
-  //       ...formData,
-  //       declaration: {
-  //         date: formatDate(new Date().toISOString()),
-  //         printName: applicantName
-  //       },
-  //       references: {
-  //         professionalReferee: {
-  //           ...formData.references.professionalReferee,
-  //           personalizedLink: `${baseURL}/referee/${professionalToken}?type=professional`
-  //         },
-  //         personalReferee: {
-  //           ...formData.references.personalReferee,
-  //           personalizedLink: `${baseURL}/referee/${personalToken}?type=character`
-  //         }
-  //       }
-  //     };
-
-  //     // Clean and prepare data for Sanity
-  //     const cleanedData = cleanEmptyObjects(enrichedFormData) as ApplicationData;
-  //     const dataWithKeys = addSanityKeys(cleanedData);
-      
-  //     // Save to Sanity
-  //     await client.create({
-  //       _type: 'application',
-  //       ...dataWithKeys
-  //     });
-
-  //     // Email configuration
-  //     const emailConfig = {
-  //       serviceId: 'service_7xcju5b',
-  //       userId: 'WNR219eYfoJgJuUEb',
-  //       templates: {
-  //         referee: 'template_es1u3qi',
-  //         notification: 'template_0zu3x1e'
-  //       }
-  //     };
-
-  //     // Email sending helper
-  //     const sendRefereeEmail = async (
-  //       type: 'professional' | 'character',
-  //       refData: any
-  //     ) => {
-  //       if (!refData?.email) {
-  //         console.warn(`Skipping ${type} referee email - no email address`);
-  //         return;
-  //       }
-
-  //       try {
-  //         await emailjs.send(
-  //           emailConfig.serviceId,
-  //           emailConfig.templates.referee,
-  //           {
-  //             refereeType: type.charAt(0).toUpperCase() + type.slice(1),
-  //             applicantName,
-  //             refereeName: refData.name,
-  //             postApplied: position,
-  //             link: refData.personalizedLink,
-  //             email: refData.email,
-  //           },
-  //           emailConfig.userId
-  //         );
-  //         console.log(`${type} referee email sent successfully`);
-  //       } catch (error) {
-  //         console.error(`Failed to send ${type} referee email:`, error);
-  //         throw new Error(`EMAIL_FAILED_${type.toUpperCase()}`);
-  //       }
-  //     };
-
-  //     await Promise.all([
-  //       sendRefereeEmail('professional', enrichedFormData.references.professionalReferee),
-  //       sendRefereeEmail('character', enrichedFormData.references.personalReferee),
-  //       emailjs.send(
-  //         emailConfig.serviceId,
-  //         emailConfig.templates.notification,
-  //         {
-  //           email: "samsonajaloleru@gmail.com",
-  //           message: `An application has been submitted by ${applicantName} for ${position}`,
-  //         },
-  //         emailConfig.userId
-  //       )
-  //     ]);
-
-  //     // Reset form and show success
-  //     addAlert({ message: 'Application submitted successfully!', type: 'success' });
-  //     setFormData(initialFormData);
-  //     setCurrentPage(1);
-      
-  //   } catch (error: any) {
-  //     console.error('Submission error:', error);
-      
-  //     // Handle specific email errors
-  //     if (error.message.includes('EMAIL_FAILED')) {
-  //       const refType = error.message.split('_')[2]?.toLowerCase() || 'referee';
-  //       addAlert({
-  //         message: `Application submitted, but failed to send ${refType} reference email`,
-  //         type: 'error'
-  //       });
-  //     } else {
-  //       // General error
-  //       addAlert({
-  //         message: 'An error occurred while submitting the application',
-  //         type: 'error'
-  //       });
-  //     }
-  //   }
-  // };
-  
   const submitForm = async () => {
     // Validate form
     if (!validateDeclaration()) {
@@ -625,9 +498,6 @@ const JobApplication = () => {
         _type: 'application',
         ...dataWithKeys
       });
-      console.log('====================================');
-      console.log(config.resend_apiKey);
-      console.log('====================================');
       // Initialize Resend
       const resend = new Resend(config.resend_apiKey);
 
@@ -653,12 +523,13 @@ const JobApplication = () => {
       };
 
       const sendNotificationEmail = async () => {
-        await fetch('/api/send-referee-email', {
+        await fetch('/api/application-notification-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             isNotification: true,
             email: "info@sarathealthcare.co.uk",
+            type: "professional",
             applicantName,
             position
           })
