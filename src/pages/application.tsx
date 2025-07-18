@@ -458,7 +458,7 @@ const JobApplication = () => {
       errors.forEach(msg => addAlert({ message: msg, type: "error" }));
       return;
     }
-
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
     try {
       // Generate unique tokens
       const professionalToken = uuidv4();
@@ -498,17 +498,14 @@ const JobApplication = () => {
         _type: 'application',
         ...dataWithKeys
       });
-      // Initialize Resend
-      const resend = new Resend(config.resend_apiKey);
+      
+      const sendEmail = async (type: string, refData: any) => {
+        if (!refData?.email) {
+          console.warn(`Skipping ${type} email - no address`);
+          return;
+        }
 
-
-      const sendRefereeEmail = async (
-        type: 'professional' | 'character',
-        refData: any
-      ) => {
-        if (!refData?.email) return;
-
-        await fetch('/api/send-referee-email', {
+        return fetch('/api/send-referee-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -522,26 +519,47 @@ const JobApplication = () => {
         });
       };
 
-      const sendNotificationEmail = async () => {
-        await fetch('/api/application-notification-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            isNotification: true,
-            email: "info@sarathealthcare.co.uk",
-            type: "professional",
-            applicantName,
-            position
-          })
-        });
+      const sendWithRetry = async (fn: () => Promise<any>, retries = 2) => {
+        try {
+          const response = await fn();
+          const data = await response.json();
+          
+          if (!response.ok) throw new Error(data.error || 'Email failed');
+          
+          console.log(`Email sent to ${data.email}`);
+          return data;
+        } catch (error) {
+          if (retries > 0) {
+            console.warn(`Retrying (${retries} left)...`);
+            await delay(1000);
+            return sendWithRetry(fn, retries - 1);
+          }
+          throw error;
+        }
       };
 
-      // Send all emails in parallel
-      await Promise.all([
-        sendRefereeEmail('professional', enrichedFormData.references.professionalReferee),
-        sendRefereeEmail('character', enrichedFormData.references.personalReferee),
-        sendNotificationEmail()
-      ]);
+      // Send emails sequentially
+      await sendWithRetry(() => 
+        sendEmail('professional', enrichedFormData.references.professionalReferee)
+      );
+      await delay(500);
+
+      await sendWithRetry(() => 
+        sendEmail('character', enrichedFormData.references.personalReferee)
+      );
+      await delay(500);
+
+      // Send notification
+      await fetch('/api/application-notification-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          isNotification: true,
+          email: "samsonajaloleru@gmail.com",
+          applicantName,
+          position
+        })
+      });
 
       // Reset form and show success
       addAlert({ message: 'Application submitted successfully!', type: 'success' });
@@ -567,6 +585,7 @@ const JobApplication = () => {
       }
     }
   };
+
   return (
     <div className="flex flex-col items-center w-full">
       <div className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden my-8">

@@ -20,13 +20,12 @@ const RefereeEmailTemplate = ({
         null,
         React.createElement(Text, null, `Hello ${refereeName},`),
         React.createElement(Text, null, 
-          `We are currently processing an application from ${applicantName} for the position of ${position} at Sarat Healthcare Ltd. As they have listed you as a ${type} referee, we would be most grateful if you could kindly provide your insights regarding their character and suitability for this role.`
+          `We are currently processing job application from ${applicantName} for the position of ${position} at Sarat Healthcare Ltd. As they have listed you as a ${type} referee, we will be grateful if you could kindly provide your insights regarding their ${type} and suitability for this role.`
         ),
-        React.createElement(Text, null, `To assist us in our assessment, we kindly ask that you complete the ${type} reference form via the link below:`),
-        React.createElement(Link, { href: link }, link),
+        React.createElement(Text, null, `Kindly click  ${React.createElement(Link, { href: link }, 'here')} to complete the ${type} reference form.`),
+        
         React.createElement(Text, null, 'Please be assured that all information provided will be treated in the strictest confidence and used solely for recruitment purposes.'),
-        React.createElement(Text, null, 'Thank you for your time and kind assistance'),
-        React.createElement(Text, null, 'Kind regards'),
+        React.createElement(Text, null, 'Thank you for your time'),
         React.createElement(Text, null, 'Sarat Healthcare Team'),
       )
     )

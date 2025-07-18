@@ -33,8 +33,8 @@ async function handler(req, res) {
       subject: `${type} Reference Request for ${applicantName}`,
       react: RefereeEmailTemplate({ type, applicantName, refereeName, position, link })
     });
-
-    res.status(200).json({ success: true, response });
+    console.log('Sent notification email to:', email);
+    res.status(200).json({ success: true, response, message: 'Notification sent' });
   } catch (error) {
     console.error('Resend Email Error:', error);
     res.status(500).json({ error: 'Failed to send email' });
