@@ -367,9 +367,9 @@ const JobApplication = () => {
 
   const validateLegal = () => {
     const { convicted, onDBSList, offencesOutstanding, rightToWork} = formData.rehabilitation;
-    const { dismissedOrResigned, allegation, attachedDetails} = formData.disciplinaryIssues;
+    const { dismissedOrResigned, allegation} = formData.disciplinaryIssues;
     
-    if (!dismissedOrResigned || !allegation || !attachedDetails || !convicted || !onDBSList || !offencesOutstanding || !rightToWork) {
+    if (!dismissedOrResigned || !allegation || !convicted || !onDBSList || !offencesOutstanding || !rightToWork) {
       errors.push("Please check all required fields");
     }
     return Object.keys(errors).length === 0;

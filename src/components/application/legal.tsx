@@ -279,7 +279,7 @@ export const Legal = ({ formData, handleChange }: any) => {
           </div>
         </div>
         
-        {(formData.rehabilitation.convicted || formData.rehabilitation.onDBSList || formData.rehabilitation.offencesOutstanding) && (
+        {(formData.rehabilitation.convicted === 'Yes'  || formData.rehabilitation.onDBSList === 'Yes' || formData.rehabilitation.offencesOutstanding === 'Yes') && (
           <div className="mt-4 bg-yellow-50 p-4 rounded-lg">
             <div className="font-semibold text-yellow-800 mb-2">
               Important: You must supply details on a separate sheet of paper
