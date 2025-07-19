@@ -281,6 +281,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       </div>
     </div>
   )};
+
   const Step3 = () => (
     <div className="space-y-6">
       <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 3: Additional Information</h2>
@@ -316,7 +317,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             isNotification: true,
-            email: "info@sarathealthcare.co.uk",
+            email: "samsonajaloleru@gmail.com",
             type: "professional",
             applicantName,
             refereeName,

@@ -202,9 +202,9 @@ export default defineType({
       name: 'disciplinaryIssues',
       type: 'object',
       fields: [
-        { name: 'dismissedOrResigned', type: 'boolean' },
-        { name: 'allegation', type: 'boolean' },
-        { name: 'attachedDetails', type: 'boolean' },
+        { name: 'dismissedOrResigned', type: 'string' },
+        { name: 'allegation', type: 'string' },
+        { name: 'attachedDetails', type: 'string' },
       ],
     }),
 
@@ -213,11 +213,11 @@ export default defineType({
       name: 'rehabilitation',
       type: 'object',
       fields: [
-        { name: 'convicted', type: 'boolean' },
-        { name: 'onDBSList', type: 'boolean' },
-        { name: 'offencesOutstanding', type: 'boolean' },
-        { name: 'attachedRehabilitationDetails', type: 'boolean' },
-        { name: 'rightToWork', type: 'boolean' },
+        { name: 'convicted', type: 'string' },
+        { name: 'onDBSList', type: 'string' },
+        { name: 'offencesOutstanding', type: 'string' },
+        { name: 'attachedRehabilitationDetails', type: 'string' },
+        { name: 'rightToWork', type: 'string' },
       ],
     }),
 

@@ -152,8 +152,8 @@ export const initialFormData = {
       name: '', address: '', tel: '', occupation: '', email: '', contactBeforeInterview: false, personalizedLink: ''
     }
   },
-  disciplinaryIssues: { dismissedOrResigned: false, allegation: false, attachedDetails: false },
-  rehabilitation: { convicted: false, onDBSList: false, offencesOutstanding: false, attachedRehabilitationDetails: false, rightToWork: false },
+  disciplinaryIssues: { dismissedOrResigned: '', allegation: '', attachedDetails: '' },
+  rehabilitation: { convicted: '', onDBSList: '', offencesOutstanding: '', attachedRehabilitationDetails: '', rightToWork: '' },
   declaration: { date: '', printName: '', },
   gdprConsent: false,
   reasonableAdjustments: ''

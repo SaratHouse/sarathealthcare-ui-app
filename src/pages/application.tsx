@@ -13,8 +13,12 @@ import { addSanityKeys, ApplicationData, cleanEmptyObjects, emptyTemplates, form
 import { ERROR_EMAIL_INVALID } from "../constant/errors";
 import { client } from "../utils/client";
 import { v4 as uuidv4 } from "uuid";
-import { Resend } from 'resend';
-import { config } from "../utils/config";
+
+type EmailResponse = {
+  message: string;
+  email?: string;
+  error?: string;
+};
 
 const JobApplication = () => {
   const { addAlert } = useAlert();
@@ -108,16 +112,16 @@ const JobApplication = () => {
       }
     },
     disciplinaryIssues: {
-      dismissedOrResigned: false,
-      allegation: false,
-      attachedDetails: false
+      dismissedOrResigned: "",
+      allegation: "",
+      attachedDetails: ""
     },
     rehabilitation: {
-      convicted: false,
-      onDBSList: false,
-      offencesOutstanding: false,
-      attachedRehabilitationDetails: false,
-      rightToWork: false
+      convicted: "",
+      onDBSList: "",
+      offencesOutstanding: "",
+      attachedRehabilitationDetails: "",
+      rightToWork: ""
     },
     declaration: {
       date: "",
@@ -361,6 +365,16 @@ const JobApplication = () => {
     return Object.keys(errors).length === 0;
   };
 
+  const validateLegal = () => {
+    const { convicted, onDBSList, offencesOutstanding, rightToWork} = formData.rehabilitation;
+    const { dismissedOrResigned, allegation, attachedDetails} = formData.disciplinaryIssues;
+    
+    if (!dismissedOrResigned || !allegation || !attachedDetails || !convicted || !onDBSList || !offencesOutstanding || !rightToWork) {
+      errors.push("Please check all required fields");
+    }
+    return Object.keys(errors).length === 0;
+  };
+
   const validateDeclaration = () => {
     if (!formData.gdprConsent) {
       errors.push("You must consent to data storage (GDPR)");
@@ -384,10 +398,6 @@ const JobApplication = () => {
       }else {
         const query = `*[_type == 'application' && personalDetails.email == '${formData.personalDetails.email.trim()}'][0]{_id}`;
         const result = await client.fetch(query);
-
-        console.log('====================================');
-        console.log(result);
-        console.log('====================================');
         if (result) {
           addAlert({ 
             message: "An application with this email already exists. Please contact support if you need assistance.", 
@@ -420,6 +430,14 @@ const JobApplication = () => {
     }
     if (currentPage === 6) {
       const isValid = validateReferences();
+      if (!isValid) {
+        errors.forEach(msg => addAlert({ message: msg, type: "error" }));
+        return;
+      }
+    }
+    
+    if (currentPage === 7) {
+      const isValid = validateLegal();
       if (!isValid) {
         errors.forEach(msg => addAlert({ message: msg, type: "error" }));
         return;
@@ -499,10 +517,10 @@ const JobApplication = () => {
         ...dataWithKeys
       });
       
-      const sendEmail = async (type: string, refData: any) => {
+      const sendEmail = async (type: string, refData: any): Promise<Response> => {
         if (!refData?.email) {
-          console.warn(`Skipping ${type} email - no address`);
-          return;
+          console.warn(`Skipping ${type} email - no address provided`);
+          throw new Error('NO_EMAIL_ADDRESS');
         }
 
         return fetch('/api/send-referee-email', {
@@ -519,14 +537,19 @@ const JobApplication = () => {
         });
       };
 
-      const sendWithRetry = async (fn: () => Promise<any>, retries = 2) => {
+      // Retry function with proper typing
+      const sendWithRetry = async (
+        fn: () => Promise<Response>,
+        retries = 2
+      ): Promise<EmailResponse> => {
         try {
           const response = await fn();
-          const data = await response.json();
+          const data: EmailResponse = await response.json();
           
-          if (!response.ok) throw new Error(data.error || 'Email failed');
+          if (!response.ok) {
+            throw new Error(data.error || `HTTP error ${response.status}`);
+          }
           
-          console.log(`Email sent to ${data.email}`);
           return data;
         } catch (error) {
           if (retries > 0) {
@@ -538,28 +561,55 @@ const JobApplication = () => {
         }
       };
 
-      // Send emails sequentially
-      await sendWithRetry(() => 
-        sendEmail('professional', enrichedFormData.references.professionalReferee)
-      );
-      await delay(500);
+      // Send emails sequentially with proper error handling
+      try {
+        await sendWithRetry(
+          () => sendEmail('professional', enrichedFormData.references.professionalReferee)
+        );
+      } catch (error) {
+        console.error('Professional ref email failed:', error);
+        addAlert({
+          message: 'Failed to send email to professional referee',
+          type: 'error'
+        });
+      }
 
-      await sendWithRetry(() => 
-        sendEmail('character', enrichedFormData.references.personalReferee)
-      );
-      await delay(500);
+      try {
+        await sendWithRetry(
+          () => sendEmail('character', enrichedFormData.references.personalReferee)
+        );
+      } catch (error) {
+        console.error('Personal ref email failed:', error);
+        addAlert({
+          message: 'Failed to send email to personal referee',
+          type: 'error'
+        });
+      }
 
       // Send notification
-      await fetch('/api/application-notification-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          isNotification: true,
-          email: "samsonajaloleru@gmail.com",
-          applicantName,
-          position
-        })
-      });
+      try {
+        const response = await fetch('/api/application-notification-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            isNotification: true,
+            email: "samsonajaloleru@gmail.com",
+            applicantName,
+            position
+          })
+        });
+        
+        if (!response.ok) {
+          throw new Error('Notification email failed');
+        }
+        console.log('Notification email sent');
+      } catch (error) {
+        console.error('Notification email failed:', error);
+        addAlert({
+          message: 'Failed to send notification email',
+          type: 'error'
+        });
+      }
 
       // Reset form and show success
       addAlert({ message: 'Application submitted successfully!', type: 'success' });
