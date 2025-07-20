@@ -7,6 +7,8 @@ const NotificationEmailAltTemplateAlt = ({
   applicantName,
   position
 }) => {
+  const displayType = type.charAt(0).toUpperCase() + type.slice(1);
+  
   return React.createElement(
     Html,
     null,
@@ -20,7 +22,7 @@ const NotificationEmailAltTemplateAlt = ({
         null,
         React.createElement(Text, null, '📩 New Reference received'),
         React.createElement(Text, null, `Referee: ${refereeName}`),
-        React.createElement(Text, null, `Type: ${type}`),
+        React.createElement(Text, null, `Type: ${displayType}`),
         React.createElement(Text, null, `Applicant: ${applicantName}`),
         React.createElement(Text, null, `Position: ${position}`),
         React.createElement(Text, null, 'You can view the application in your admin panel.'),
