@@ -593,7 +593,7 @@ const JobApplication = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             isNotification: true,
-            email: "samsonajaloleru@gmail.com",
+            email: "info@sarathealthcare.co.uk",
             applicantName,
             position
           })

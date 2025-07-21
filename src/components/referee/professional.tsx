@@ -317,7 +317,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             isNotification: true,
-            email: "samsonajaloleru@gmail.com",
+            email: "info@sarathealthcare.co.uk",
             type: "professional",
             applicantName,
             refereeName,
