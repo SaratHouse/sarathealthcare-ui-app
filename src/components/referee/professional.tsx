@@ -10,7 +10,7 @@ import SelectField from "../reuseables/select";
 
 export const ProfessionalReferee = ({token, applicantInfo} : {token: string, applicantInfo: any}) => {
   const { addAlert } = useAlert();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
   const [isSubmittedSuccessfully, setIsSubmittedSuccessfully] = useState(false);
   const [formData, setFormData] = useState({
     refereeType: "professional",
@@ -94,6 +94,9 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       return updated;
     });
   };
+
+
+
   const nextPage = () => {
     if (step === 2) {
       ratings.forEach(element => {
@@ -282,24 +285,6 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
     </div>
   )};
 
-  const Step3 = () => (
-    <div className="space-y-6">
-      <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 3: Additional Information</h2>
-      
-      <div className="grid grid-cols-1 gap-6">
-        <TextareaField
-          title="If YES, answered to any above questions, please give details"
-          value={formData.additionalInfo.details}
-          onChange={(e) => handleChange('additionalInfo.details', e.target.value)}
-        />
-        <TextareaField
-          title="Comments"
-          value={formData.additionalInfo.comments}
-          onChange={(e) => handleChange('additionalInfo.comments', e.target.value)}
-        />
-      </div>
-    </div>
-  );
 
   const submitForm = async () => {
     const refereeName = applicantInfo.professionalReferee?.name
@@ -359,7 +344,24 @@ return(
         <div className="text-sm  mb-2">This information is being collected for the purpose of recruitment and selection. It will be treated with the strictest confidence. If you are giving a reference on behalf of a present or previous employer, you are advised that under the GDPR and related UK data protection legislation, all references are potentially disclosable to the applicant.</div>
         {step === 1 && <Step1 />}
         {step === 2 && <Step2 />}
-        {step === 3 && <Step3 />}
+        {step === 3 && <div className="space-y-6">
+      <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 3: Additional Information</h2>
+      
+      <div className="grid grid-cols-1 gap-6">
+        <TextareaField
+          title="If YES, answered to any above questions, please give details"
+          value={formData.additionalInfo.details || ''}
+          onChange={(e) => handleChange('additionalInfo.details', e.target.value)}
+          isRequired
+        />
+        <TextareaField
+          title="Comments"
+          value={formData.additionalInfo.comments || ''}
+          onChange={(e) => handleChange('additionalInfo.comments', e.target.value)}
+          isRequired
+        />
+      </div>
+    </div>}
 
         <div className="flex justify-between gap-5 mt-8 pt-4 border-t border-gray-200">
           <button

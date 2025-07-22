@@ -25,11 +25,12 @@ async function handler(req, res) {
     } = body;
 
     const resend = new Resend(process.env.REACT_APP_RESEND_API_KEY);
+    const displayType = type.charAt(0).toUpperCase() + type.slice(1);
 
     const response = await resend.emails.send({
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
       to: email,
-      subject: `New ${type} Reference Received for ${applicantName}`,
+      subject: `New ${displayType} Reference Received for ${applicantName}`,
       react: NotificationEmailAltTemplateAlt({ type, applicantName, refereeName, position })
     });
 

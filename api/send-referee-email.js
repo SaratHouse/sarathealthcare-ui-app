@@ -26,11 +26,12 @@ async function handler(req, res) {
     } = body;
 
     const resend = new Resend(process.env.REACT_APP_RESEND_API_KEY);
+    const displayType = type.charAt(0).toUpperCase() + type.slice(1);
 
     const response = await resend.emails.send({
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
       to: email,
-      subject: `${type} Reference Request for ${applicantName}`,
+      subject: `${displayType} Reference Request for ${applicantName}`,
       react: RefereeEmailTemplate({ type, applicantName, refereeName, position, link })
     });
     console.log('Sent notification email to:', email);
