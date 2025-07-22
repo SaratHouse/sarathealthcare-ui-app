@@ -7,6 +7,13 @@ export const CharacterReferee = ({token, applicantInfo} : {token: string, applic
   const { addAlert } = useAlert();
   const [isSubmittedSuccessfully, setIsSubmittedSuccessfully] = useState(false);
   const [formData, setFormData] = useState<any>({
+    sender: {
+      organisation: '',
+      applicantName: `${applicantInfo.personalDetails?.forenames} ${applicantInfo.personalDetails?.surname}`,
+      postAppliedFor: applicantInfo.jobDetails?.positionAppliedFor,
+      refereeName: applicantInfo.personalReferee?.name,
+      refereeJobTitle: applicantInfo.personalReferee?.occupation,
+    },
     characterReference: {
       capacityKnown: "",
       yearsKnown: "",

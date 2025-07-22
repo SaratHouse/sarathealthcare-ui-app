@@ -10,7 +10,7 @@ import SelectField from "../reuseables/select";
 
 export const ProfessionalReferee = ({token, applicantInfo} : {token: string, applicantInfo: any}) => {
   const { addAlert } = useAlert();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [isSubmittedSuccessfully, setIsSubmittedSuccessfully] = useState(false);
   const [formData, setFormData] = useState({
     refereeType: "professional",
@@ -31,9 +31,9 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
         communication: '',
         timekeeping: ''
       },
-      doubtHonesty: false,
-      wouldReemploy: false,
-      disciplinaryProceedings: false
+      doubtHonesty: '',
+      wouldReemploy: '',
+      disciplinaryProceedings: ''
     },
     additionalInfo: {
       details: '',
@@ -95,13 +95,16 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
     });
   };
 
-
-
   const nextPage = () => {
     if (step === 2) {
       ratings.forEach(element => {
         if (!formData.performanceAssessment.ratings[element]) errors.push(`${ratingLabels[element]} is required`);
       });
+      const { doubtHonesty, wouldReemploy, disciplinaryProceedings} = formData.performanceAssessment;
+    
+      if (!doubtHonesty || !wouldReemploy || !disciplinaryProceedings) {
+        errors.push("Please answer all Yes or No questions");
+      }
       if (errors.length > 0) {
         errors.forEach(msg => addAlert({ message: msg, type: "error" }));
         return;
@@ -171,12 +174,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
               <input
                 type="radio"
                 name="doubtHonesty"
-                checked={formData.performanceAssessment.doubtHonesty === true}
+                checked={formData.performanceAssessment.doubtHonesty === 'Yes'}
                 onChange={() => setFormData(prev => ({
                   ...prev,
                   performanceAssessment: {
                     ...prev.performanceAssessment,
-                    doubtHonesty: true
+                    doubtHonesty: 'Yes'
                   }
                 }))}
                 className="h-4 w-4 text-blue-600"
@@ -187,12 +190,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
               <input
                 type="radio"
                 name="doubtHonesty"
-                checked={formData.performanceAssessment.doubtHonesty === false}
+                checked={formData.performanceAssessment.doubtHonesty === 'No'}
                 onChange={() => setFormData(prev => ({
                   ...prev,
                   performanceAssessment: {
                     ...prev.performanceAssessment,
-                    doubtHonesty: false
+                    doubtHonesty: 'No'
                   }
                 }))}
                 className="h-4 w-4 text-blue-600"
@@ -211,12 +214,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
               <input
                 type="radio"
                 name="wouldReemploy"
-                checked={formData.performanceAssessment.wouldReemploy === true}
+                checked={formData.performanceAssessment.wouldReemploy === 'Yes'}
                 onChange={() => setFormData(prev => ({
                   ...prev,
                   performanceAssessment: {
                     ...prev.performanceAssessment,
-                    wouldReemploy: true
+                    wouldReemploy: 'Yes'
                   }
                 }))}
                 className="h-4 w-4 text-blue-600"
@@ -227,12 +230,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
               <input
                 type="radio"
                 name="wouldReemploy"
-                checked={formData.performanceAssessment.wouldReemploy === false}
+                checked={formData.performanceAssessment.wouldReemploy === 'No'}
                 onChange={() => setFormData(prev => ({
                   ...prev,
                   performanceAssessment: {
                     ...prev.performanceAssessment,
-                    wouldReemploy: false
+                    wouldReemploy: 'No'
                   }
                 }))}
                 className="h-4 w-4 text-blue-600"
@@ -251,12 +254,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
               <input
                 type="radio"
                 name="disciplinaryProceedings"
-                checked={formData.performanceAssessment.disciplinaryProceedings === true}
+                checked={formData.performanceAssessment.disciplinaryProceedings === 'Yes'}
                 onChange={() => setFormData(prev => ({
                   ...prev,
                   performanceAssessment: {
                     ...prev.performanceAssessment,
-                    disciplinaryProceedings: true
+                    disciplinaryProceedings: 'Yes'
                   }
                 }))}
                 className="h-4 w-4 text-blue-600"
@@ -267,12 +270,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
               <input
                 type="radio"
                 name="disciplinaryProceedings"
-                checked={formData.performanceAssessment.disciplinaryProceedings === false}
+                checked={formData.performanceAssessment.disciplinaryProceedings === 'No'}
                 onChange={() => setFormData(prev => ({
                   ...prev,
                   performanceAssessment: {
                     ...prev.performanceAssessment,
-                    disciplinaryProceedings: false
+                    disciplinaryProceedings: 'No'
                   }
                 }))}
                 className="h-4 w-4 text-blue-600"

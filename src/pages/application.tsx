@@ -23,6 +23,7 @@ type EmailResponse = {
 const JobApplication = () => {
   const { addAlert } = useAlert();
   const [currentPage, setCurrentPage] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<any>({
     jobDetails: {
       positionAppliedFor: "",
@@ -272,13 +273,14 @@ const JobApplication = () => {
         emp.salary.trim()
       )
     ) {
-      formData.previousEmployments.forEach((job: { jobTitle: string; employerName: string; fromDate: string; toDate: string; reasonForLeaving: string; salary: string; }, index: number) => {
-        if (!job.jobTitle.trim()) errors.push(`Previous job #${index + 1}: job title is required`);
-        if (!job.employerName.trim()) errors.push(`Previous job #${index + 1}: employer name is required`);
-        if (!job.fromDate.trim()) errors.push(`Previous job #${index + 1}: start date is required`);
-        if (!job.toDate.trim()) errors.push(`Previous job #${index + 1}: end date is required`);
-        if (!job.reasonForLeaving.trim()) errors.push(`Previous job #${index + 1}: Reason for leaving is required`);
-        if (!job.salary.trim()) errors.push(`Previous job #${index + 1}: Salary is required`);
+      formData.previousEmployments.forEach((job: { jobTitle: string; employerName: string; employerAddress:string; fromDate: string; toDate: string; reasonForLeaving: string; salary: string; }, index: number) => {
+        if (!job.jobTitle.trim()) errors.push(`Previous employment  #${index + 1}: job title is required`);
+        if (!job.employerName.trim()) errors.push(`Previous employment #${index + 1}: employer name is required`);
+        if (!job.employerAddress.trim()) errors.push(`Previous employment #${index + 1}: employer Address is required`);
+        if (!job.fromDate.trim()) errors.push(`Previous employment #${index + 1}: start date is required`);
+        if (!job.toDate.trim()) errors.push(`Previous employment #${index + 1}: end date is required`);
+        if (!job.reasonForLeaving.trim()) errors.push(`Previous employment #${index + 1}: Reason for leaving is required`);
+        if (!job.salary.trim()) errors.push(`Previous employment #${index + 1}: Salary is required`);
       });
     }
 
@@ -476,6 +478,7 @@ const JobApplication = () => {
       errors.forEach(msg => addAlert({ message: msg, type: "error" }));
       return;
     }
+    setIsSubmitting(true);
     const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
     try {
       // Generate unique tokens
@@ -612,13 +615,14 @@ const JobApplication = () => {
       }
 
       // Reset form and show success
+      setIsSubmitting(false);
       addAlert({ message: 'Application submitted successfully!', type: 'success' });
       setFormData(initialFormData);
       setCurrentPage(1);
       
     } catch (error: any) {
       console.error('Submission error:', error);
-      
+      setIsSubmitting(false);
       // Handle specific email errors
       if (error.message.includes('EMAIL_FAILED')) {
         const refType = error.message.split('_')[2]?.toLowerCase() || 'referee';
@@ -745,7 +749,7 @@ const JobApplication = () => {
                 onClick={submitForm}
                 className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700"
               >
-                Submit Application
+                {!isSubmitting ? 'Submit Application' : 'Submitting Application ....'}
               </button>
             )}
           </div>

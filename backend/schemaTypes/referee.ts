@@ -84,35 +84,11 @@ export default {
         }
       ]
     },
-    // Section 3: Applicant Information
-    {
-      name: 'applicantInfo',
-      title: 'Section 3: Applicant Information',
-      type: 'object',
-      fields: [
-        { name: 'employingOrganisation', title: 'Employing Organisation', type: 'string' },
-        { name: 'contactPhone', title: 'Contact Phone', type: 'string' },
-        { name: 'contactEmail', title: 'Contact Email', type: 'string' },
-        { name: 'professionalCapacity', title: 'Professional Capacity', type: 'string' },
-        { name: 'yearsKnown', title: 'Years Known', type: 'string' },
-        { name: 'applicantJobTitle', title: "Applicant's Job Title", type: 'string' },
-        { name: 'employmentDates', title: 'Employment Dates', type: 'string' },
-        { name: 'reasonForLeaving', title: 'Reason for Leaving', type: 'string' },
-        { 
-          name: 'sicknessRecord', 
-          title: 'Sickness Record', 
-          type: 'object',
-          fields: [
-            { name: 'days', title: 'Days', type: 'number' },
-            { name: 'episodes', title: 'Episodes', type: 'number' }
-          ]
-        }
-      ]
-    },
-    // Section 4: Performance Assessment
+    
+    // Section 3: Performance Assessment
     {
       name: 'performanceAssessment',
-      title: 'Section 4: Performance Assessment',
+      title: 'Section 3: Performance Assessment',
       type: 'object',
       fields: [
         { 
@@ -128,15 +104,15 @@ export default {
             { name: 'timekeeping', title: 'Timekeeping', type: 'string', options: { list: ['Excellent', 'Good', 'Satisfactory', 'Poor'] } },
           ]
         },
-        { name: 'doubtHonesty', title: 'Reason to doubt honesty?', type: 'boolean' },
-        { name: 'wouldReemploy', title: 'Would re-employ?', type: 'boolean' },
-        { name: 'disciplinaryProceedings', title: 'Live disciplinary proceedings?', type: 'boolean' }
+        { name: 'doubtHonesty', title: 'Reason to doubt honesty?', type: 'string' },
+        { name: 'wouldReemploy', title: 'Would re-employ?', type: 'string' },
+        { name: 'disciplinaryProceedings', title: 'Live disciplinary proceedings?', type: 'string' }
       ]
     },
     // Additional Information
     {
       name: 'additionalInfo',
-      title: 'Section 5: Additional Information',
+      title: 'Section 4: Additional Information',
       type: 'object',
       fields: [
         { name: 'details', title: 'Additional Details', type: 'text' },
