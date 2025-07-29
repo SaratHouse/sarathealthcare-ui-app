@@ -515,10 +515,14 @@ const JobApplication = () => {
       const dataWithKeys = addSanityKeys(cleanedData);
       
       // Save to Sanity
-      await client.create({
+      const result = await client.create({
         _type: 'application',
         ...dataWithKeys
       });
+
+      console.log('====================================');
+      console.log(result);
+      console.log('====================================');
       
       const sendEmail = async (type: string, refData: any): Promise<Response> => {
         if (!refData?.email) {
@@ -598,6 +602,7 @@ const JobApplication = () => {
             isNotification: true,
             email: "info@sarathealthcare.co.uk",
             applicantName,
+            applicantId: result?._id,
             position
           })
         });

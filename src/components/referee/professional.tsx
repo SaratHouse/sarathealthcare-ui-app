@@ -2,11 +2,12 @@ import { useState } from "react";
 import TextareaField from "../reuseables/textarea";
 import { useAlert } from "../../utils/notification/alertcontext";
 import { client } from "../../utils/client";
-import { formatDate } from "../../utils/common";
+import { formatDate, validateEmail } from "../../utils/common";
 import InputField from "../reuseables/input";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import SelectField from "../reuseables/select";
+import { ERROR_EMAIL_INVALID } from "../../constant/errors";
 
 export const ProfessionalReferee = ({token, applicantInfo} : {token: string, applicantInfo: any}) => {
   const { addAlert } = useAlert();
@@ -21,6 +22,20 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       postAppliedFor: applicantInfo.jobDetails?.positionAppliedFor,
       refereeName: applicantInfo.professionalReferee?.name,
       refereeJobTitle: applicantInfo.professionalReferee?.occupation,
+    },
+    applicantInfo:{
+      employingOrganisation: '',
+      contactPhone: '',
+      contactEmail: '',
+      professionalCapacity: '',
+      yearsKnown: '',
+      applicantJobTitle: applicantInfo.jobDetails?.positionAppliedFor,
+      employmentDates: '',
+      reasonForLeaving: '',
+      sicknessRecord: {
+        days: "",
+        episodes: "",
+      }
     },
     performanceAssessment: {
       ratings: {
@@ -97,6 +112,31 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
 
   const nextPage = () => {
     if (step === 2) {
+      const { employingOrganisation, contactPhone, contactEmail, professionalCapacity, employmentDates} = formData.applicantInfo;
+    
+      if (!employingOrganisation) {
+        errors.push("Name of employing organisation/company is required");
+      }
+      if (!contactPhone) {
+        errors.push("Contact Phone Number is required");
+      }
+      if (!contactEmail) {
+        errors.push("Contact Email is required");
+      }else {
+        if (!validateEmail(contactEmail)) errors.push("Contact Email is invalid");
+      }
+      if (!professionalCapacity) {
+        errors.push("Professional Capacity is required");
+      }
+      if (!employmentDates) {
+        errors.push("Employment Dates is required");
+      }
+      if (errors.length > 0) {
+        errors.forEach(msg => addAlert({ message: msg, type: "error" }));
+        return;
+      }
+    }
+    if (step === 3) {
       ratings.forEach(element => {
         if (!formData.performanceAssessment.ratings[element]) errors.push(`${ratingLabels[element]} is required`);
       });
@@ -111,7 +151,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       }
     }
     
-    setStep(prev => Math.min(prev + 1, 3));
+    setStep(prev => Math.min(prev + 1, 4));
   };
 
   const prevPage = () => {
@@ -155,11 +195,10 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
     </div>
   );
 
-  const Step2 = () => {
-  
+  const Step3 = () => {
     return (
     <div className="space-y-6">
-      <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 2: Performance Assessment</h2>
+      <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 3: Performance Assessment</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {ratings.map((rating, index) => (
@@ -288,13 +327,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
     </div>
   )};
 
-
   const submitForm = async () => {
     const refereeName = applicantInfo.professionalReferee?.name
     const position = applicantInfo.jobDetails?.positionAppliedFor;
     const applicantName = `${applicantInfo.personalDetails?.forenames} ${applicantInfo.personalDetails?.surname}`;
     try {
-      await client.create({
+      const result = await client.create({
         _type: 'applicationReference',
         ...formData
       });
@@ -308,6 +346,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
             email: "info@sarathealthcare.co.uk",
             type: "professional",
             applicantName,
+            refereeId: result?._id,
             refereeName,
             position
           })
@@ -326,6 +365,7 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
       });
     }
   };
+
 return(
   <>
   { isSubmittedSuccessfully ?
@@ -333,39 +373,115 @@ return(
     <>
       <div className="px-6 pt-4">
         <div className="flex items-center justify-between mb-2">
-          <div className="text-sm font-medium text-[#1663a3]">Page {step} of 3</div>
+          <div className="text-sm font-medium text-[#1663a3]">Page {step} of 4</div>
           <div className="text-sm text-gray-500">* indicates required fields</div>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
             className="bg-[#e67238] h-2.5 rounded-full" 
-            style={{ width: `${(step / 3) * 100}%` }}
+            style={{ width: `${(step / 4) * 100}%` }}
           ></div>
         </div>
       </div>   
       <div className="p-6"> 
         <div className="text-sm  mb-2">This information is being collected for the purpose of recruitment and selection. It will be treated with the strictest confidence. If you are giving a reference on behalf of a present or previous employer, you are advised that under the GDPR and related UK data protection legislation, all references are potentially disclosable to the applicant.</div>
         {step === 1 && <Step1 />}
-        {step === 2 && <Step2 />}
-        {step === 3 && <div className="space-y-6">
-      <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 3: Additional Information</h2>
-      
-      <div className="grid grid-cols-1 gap-6">
-        <TextareaField
-          title="If YES, answered to any above questions, please give details"
-          value={formData.additionalInfo.details || ''}
-          onChange={(e) => handleChange('additionalInfo.details', e.target.value)}
-          isRequired
-        />
-        <TextareaField
-          title="Comments"
-          value={formData.additionalInfo.comments || ''}
-          onChange={(e) => handleChange('additionalInfo.comments', e.target.value)}
-          isRequired
-        />
-      </div>
-    </div>}
-
+        {step === 2 && 
+          <div className="space-y-6">
+            <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 2: Applicant Information</h2>
+            <div className="text-sm  mb-2">Please provide the following information in respect of the applicant.</div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <InputField
+                title="Name of employing organisation/company"
+                type="text"
+                value={formData.applicantInfo.employingOrganisation}
+                onChange={(e) => handleChange('applicantInfo.employingOrganisation', e.target.value)}
+                
+              />
+              <InputField
+                title="Contact Email"
+                type="email"
+                value={formData.applicantInfo.contactEmail}
+                onChange={(e) => handleChange('applicantInfo.contactEmail', e.target.value)}
+              />
+              <InputField
+                title="Contact Phone Number"
+                type="text"
+                value={formData.applicantInfo.contactPhone}
+                onChange={(e) => handleChange('applicantInfo.contactPhone', e.target.value)}
+              />
+              <InputField
+                title="In what professional capacity do you know the applicant?"
+                type="text"
+                value={formData.applicantInfo.professionalCapacity}
+                onChange={(e) => handleChange('applicantInfo.professionalCapacity', e.target.value)}
+              />
+              <InputField
+                title="How long have you known the applicant in this capacity?"
+                type="text"
+                value={formData.applicantInfo.yearsKnown}
+                onChange={(e) => handleChange('applicantInfo.yearsKnown', e.target.value)}
+              />
+              <InputField
+                title="What was the applicant’s job title?"
+                type="text"
+                value={formData.applicantInfo.applicantJobTitle}
+                readonly
+              />
+              <InputField
+                title="Employment Date"
+                type="date"
+                value={formData.applicantInfo.employmentDates}
+                onChange={(e) => handleChange('applicantInfo.employmentDates', e.target.value)}
+              />
+              <InputField
+                title="Reason for leaving?"
+                type="text"
+                value={formData.applicantInfo.reasonForLeaving}
+                onChange={(e) => handleChange('applicantInfo.reasonForLeaving', e.target.value)}
+              />
+              <div className="md:col-span-2">
+                <div className="text-sm font-bold mb-2">Sickness records</div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <InputField
+                    title="(No. of days) over the past two years,"
+                    type="text"
+                    value={formData.applicantInfo.sicknessRecord.days}
+                    onChange={(e) => handleChange('applicantInfo.sicknessRecord.days', e.target.value)}
+                  />
+                  <InputField
+                    title="How many episodes (If known)?"
+                    type="text"
+                    value={formData.applicantInfo.sicknessRecord.episodes}
+                    onChange={(e) => handleChange('applicantInfo.sicknessRecord.episodes', e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+        {step === 3 && <Step3 />}
+        {step === 4 && 
+          <div className="space-y-6">
+            <h2 className="text-xl font-bold text-[#1663a3] mb-6">Section 4: Additional Information</h2>
+            
+            <div className="grid grid-cols-1 gap-6">
+              <TextareaField
+                title="If YES, answered to any above questions, please give details"
+                value={formData.additionalInfo.details || ''}
+                onChange={(e) => handleChange('additionalInfo.details', e.target.value)}
+                isRequired
+              />
+              <TextareaField
+                title="Comments"
+                value={formData.additionalInfo.comments || ''}
+                onChange={(e) => handleChange('additionalInfo.comments', e.target.value)}
+                isRequired
+              />
+            </div>
+          </div>
+        }
         <div className="flex justify-between gap-5 mt-8 pt-4 border-t border-gray-200">
           <button
             onClick={prevPage}
@@ -379,7 +495,7 @@ return(
             <FaArrowLeft /> Go Back
           </button>
           
-          {step < 3 ? (
+          {step < 4 ? (
             <button
               onClick={nextPage}
               className="flex items-center gap-2 bg-[#e67238] text-white px-4 py-2 rounded-lg hover:bg-[#d45a28]"

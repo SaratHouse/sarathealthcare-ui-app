@@ -20,6 +20,7 @@ async function handler(req, res) {
       type,
       email,
       applicantName,
+      refereeId,
       refereeName,
       position,
     } = body;
@@ -31,7 +32,7 @@ async function handler(req, res) {
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
       to: email,
       subject: `New ${displayType} Reference Received for ${applicantName}`,
-      react: NotificationEmailAltTemplateAlt({ type, applicantName, refereeName, position })
+      react: NotificationEmailAltTemplateAlt({ type, applicantName, refereeName, refereeId, position })
     });
 
     res.status(200).json({ success: true, response });

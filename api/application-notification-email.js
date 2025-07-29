@@ -19,6 +19,7 @@ async function handler(req, res) {
     const {
       email,
       applicantName,
+      applicantId,
       position,
     } = body;
 
@@ -28,7 +29,7 @@ async function handler(req, res) {
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
       to: email,
       subject: `New Application: ${applicantName} for ${position}`,
-      react: NotificationEmailTemplate({applicantName, position })
+      react: NotificationEmailTemplate({applicantName, applicantId, position })
     });
 
     res.status(200).json({ success: true, response });

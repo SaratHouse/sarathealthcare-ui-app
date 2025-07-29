@@ -103,7 +103,7 @@ const SelectField: React.FC<SelectProps> = ({
 
       <div
         onClick={() => !disabled && setShow(!show)}
-        className={`flex flex-row items-center py-2 border-2 w-full cursor-pointer ${
+        className={`flex flex-row items-center py-2 border-2 rounded-lg w-full cursor-pointer ${
           disabled ? "bg-gray-300 border-gray-400 cursor-not-allowed" : "bg-white border-secondary"
         }`}
       >

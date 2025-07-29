@@ -3,6 +3,7 @@ const { Html, Head, Preview, Body, Container, Text } = require('@react-email/com
 
 const NotificationEmailTemplate = ({
   applicantName,
+  applicantId,
   position
 }) => {
   return React.createElement(
@@ -17,7 +18,8 @@ const NotificationEmailTemplate = ({
         Container,
         null,
         React.createElement(Text, null, '📩 New application received'),
-        React.createElement(Text, null, `Applicant: ${applicantName}`),
+        React.createElement(Text, null, `Applicant ID: ${applicantId}`),
+        React.createElement(Text, null, `Applicant Name: ${applicantName}`),
         React.createElement(Text, null, `Position: ${position}`),
         React.createElement(Text, null, 'You can view the application in your admin panel.'),
       )

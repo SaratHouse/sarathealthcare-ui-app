@@ -23,11 +23,11 @@ const Referee = () => {
       const query = `*[_type == 'applicationReference' && token == $link][0]{_id}`;
       const result = await client.fetch(query, { link });
       if (result) {
-          setApplication(null);
-          setReferenceFormHasBeenFilled(true);
-          setLoading(false);
-          addAlert({ message: 'This reference form has already been filled out.', type: "error" })
-        }
+        setApplication(null);
+        setReferenceFormHasBeenFilled(true);
+        setLoading(false);
+        addAlert({ message: 'This reference form has already been filled out.', type: "error" })
+      }
     };
     CheckIfReferenceFormHasBeenFilled();
     // eslint-disable-next-line
@@ -39,7 +39,8 @@ useEffect(() => {
       const query = `*[_type == 'application' && ${refPath} == $link][0]{
         personalDetails,
         jobDetails,
-        "professionalReferee": references.professionalReferee
+        "professionalReferee": references.professionalReferee,
+        "personalReferee": references.personalReferee
       }`;
       const result = await client.fetch(query, { link });
       setApplication(result);

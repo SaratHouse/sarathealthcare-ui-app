@@ -84,11 +84,35 @@ export default {
         }
       ]
     },
-    
-    // Section 3: Performance Assessment
+    // Section 3: Applicant Information
+    {
+      name: 'applicantInfo',
+      title: 'Section 3: Applicant Information',
+      type: 'object',
+      fields: [
+        { name: 'employingOrganisation', title: 'Employing Organisation', type: 'string' },
+        { name: 'contactPhone', title: 'Contact Phone', type: 'string' },
+        { name: 'contactEmail', title: 'Contact Email', type: 'string' },
+        { name: 'professionalCapacity', title: 'Professional Capacity', type: 'string' },
+        { name: 'yearsKnown', title: 'Years Known', type: 'string' },
+        { name: 'applicantJobTitle', title: "Applicant's Job Title", type: 'string' },
+        { name: 'employmentDates', title: 'Employment Dates', type: 'string' },
+        { name: 'reasonForLeaving', title: 'Reason for Leaving', type: 'string' },
+        { 
+          name: 'sicknessRecord', 
+          title: 'Sickness Record', 
+          type: 'object',
+          fields: [
+            { name: 'days', title: 'Days', type: 'string' },
+            { name: 'episodes', title: 'Episodes', type: 'string' }
+          ]
+        }
+      ]
+    },
+    // Section 4: Performance Assessment
     {
       name: 'performanceAssessment',
-      title: 'Section 3: Performance Assessment',
+      title: 'Section 4: Performance Assessment',
       type: 'object',
       fields: [
         { 
@@ -112,7 +136,7 @@ export default {
     // Additional Information
     {
       name: 'additionalInfo',
-      title: 'Section 4: Additional Information',
+      title: 'Section 5: Additional Information',
       type: 'object',
       fields: [
         { name: 'details', title: 'Additional Details', type: 'text' },
@@ -129,17 +153,6 @@ export default {
         { name: 'date', title: 'Date', type: 'date' }
       ]
     },
-    // Metadata
-    {
-      name: 'submittedAt',
-      title: 'Submitted At',
-      type: 'datetime',
-      options: {
-        dateFormat: 'YYYY-MM-DDTHH:mm:ssZ',
-        timeFormat: 'HH:mm',
-        timeStep: 1
-      }
-    }
   ],
   initialValue: {
     submittedAt: (new Date()).toISOString()

@@ -4,6 +4,7 @@ const { Html, Head, Preview, Body, Container, Text } = require('@react-email/com
 const NotificationEmailAltTemplateAlt = ({
   type,
   refereeName,
+  refereeId,
   applicantName,
   position
 }) => {
@@ -21,7 +22,8 @@ const NotificationEmailAltTemplateAlt = ({
         Container,
         null,
         React.createElement(Text, null, '📩 New Reference received'),
-        React.createElement(Text, null, `Referee: ${refereeName}`),
+        React.createElement(Text, null, `Referee ID: ${refereeId}`),
+        React.createElement(Text, null, `Referee Name: ${refereeName}`),
         React.createElement(Text, null, `Type: ${displayType}`),
         React.createElement(Text, null, `Applicant: ${applicantName}`),
         React.createElement(Text, null, `Position: ${position}`),
