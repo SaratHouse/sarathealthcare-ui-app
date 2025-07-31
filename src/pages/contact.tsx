@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaClock, FaEnvelope, FaLocationDot, FaPhone } from "react-icons/fa6";
-import Disclaimer from "../components/reuseables/disclaimer";
 
 import { useAlert } from "../utils/notification/alertcontext";
 import { client } from "../utils/client";

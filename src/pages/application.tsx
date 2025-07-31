@@ -645,117 +645,119 @@ const JobApplication = () => {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <div ref={formContainerRef} className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden my-8 max-h-[80vh] overflow-y-auto">
-        {/* Form Header */}
-        <div className="bg-[#1663a3] text-white p-6">
-          <h1 className="text-2xl font-bold">Job Application</h1>
-          <p className="mt-2 text-[#a0d1ff]">
-            Sarat Healthcare Ltd. is committed to the safeguarding and promotion of the welfare of our clients
-          </p>
-        </div>
-  
-        {/* Progress Bar */}
-        <div className="px-6 pt-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="text-sm font-medium text-[#1663a3]">Page {currentPage} of 8</div>
-            <div className="text-sm text-gray-500">* indicates required fields</div>
+      <div className="w-full max-w-5xl mx-auto my-8 bg-white rounded-xl shadow-lg relative">
+        <div ref={formContainerRef} className="w-full overflow-hidden max-h-[80vh] overflow-y-auto">
+          {/* Form Header */}
+          <div className="bg-[#1663a3] text-white p-6">
+            <h1 className="text-2xl font-bold">Job Application</h1>
+            <p className="mt-2 text-[#a0d1ff]">
+              Sarat Healthcare Ltd. is committed to the safeguarding and promotion of the welfare of our clients
+            </p>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
-            <div 
-              className="bg-[#e67238] h-2.5 rounded-full" 
-              style={{ width: `${(currentPage / 8) * 100}%` }}
-            ></div>
+    
+          {/* Progress Bar */}
+          <div className="px-6 pt-4">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-sm font-medium text-[#1663a3]">Page {currentPage} of 8</div>
+              <div className="text-sm text-gray-500">* indicates required fields</div>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
+              <div 
+                className="bg-[#e67238] h-2.5 rounded-full" 
+                style={{ width: `${(currentPage / 8) * 100}%` }}
+              ></div>
+            </div>
           </div>
-        </div>
-  
-        {/* Form Content */}
-        <div className="p-6" key={`page-${currentPage}`}>
-          {currentPage === 1 && (
-            <JobDetails
-              formData={formData} 
-              handleChange={handleChange} 
-            />
-          )}
-          {currentPage === 2 && (
-            <PersonalDetails
-              formData={formData} 
-              handleChange={handleChange} 
-            />
-          )}
-          {currentPage === 3 && (
-            <EmploymentHistory 
-              formData={formData} 
-              handleChange={handleChange}
-              addArrayItem={addArrayItem}
-              removeArrayItem={removeArrayItem}
-            />
-          )}
-          {currentPage === 4 && (
-            <Education 
-              formData={formData} 
-              handleChange={handleChange}
-              addArrayItem={addArrayItem}
-              removeArrayItem={removeArrayItem}
-            />
-          )}
-          {currentPage === 5 && (
-            <CoverLetter 
-              formData={formData} 
-              handleChange={handleChange}
-            />
-          )}
-          
-          {currentPage === 6 && (
-            <References 
-              formData={formData} 
-              handleChange={handleChange}
-            />
-          )}
-          
-          {currentPage === 7 && (
-            <Legal 
-              formData={formData} 
-              handleChange={handleChange}
-            />
-          )}
-  
-          {currentPage === 8 && (
-            <Declaration 
-              formData={formData} 
-              handleChange={handleChange}
-              submitForm={submitForm}
-            />
-          )} 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between gap-5 mt-8 pt-4 border-t border-gray-200">
-            <button
-              onClick={prevPage}
-              disabled={currentPage === 1}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
-                currentPage === 1 
-                  ? "bg-gray-200 text-gray-500 cursor-not-allowed" 
-                  : "bg-[#1663a3] text-white hover:bg-[#0d4a7a]"
-              }`}
-            >
-              <FaArrowLeft /> Previous
-            </button>
-            
-            {currentPage < 8 ? (
-              <button
-                onClick={nextPage}
-                className="flex items-center gap-2 bg-[#e67238] text-white px-4 py-2 rounded-lg hover:bg-[#d45a28]"
-              >
-                Next <FaArrowRight />
-              </button>
-            ) : (
-              <button
-                onClick={submitForm}
-                className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700"
-              >
-                {!isSubmitting ? 'Submit Application' : 'Submitting Application ....'}
-              </button>
+    
+          {/* Form Content */}
+          <div className="p-6" key={`page-${currentPage}`}>
+            {currentPage === 1 && (
+              <JobDetails
+                formData={formData} 
+                handleChange={handleChange} 
+              />
             )}
+            {currentPage === 2 && (
+              <PersonalDetails
+                formData={formData} 
+                handleChange={handleChange} 
+              />
+            )}
+            {currentPage === 3 && (
+              <EmploymentHistory 
+                formData={formData} 
+                handleChange={handleChange}
+                addArrayItem={addArrayItem}
+                removeArrayItem={removeArrayItem}
+              />
+            )}
+            {currentPage === 4 && (
+              <Education 
+                formData={formData} 
+                handleChange={handleChange}
+                addArrayItem={addArrayItem}
+                removeArrayItem={removeArrayItem}
+              />
+            )}
+            {currentPage === 5 && (
+              <CoverLetter 
+                formData={formData} 
+                handleChange={handleChange}
+              />
+            )}
+            
+            {currentPage === 6 && (
+              <References 
+                formData={formData} 
+                handleChange={handleChange}
+              />
+            )}
+            
+            {currentPage === 7 && (
+              <Legal 
+                formData={formData} 
+                handleChange={handleChange}
+              />
+            )}
+    
+            {currentPage === 8 && (
+              <Declaration 
+                formData={formData} 
+                handleChange={handleChange}
+                submitForm={submitForm}
+              />
+            )} 
+            {/* Navigation Buttons */}
           </div>
+        </div>
+        <div className="flex justify-between gap-5 mt-8 p-4 border-t border-gray-200">
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 1}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
+              currentPage === 1 
+                ? "bg-gray-200 text-gray-500 cursor-not-allowed" 
+                : "bg-[#1663a3] text-white hover:bg-[#0d4a7a]"
+            }`}
+          >
+            <FaArrowLeft /> Previous
+          </button>
+          
+          {currentPage < 8 ? (
+            <button
+              onClick={nextPage}
+              className="flex items-center gap-2 bg-[#e67238] text-white px-4 py-2 rounded-lg hover:bg-[#d45a28]"
+            >
+              Next <FaArrowRight />
+            </button>
+          ) : (
+            <button
+              onClick={submitForm}
+              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700"
+            >
+              {!isSubmitting ? 'Submit Application' : 'Submitting Application ....'}
+            </button>
+          )}
         </div>
       </div>
     </div>
