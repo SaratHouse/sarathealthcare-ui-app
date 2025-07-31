@@ -514,10 +514,6 @@ const JobApplication = () => {
         ...dataWithKeys
       });
 
-      console.log('====================================');
-      console.log(result);
-      console.log('====================================');
-
       // Send notification
       try {
         const response = await fetch('/api/application-notification-email', {

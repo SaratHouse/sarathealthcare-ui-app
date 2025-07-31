@@ -24,21 +24,17 @@ interface ContactDocument {
 
 const Contact = () => {
   const { addAlert } = useAlert();
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [handleDisclaimerPopUp, setHandleDisclaimerPopUp] = useState(false);
   const fullNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const mobileRef = useRef<HTMLInputElement>(null);
-  const messageRef = useRef<HTMLTextAreaElement>(null);
-  const handleToggleModal = (newValue : boolean) => {    
-    setHandleDisclaimerPopUp(newValue);
-  };
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     const newBody = {
       fullname: fullNameRef.current?.value || "",
-      message: messageRef.current?.value || "",
+      message,
       mobile: mobileRef.current?.value || "",
       email: emailRef.current?.value || "",
     };
@@ -65,9 +61,9 @@ const Contact = () => {
     try {
       await client.create(doc)
       if (fullNameRef.current) fullNameRef.current.value = "";
-      if (messageRef.current) messageRef.current.value = "";
       if (mobileRef.current) mobileRef.current.value = "";
       if (emailRef.current) emailRef.current.value = ""
+      if (message) setMessage('');
       setIsSubmitting(false);
       addAlert({ message: 'Contact form submitted successfully', type: 'success' });
     } catch (error) {
@@ -76,10 +72,6 @@ const Contact = () => {
       addAlert({ message:'error occurred while submitting form', type: 'error' });
     }
   };
-
-  if (handleDisclaimerPopUp) {
-    return <Disclaimer handleToggleModal={handleToggleModal}/>
-  }
   
   return (
     <div className='flex flex-col items-center w-full'>
@@ -218,8 +210,10 @@ const Contact = () => {
                 </div>
                 <TextareaField
                   title="Message"
+                  value={message}
                   placeholder="Enter your message."
-                  ref={messageRef}
+                  onChange={(e) => setMessage(e.target.value)}
+                  isRequired
                 />
                 <div className='flex flex-col  lg:items-start items-center mt-3 w-full'>
                   <div onClick={handleSubmit} className='w-auto bg-[#1663a3] rounded-lg px-5 p-3 cursor-pointer text-center text-white uppercase font-semibold text-sm'>{!isSubmitting ? 'Send message' : 'Sending Message ....'}</div>
