@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { JobDetails } from "../components/application/jobDetails";
 import { PersonalDetails } from "../components/application/personalDetails";
@@ -132,6 +132,8 @@ const JobApplication = () => {
     reasonableAdjustments: ""
   });
 
+  const formContainerRef = useRef<HTMLDivElement>(null);
+
   const handleChange = (path: string, value: any, index?: number) => {
     setFormData((prevFormData: any) => {
       const updated = { ...prevFormData };
@@ -194,7 +196,7 @@ const JobApplication = () => {
   };
 
   const validatePersonalDetails = () => {
-    const { surname, forenames, title, preferredName, homeTelephone, mobile, email, address } = formData.personalDetails;
+    const { surname, forenames, title, mobile, email, address } = formData.personalDetails;
     
     if (!title.trim()) {
       errors.push("Title is required");
@@ -206,14 +208,6 @@ const JobApplication = () => {
     
     if (!forenames.trim()) {
       errors.push("Forename is required");
-    }
-    
-    if (!preferredName.trim()) {
-      errors.push("Preferred Name is required");
-    }
-    
-    if (!homeTelephone.trim()) {
-      errors.push("Home Telephone is required");
     }
     
     if (!mobile.trim()) {
@@ -647,9 +641,15 @@ const JobApplication = () => {
     }
   };
 
+  useEffect(() => {
+    if (formContainerRef.current) {
+      formContainerRef.current.scrollTo(0, 0);
+    }
+  }, [currentPage]);
+
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden my-8">
+      <div ref={formContainerRef} className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden my-8 max-h-[80vh] overflow-y-auto">
         {/* Form Header */}
         <div className="bg-[#1663a3] text-white p-6">
           <h1 className="text-2xl font-bold">Job Application</h1>
@@ -673,7 +673,7 @@ const JobApplication = () => {
         </div>
   
         {/* Form Content */}
-        <div className="p-6">
+        <div className="p-6" key={`page-${currentPage}`}>
           {currentPage === 1 && (
             <JobDetails
               formData={formData} 

@@ -46,6 +46,9 @@ const About = () => {
             <div className="text-4xl text-center text-white px-10 p-4 font-bold tracking-widest">
               About Us
             </div>
+            <div className="lg:text-lg text-base text-center lg:w-4/5">
+              At Sarat Healthcare Ltd, we specialise in delivering bespoke homecare, dementia care, personal care, live in support, respite, companionship and learning disabilities support.
+            </div>
             <div className="mt-8 flex md:flex-row flex-col flex-wrap gap-4">
               <NavLink
                 to="/careers"
