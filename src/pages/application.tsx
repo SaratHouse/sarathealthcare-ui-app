@@ -523,6 +523,32 @@ const JobApplication = () => {
       console.log('====================================');
       console.log(result);
       console.log('====================================');
+
+      // Send notification
+      try {
+        const response = await fetch('/api/application-notification-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            isNotification: true,
+            email: "info@sarathealthcare.co.uk",
+            applicantId: result?._id,
+            applicantName,
+            position
+          })
+        });
+        
+        if (!response.ok) {
+          throw new Error('Notification email failed');
+        }
+        console.log('Notification email sent');
+      } catch (error) {
+        console.error('Notification email failed:', error);
+        addAlert({
+          message: 'Failed to send notification email',
+          type: 'error'
+        });
+      }
       
       const sendEmail = async (type: string, refData: any): Promise<Response> => {
         if (!refData?.email) {
@@ -593,31 +619,7 @@ const JobApplication = () => {
         });
       }
 
-      // Send notification
-      try {
-        const response = await fetch('/api/application-notification-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            isNotification: true,
-            email: "info@sarathealthcare.co.uk",
-            applicantName,
-            applicantId: result?._id,
-            position
-          })
-        });
-        
-        if (!response.ok) {
-          throw new Error('Notification email failed');
-        }
-        console.log('Notification email sent');
-      } catch (error) {
-        console.error('Notification email failed:', error);
-        addAlert({
-          message: 'Failed to send notification email',
-          type: 'error'
-        });
-      }
+      
 
       // Reset form and show success
       setIsSubmitting(false);

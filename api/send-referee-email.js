@@ -20,7 +20,6 @@ async function handler(req, res) {
       type,
       email,
       applicantName,
-      applicantId,
       refereeName,
       position,
       link,
@@ -33,7 +32,7 @@ async function handler(req, res) {
       from: 'Sarat Healthcare <support@sarathealthcare.co.uk>',
       to: email,
       subject: `${displayType} Reference Request for ${applicantName}`,
-      react: RefereeEmailTemplate({ type, applicantName, applicantId, refereeName, position, link })
+      react: RefereeEmailTemplate({ type, applicantName, refereeName, position, link })
     });
     console.log('Sent notification email to:', email);
     res.status(200).json({ success: true, response, message: 'Notification sent' });
