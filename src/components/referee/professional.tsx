@@ -331,6 +331,12 @@ export const ProfessionalReferee = ({token, applicantInfo} : {token: string, app
     const refereeName = applicantInfo.professionalReferee?.name
     const position = applicantInfo.jobDetails?.positionAppliedFor;
     const applicantName = `${applicantInfo.personalDetails?.forenames} ${applicantInfo.personalDetails?.surname}`;
+    const query = `*[_type == 'applicationReference' && token == ${token}][0]{_id}`;
+    const formSubmittedAlready = await client.fetch(query);
+    if (formSubmittedAlready) {
+      addAlert({ message: 'This Professional reference form has already been filled out.', type: "error" })
+      return
+    }
     try {
       const result = await client.create({
         _type: 'applicationReference',

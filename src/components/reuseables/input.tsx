@@ -25,7 +25,7 @@ const InputField = forwardRef<HTMLInputElement, InputProps>(
           <input
             type={type}
             placeholder={placeholder}
-            readOnly={readonly}
+            readOnly={type !== "date" && readonly}
             ref={ref}
             value={value}
             onChange={onChange}

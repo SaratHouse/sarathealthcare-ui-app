@@ -19,7 +19,7 @@ const Referee = () => {
   
   
   useEffect(() => {
-      const CheckIfReferenceFormHasBeenFilled = async () => {
+    const CheckIfReferenceFormHasBeenFilled = async () => {
       const query = `*[_type == 'applicationReference' && token == $link][0]{_id}`;
       const result = await client.fetch(query, { link });
       if (result) {
