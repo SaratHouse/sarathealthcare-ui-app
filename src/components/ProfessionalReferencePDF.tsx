@@ -225,23 +225,23 @@ const ProfessionalReferencePDF = ({ reference }: any) => {
             <View style={styles.table}>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Organisation</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.organisation}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.organisation || 'N/A'}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Applicant name</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.applicantName}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.applicantName || 'N/A'}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Post applied for</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.postAppliedFor}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.postAppliedFor || 'N/A'}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Name of referee</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.refereeName}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.refereeName || 'N/A'}</Text>
               </View>
               <View style={[styles.tableRow, { borderBottomWidth: 0 }]}>
                 <Text style={styles.tableCell}>Referee’s job title</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.refereeJobTitle}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.refereeJobTitle || 'N/A'}</Text>
               </View>
             </View>
           </View>

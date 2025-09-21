@@ -207,27 +207,27 @@ const EmploymentHistory = ({ employments, title }: any) => {
         <View key={index} style={{ marginBottom: 10, borderBottom: 2 }}>
           <View style={styles.row}>
             <Text style={styles.label}>Job Title:</Text>
-            <Text style={styles.value}>{job?.jobTitle}</Text>
+            <Text style={styles.value}>{job?.jobTitle || 'N/A'}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Employer:</Text>
-            <Text style={styles.value}>{job?.employerName}</Text>
+            <Text style={styles.value}>{job?.employerName || 'N/A'}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Address:</Text>
-            <Text style={styles.value}>{job?.employerAddress}</Text>
+            <Text style={styles.value}>{job?.employerAddress || 'N/A'}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Dates:</Text>
-            <Text style={styles.value}>{formatDate(job?.fromDate)} - {formatDate(job?.toDate)}</Text>
+            <Text style={styles.value}>{job?.fromDate ? (formatDate(job?.fromDate)) : "N/A"} - {job?.toDate ? (formatDate(job?.toDate)) : "N/A"}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Salary:</Text>
-            <Text style={styles.value}>{job?.salary}</Text>
+            <Text style={styles.value}>{job?.salary || 'N/A'}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Reason for Leaving:</Text>
-            <Text style={styles.value}>{job?.reasonForLeaving}</Text>
+            <Text style={styles.value}>{job?.reasonForLeaving || 'N/A'}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Involved working with children?</Text>
@@ -242,7 +242,7 @@ const EmploymentHistory = ({ employments, title }: any) => {
           {job?.involvedWorkingWithChildren && (
             <View style={styles.row}>
               <Text style={styles.label}>Business Email:</Text>
-              <Text style={styles.value}>{job?.businessEmail}</Text>
+              <Text style={styles.value}>{job?.businessEmail || 'N/A'}</Text>
             </View>
           )}
         </View>
@@ -300,7 +300,7 @@ const ApplicationFormPDF = ({ application }: any) => {
             <Text style={styles.sectionTitle}>Job details</Text>
             <View style={styles.row}>
               <Text style={styles.label}>Position Applied For *:</Text>
-              <Text style={styles.value}>{jobDetails.positionAppliedFor}</Text>
+              <Text style={styles.value}>{jobDetails.positionAppliedFor || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Preferred working arrangements:</Text>
@@ -317,11 +317,11 @@ const ApplicationFormPDF = ({ application }: any) => {
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Location *:</Text>
-              <Text style={styles.value}>{jobDetails?.location}</Text>
+              <Text style={styles.value}>{jobDetails?.location || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>How did you hear about this vacancy *:</Text>
-              <Text style={styles.value}>{jobDetails?.howDidYouHear}</Text>
+              <Text style={styles.value}>{jobDetails?.howDidYouHear || 'N/A'}</Text>
             </View>
           </View>
           
@@ -329,9 +329,9 @@ const ApplicationFormPDF = ({ application }: any) => {
             <Text style={styles.sectionTitle}>Personal details</Text>
             <View style={styles.row}>
               <Text style={styles.label}>Surname *:</Text>
-              <Text style={styles.value}>{personalDetails.surname}</Text>
+              <Text style={styles.value}>{personalDetails.surname || 'N/A'}</Text>
               <Text style={[styles.label, { marginLeft: 10 }]}>Forename(s) *:</Text>
-              <Text style={styles.value}>{personalDetails.forenames}</Text>
+              <Text style={styles.value}>{personalDetails.forenames || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Previous surname(s):</Text>
@@ -341,9 +341,9 @@ const ApplicationFormPDF = ({ application }: any) => {
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Title *:</Text>
-              <Text style={styles.value}>{personalDetails.title}</Text>
+              <Text style={styles.value}>{personalDetails.title || 'N/A'}</Text>
               <Text style={[styles.label, { marginLeft: 10 }]}>Preferred name:</Text>
-              <Text style={styles.value}>{personalDetails?.preferredName}</Text>
+              <Text style={styles.value}>{personalDetails?.preferredName || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Home Telephone *:</Text>
@@ -386,7 +386,7 @@ const ApplicationFormPDF = ({ application }: any) => {
             {drivingLicence?.endorsements && (
               <View style={styles.row}>
                 <Text style={styles.label}>If YES, please provide details: *</Text>
-                <Text style={styles.value}>{drivingLicence?.endorsementDetails}</Text>
+                <Text style={styles.value}>{drivingLicence?.endorsementDetails || 'N/A'}</Text>
               </View>
             )}
           </View>
@@ -412,31 +412,31 @@ const ApplicationFormPDF = ({ application }: any) => {
             <Text style={styles.sectionTitle}>Present employment</Text>
             <View style={styles.row}>
               <Text style={styles.label}>Job Title *:</Text>
-              <Text style={styles.value}>{presentEmployment?.jobTitle}</Text>
+              <Text style={styles.value}>{presentEmployment?.jobTitle || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Name of Employer *:</Text>
-              <Text style={styles.value}>{presentEmployment?.employerName}</Text>
+              <Text style={styles.value}>{presentEmployment?.employerName || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Address of Employer *:</Text>
-              <Text style={styles.value}>{presentEmployment?.employerAddress}</Text>
+              <Text style={styles.value}>{presentEmployment?.employerAddress || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Date commenced with employer *:</Text>
-              <Text style={styles.value}>{presentEmployment?.dateCommenced}</Text>
+              <Text style={styles.value}>{presentEmployment?.dateCommenced || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Notice required *:</Text>
-              <Text style={styles.value}>{presentEmployment?.noticeRequired}</Text>
+              <Text style={styles.value}>{presentEmployment?.noticeRequired || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Current Salary *:</Text>
-              <Text style={styles.value}>{presentEmployment?.currentSalary}</Text>
+              <Text style={styles.value}>{presentEmployment?.currentSalary || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Reason for Leaving *:</Text>
-              <Text style={styles.value}>{presentEmployment?.reasonForLeaving}</Text>
+              <Text style={styles.value}>{presentEmployment?.reasonForLeaving || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Does this role involve working with Children? *:</Text>
@@ -450,7 +450,7 @@ const ApplicationFormPDF = ({ application }: any) => {
             </View>
             <View style={{ marginTop: 10 }}>
               <Text style={styles.label}>Briefly describe your present job; its main purpose and your responsibilities: *</Text>
-              <Text style={styles.value}>{presentEmployment?.jobDescription}</Text>
+              <Text style={styles.value}>{presentEmployment?.jobDescription || 'N/A'}</Text>
             </View>
           </View>
           
@@ -536,9 +536,9 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {timeBreaks.map((breakItem: any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{formatDate(breakItem?.fromDate)}</Text>
-                    <Text style={styles.tableCell}>{formatDate(breakItem?.toDate)}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{breakItem?.reason}</Text>
+                    <Text style={styles.tableCell}>{breakItem?.fromDate ? (formatDate(breakItem?.fromDate)) : 'N/A'}</Text>
+                    <Text style={styles.tableCell}>{breakItem?.toDate ? (formatDate(breakItem?.toDate)) : 'N/A'}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{breakItem?.reason || 'N/A'}</Text>
                   </View>
                 ))}
               </View>
@@ -562,9 +562,9 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {education.map((edu : any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{edu?.institution}</Text>
-                    <Text style={styles.tableCell}>{formatDate(edu?.fromDate)} - {formatDate(edu?.toDate)}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{edu?.qualifications}</Text>
+                    <Text style={styles.tableCell}>{edu?.institution || 'N/A'}</Text>
+                    <Text style={styles.tableCell}>{edu?.fromDate ? (formatDate(edu?.fromDate)) : "N/A"} - {edu?.toDate ? (formatDate(edu?.toDate)) : "N/A"}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{edu?.qualifications || 'N/A'}</Text>
                   </View>
                 ))}
               </View>
@@ -605,9 +605,9 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {training.map((train: any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{train?.courseTitle}</Text>
-                    <Text style={styles.tableCell}>{formatDate(train?.fromDate)} - {formatDate(train?.toDate)}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{train?.provider}</Text>
+                    <Text style={styles.tableCell}>{train?.courseTitle || 'N/A'}</Text>
+                    <Text style={styles.tableCell}>{train?.fromDate ? (formatDate(train?.fromDate)) : "N/A"} - {train?.toDate ? (formatDate(train?.toDate)) : "N/A"}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{train?.provider || 'N/A'}</Text>
                   </View>
                 ))}
               </View>
@@ -632,10 +632,10 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {ofstedHistory.map((history: any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{history?.establishment}</Text>
-                    <Text style={styles.tableCell}>{formatDate(history?.dateOfInspection)}</Text>
-                    <Text style={styles.tableCell}>{history?.outcome}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{history?.referenceNumber}</Text>
+                    <Text style={styles.tableCell}>{history?.establishment || 'N/A'}</Text>
+                    <Text style={styles.tableCell}>{history?.dateOfInspection ? (formatDate(history?.dateOfInspection)) :'N/A'}</Text>
+                    <Text style={styles.tableCell}>{history?.outcome || 'N/A'}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{history?.referenceNumber || 'N/A'}</Text>
                   </View>
                 ))}
               </View>
@@ -669,7 +669,7 @@ const ApplicationFormPDF = ({ application }: any) => {
             </Text>
             
             <View style={styles.coverLetterBox}>
-              <Text>{coverLetter}</Text>
+              <Text>{coverLetter || 'N/A'}</Text>
               </View>
           </View>
         </View>
@@ -708,23 +708,23 @@ const ApplicationFormPDF = ({ application }: any) => {
               <Text style={{ fontWeight: 'bold', marginBottom: 5 }}>Professional Referee</Text>
               <View style={styles.row}>
                 <Text style={styles.label}>Name *:</Text>
-                <Text style={styles.value}>{references.professionalReferee?.name}</Text>
+                <Text style={styles.value}>{references.professionalReferee?.name || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Address *:</Text>
-                <Text style={styles.value}>{references.professionalReferee?.address}</Text>
+                <Text style={styles.value}>{references.professionalReferee?.address || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Tel No *:</Text>
-                <Text style={styles.value}>{references.professionalReferee?.tel}</Text>
+                <Text style={styles.value}>{references.professionalReferee?.tel || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Occupation *:</Text>
-                <Text style={styles.value}>{references.professionalReferee?.occupation}</Text>
+                <Text style={styles.value}>{references.professionalReferee?.occupation || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Email Address *:</Text>
-                <Text style={styles.value}>{references.professionalReferee?.email}</Text>
+                <Text style={styles.value}>{references.professionalReferee?.email || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>May we contact this referee prior to interview? *:</Text>
@@ -742,23 +742,23 @@ const ApplicationFormPDF = ({ application }: any) => {
               <Text style={{ fontWeight: 'bold', marginBottom: 5 }}>Personal Referee or course tutor (if applicable)</Text>
               <View style={styles.row}>
                 <Text style={styles.label}>Name *:</Text>
-                <Text style={styles.value}>{references.personalReferee?.name}</Text>
+                <Text style={styles.value}>{references.personalReferee?.name || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Address *:</Text>
-                <Text style={styles.value}>{references.personalReferee?.address}</Text>
+                <Text style={styles.value}>{references.personalReferee?.address || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Tel No *:</Text>
-                <Text style={styles.value}>{references.personalReferee?.tel}</Text>
+                <Text style={styles.value}>{references.personalReferee?.tel || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Occupation *:</Text>
-                <Text style={styles.value}>{references.personalReferee?.occupation}</Text>
+                <Text style={styles.value}>{references.personalReferee?.occupation || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>Email Address:</Text>
-                <Text style={styles.value}>{references.personalReferee?.email}</Text>
+                <Text style={styles.value}>{references.personalReferee?.email || 'N/A'}</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.label}>May we contact this referee prior to interview? *:</Text>

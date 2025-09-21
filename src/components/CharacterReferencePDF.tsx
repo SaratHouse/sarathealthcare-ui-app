@@ -246,7 +246,7 @@ const CharacterReferencePDF = ({ reference }: any) => {
               Would you recommend {sender?.applicantName.charAt(0).toUpperCase() + sender?.applicantName.slice(1)} for employment? If not, please state reasons:
             </Text>
             <Text style={styles.paragraph}>
-              {characterReference?.recommendation}, {characterReference?.recommendationReason}
+              {characterReference?.recommendation || 'N/A'}, {characterReference?.recommendationReason || 'N/A'}
             </Text>
           </View>
         </View>
