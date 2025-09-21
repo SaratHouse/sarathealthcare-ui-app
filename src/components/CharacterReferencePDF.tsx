@@ -207,46 +207,46 @@ const CharacterReferencePDF = ({ reference }: any) => {
           
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
-              In what capacity do you know {sender.applicantName.charAt(0).toUpperCase() + sender.applicantName.slice(1)}?
+              In what capacity do you know {sender?.applicantName.charAt(0).toUpperCase() + sender?.applicantName.slice(1)}?
             </Text>
             <Text style={styles.paragraph}>
-              {characterReference.capacityKnown || 'N/A'}
+              {characterReference?.capacityKnown || 'N/A'}
             </Text>
           </View>
           
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
-              How long you have known {sender.applicantName.charAt(0).toUpperCase() + sender.applicantName.slice(1)}?
+              How long you have known {sender?.applicantName.charAt(0).toUpperCase() + sender?.applicantName.slice(1)}?
             </Text>
             <Text style={styles.paragraph}>
-              {characterReference.yearsKnown || 'N/A'}
+              {characterReference?.yearsKnown || 'N/A'}
             </Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
-              What do you know about {sender.applicantName.charAt(0).toUpperCase() + sender.applicantName.slice(1)} skills in relation?
+              What do you know about {sender?.applicantName.charAt(0).toUpperCase() + sender?.applicantName.slice(1)} skills in relation?
             </Text>
             <Text style={styles.paragraph}>
-              {characterReference.skillsAssessment || 'N/A'}
+              {characterReference?.skillsAssessment || 'N/A'}
             </Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
-              Do you know of any reason why {sender.applicantName.charAt(0).toUpperCase() + sender.applicantName.slice(1)} would be unsuitable to work with Sarat Healthcare LTD?
+              Do you know of any reason why {sender?.applicantName.charAt(0).toUpperCase() + sender?.applicantName.slice(1)} would be unsuitable to work with Sarat Healthcare LTD?
             </Text>
             <Text style={styles.paragraph}>
-              {characterReference.unsuitabilityReason || 'N/A'}
+              {characterReference?.unsuitabilityReason || 'N/A'}
             </Text>
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
-              Would you recommend {sender.applicantName.charAt(0).toUpperCase() + sender.applicantName.slice(1)} for employment? If not, please state reasons:
+              Would you recommend {sender?.applicantName.charAt(0).toUpperCase() + sender?.applicantName.slice(1)} for employment? If not, please state reasons:
             </Text>
             <Text style={styles.paragraph}>
-              {characterReference.recommendation}, {characterReference.recommendationReason}
+              {characterReference?.recommendation}, {characterReference?.recommendationReason}
             </Text>
           </View>
         </View>

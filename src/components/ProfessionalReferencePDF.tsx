@@ -225,23 +225,23 @@ const ProfessionalReferencePDF = ({ reference }: any) => {
             <View style={styles.table}>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Organisation</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender.organisation}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.organisation}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Applicant name</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender.applicantName}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.applicantName}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Post applied for</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender.postAppliedFor}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.postAppliedFor}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Name of referee</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender.refereeName}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.refereeName}</Text>
               </View>
               <View style={[styles.tableRow, { borderBottomWidth: 0 }]}>
                 <Text style={styles.tableCell}>Referee’s job title</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{sender.refereeJobTitle}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{sender?.refereeJobTitle}</Text>
               </View>
             </View>
           </View>
@@ -254,33 +254,33 @@ const ProfessionalReferencePDF = ({ reference }: any) => {
             <View style={styles.table}>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Name of employing organisation/company</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo.employingOrganisation}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo?.employingOrganisation}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Contact Details</Text>
                 <Text style={[styles.tableCell, styles.lastCell]}>
-                  Phone No.: {applicantInfo.contactPhone || 'N/A'} | Email: {applicantInfo.contactEmail || 'N/A'}
+                  Phone No.: {applicantInfo?.contactPhone || 'N/A'} | Email: {applicantInfo?.contactEmail || 'N/A'}
                 </Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>In what professional capacity do you know the applicant?</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo.professionalCapacity || 'N/A'}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo?.professionalCapacity || 'N/A'}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>How long have you known the applicant in this capacity?</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo.yearsKnown || 'N/A'}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo?.yearsKnown || 'N/A'}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>What was the applicant’s job title?</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo.applicantJobTitle}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo?.applicantJobTitle}</Text>
               </View>
               <View style={styles.tableRow}>
                 <Text style={styles.tableCell}>Employment Dates</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo.employmentDates || 'N/A'}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo?.employmentDates || 'N/A'}</Text>
               </View>
               <View style={[styles.tableRow, { borderBottomWidth: 0 }]}>
                 <Text style={styles.tableCell}>Reason for leaving?</Text>
-                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo.reasonForLeaving || 'N/A'}</Text>
+                <Text style={[styles.tableCell, styles.lastCell]}>{applicantInfo?.reasonForLeaving || 'N/A'}</Text>
               </View>
             </View>
           </View>
@@ -311,7 +311,7 @@ const ProfessionalReferencePDF = ({ reference }: any) => {
                   Sickness Record (No. of days) over the past two years, and how many episodes (if known)?
                 </Text>
                 <Text style={[styles.tableCell, styles.lastCell]}>
-                  Days: {applicantInfo.sicknessRecord.days || 'N/A'} | Episodes: {applicantInfo.sicknessRecord.episodes || 'N/A'}
+                  Days: {applicantInfo?.sicknessRecord.days || 'N/A'} | Episodes: {applicantInfo?.sicknessRecord.episodes || 'N/A'}
                 </Text>
               </View>
             </View>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Disclaimer from './disclaimer';
 
 import { NavLink } from "react-router-dom";
 import { FaEnvelope, FaFacebookF,  FaLocationDot, FaMobileScreenButton, FaRegClock, FaWhatsapp } from "react-icons/fa6";
@@ -8,16 +7,6 @@ import { CQC, Logo } from "../../constant/images";
 
 const Footer = () => {
     const date = new Date();
-    const [handleDisclaimerPopUp, setHandleDisclaimerPopUp] = useState(false);
-
-    const handleToggleModal = (newValue: boolean) => {
-        setHandleDisclaimerPopUp(newValue);
-    };
-
-    if (handleDisclaimerPopUp) {
-        return <Disclaimer handleToggleModal={handleToggleModal} />
-    }
-
     return (
         <footer className="lg:bg-gradient-to-r bg-gradient-to-br from-[#2e3c61] from-40% to-[#e67238] to-90% text-white w-full flex flex-col items-center py-12">
             <div className="w-full max-w-7xl relative px-4 flex flex-col">

@@ -207,42 +207,42 @@ const EmploymentHistory = ({ employments, title }: any) => {
         <View key={index} style={{ marginBottom: 10, borderBottom: 2 }}>
           <View style={styles.row}>
             <Text style={styles.label}>Job Title:</Text>
-            <Text style={styles.value}>{job.jobTitle}</Text>
+            <Text style={styles.value}>{job?.jobTitle}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Employer:</Text>
-            <Text style={styles.value}>{job.employerName}</Text>
+            <Text style={styles.value}>{job?.employerName}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Address:</Text>
-            <Text style={styles.value}>{job.employerAddress}</Text>
+            <Text style={styles.value}>{job?.employerAddress}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Dates:</Text>
-            <Text style={styles.value}>{formatDate(job.fromDate)} - {formatDate(job.toDate)}</Text>
+            <Text style={styles.value}>{formatDate(job?.fromDate)} - {formatDate(job?.toDate)}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Salary:</Text>
-            <Text style={styles.value}>{job.salary}</Text>
+            <Text style={styles.value}>{job?.salary}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Reason for Leaving:</Text>
-            <Text style={styles.value}>{job.reasonForLeaving}</Text>
+            <Text style={styles.value}>{job?.reasonForLeaving}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Involved working with children?</Text>
             <View style={[styles.checkboxContainer, {width: '60%'}]}>
-              <Checkbox checked={job.involvedWorkingWithChildren === true} />
+              <Checkbox checked={job?.involvedWorkingWithChildren === true} />
               <Text>Yes</Text>
               <View style={{ width: 10 }} />
-              <Checkbox checked={job.involvedWorkingWithChildren === false} />
+              <Checkbox checked={job?.involvedWorkingWithChildren === false} />
               <Text>No</Text>
             </View>
           </View>
-          {job.involvedWorkingWithChildren && (
+          {job?.involvedWorkingWithChildren && (
             <View style={styles.row}>
               <Text style={styles.label}>Business Email:</Text>
-              <Text style={styles.value}>{job.businessEmail}</Text>
+              <Text style={styles.value}>{job?.businessEmail}</Text>
             </View>
           )}
         </View>
@@ -317,11 +317,11 @@ const ApplicationFormPDF = ({ application }: any) => {
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Location *:</Text>
-              <Text style={styles.value}>{jobDetails.location}</Text>
+              <Text style={styles.value}>{jobDetails?.location}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>How did you hear about this vacancy *:</Text>
-              <Text style={styles.value}>{jobDetails.howDidYouHear}</Text>
+              <Text style={styles.value}>{jobDetails?.howDidYouHear}</Text>
             </View>
           </View>
           
@@ -335,29 +335,29 @@ const ApplicationFormPDF = ({ application }: any) => {
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Previous surname(s):</Text>
-              <Text style={styles.value}>{personalDetails.previousSurname}</Text>
+              <Text style={styles.value}>{personalDetails?.previousSurname || 'N/A'}</Text>
               <Text style={[styles.label, { marginLeft: 10 }]}>Previous forename(s):</Text>
-              <Text style={styles.value}>{personalDetails.previousForename}</Text>
+              <Text style={styles.value}>{personalDetails?.previousForename || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Title *:</Text>
               <Text style={styles.value}>{personalDetails.title}</Text>
               <Text style={[styles.label, { marginLeft: 10 }]}>Preferred name:</Text>
-              <Text style={styles.value}>{personalDetails.preferredName}</Text>
+              <Text style={styles.value}>{personalDetails?.preferredName}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Home Telephone *:</Text>
-              <Text style={styles.value}>{personalDetails.homeTelephone}</Text>
+              <Text style={styles.value}>{personalDetails?.homeTelephone || 'N/A'}</Text>
               <Text style={[styles.label, { marginLeft: 10 }]}>Mobile *:</Text>
-              <Text style={styles.value}>{personalDetails.mobile}</Text>
+              <Text style={styles.value}>{personalDetails?.mobile || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Email address *:</Text>
-              <Text style={styles.value}>{personalDetails.email}</Text>
+              <Text style={styles.value}>{personalDetails.email || 'N/A'}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Address * (incl postcode):</Text>
-              <Text style={styles.value}>{personalDetails.address}</Text>
+              <Text style={styles.value}>{personalDetails?.address || 'N/A'}</Text>
             </View>
           </View>
           
@@ -366,27 +366,27 @@ const ApplicationFormPDF = ({ application }: any) => {
             <View style={styles.row}>
               <Text style={styles.label}>Do you hold a full current Driving Licence? *:</Text>
               <View style={styles.checkboxContainer}>
-                <Checkbox checked={drivingLicence.holdsLicence === true} />
+                <Checkbox checked={drivingLicence?.holdsLicence === true} />
                 <Text>Yes</Text>
                 <View style={{ width: 10 }} />
-                <Checkbox checked={drivingLicence.holdsLicence === false} />
+                <Checkbox checked={drivingLicence?.holdsLicence === false} />
                 <Text>No</Text>
               </View>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Do you have any current endorsements? *:</Text>
               <View style={styles.checkboxContainer}>
-                <Checkbox checked={drivingLicence.endorsements === true} />
+                <Checkbox checked={drivingLicence?.endorsements === true} />
                 <Text>Yes</Text>
                 <View style={{ width: 10 }} />
-                <Checkbox checked={drivingLicence.endorsements === false} />
+                <Checkbox checked={drivingLicence?.endorsements === false} />
                 <Text>No</Text>
               </View>
             </View>
-            {drivingLicence.endorsements && (
+            {drivingLicence?.endorsements && (
               <View style={styles.row}>
                 <Text style={styles.label}>If YES, please provide details: *</Text>
-                <Text style={styles.value}>{drivingLicence.endorsementDetails}</Text>
+                <Text style={styles.value}>{drivingLicence?.endorsementDetails}</Text>
               </View>
             )}
           </View>
@@ -412,45 +412,45 @@ const ApplicationFormPDF = ({ application }: any) => {
             <Text style={styles.sectionTitle}>Present employment</Text>
             <View style={styles.row}>
               <Text style={styles.label}>Job Title *:</Text>
-              <Text style={styles.value}>{presentEmployment.jobTitle}</Text>
+              <Text style={styles.value}>{presentEmployment?.jobTitle}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Name of Employer *:</Text>
-              <Text style={styles.value}>{presentEmployment.employerName}</Text>
+              <Text style={styles.value}>{presentEmployment?.employerName}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Address of Employer *:</Text>
-              <Text style={styles.value}>{presentEmployment.employerAddress}</Text>
+              <Text style={styles.value}>{presentEmployment?.employerAddress}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Date commenced with employer *:</Text>
-              <Text style={styles.value}>{presentEmployment.dateCommenced}</Text>
+              <Text style={styles.value}>{presentEmployment?.dateCommenced}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Notice required *:</Text>
-              <Text style={styles.value}>{presentEmployment.noticeRequired}</Text>
+              <Text style={styles.value}>{presentEmployment?.noticeRequired}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Current Salary *:</Text>
-              <Text style={styles.value}>{presentEmployment.currentSalary}</Text>
+              <Text style={styles.value}>{presentEmployment?.currentSalary}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Reason for Leaving *:</Text>
-              <Text style={styles.value}>{presentEmployment.reasonForLeaving}</Text>
+              <Text style={styles.value}>{presentEmployment?.reasonForLeaving}</Text>
             </View>
             <View style={styles.row}>
               <Text style={styles.label}>Does this role involve working with Children? *:</Text>
               <View style={[styles.checkboxContainer, {width: '60%'}]}>
-                <Checkbox checked={presentEmployment.involvesWorkingWithChildren === true} />
+                <Checkbox checked={presentEmployment?.involvesWorkingWithChildren === true} />
                 <Text>Yes</Text>
                 <View style={{ width: 10 }} />
-                <Checkbox checked={presentEmployment.involvesWorkingWithChildren === false} />
+                <Checkbox checked={presentEmployment?.involvesWorkingWithChildren === false} />
                 <Text>No</Text>
               </View>
             </View>
             <View style={{ marginTop: 10 }}>
               <Text style={styles.label}>Briefly describe your present job; its main purpose and your responsibilities: *</Text>
-              <Text style={styles.value}>{presentEmployment.jobDescription}</Text>
+              <Text style={styles.value}>{presentEmployment?.jobDescription}</Text>
             </View>
           </View>
           
@@ -533,9 +533,9 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {timeBreaks.map((breakItem: any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{formatDate(breakItem.fromDate)}</Text>
-                    <Text style={styles.tableCell}>{formatDate(breakItem.toDate)}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{breakItem.reason}</Text>
+                    <Text style={styles.tableCell}>{formatDate(breakItem?.fromDate)}</Text>
+                    <Text style={styles.tableCell}>{formatDate(breakItem?.toDate)}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{breakItem?.reason}</Text>
                   </View>
                 ))}
               </View>
@@ -559,9 +559,9 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {education.map((edu : any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{edu.institution}</Text>
-                    <Text style={styles.tableCell}>{formatDate(edu.fromDate)} - {formatDate(edu.toDate)}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{edu.qualifications}</Text>
+                    <Text style={styles.tableCell}>{edu?.institution}</Text>
+                    <Text style={styles.tableCell}>{formatDate(edu?.fromDate)} - {formatDate(edu?.toDate)}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{edu?.qualifications}</Text>
                   </View>
                 ))}
               </View>
@@ -602,9 +602,9 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {training.map((train: any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{train.courseTitle}</Text>
-                    <Text style={styles.tableCell}>{formatDate(train.fromDate)} - {formatDate(train.toDate)}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{train.provider}</Text>
+                    <Text style={styles.tableCell}>{train?.courseTitle}</Text>
+                    <Text style={styles.tableCell}>{formatDate(train?.fromDate)} - {formatDate(train?.toDate)}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{train?.provider}</Text>
                   </View>
                 ))}
               </View>
@@ -629,10 +629,10 @@ const ApplicationFormPDF = ({ application }: any) => {
                 </View>
                 {ofstedHistory.map((history: any, index: number) => (
                   <View key={index} style={styles.tableRow}>
-                    <Text style={styles.tableCell}>{history.establishment}</Text>
-                    <Text style={styles.tableCell}>{formatDate(history.dateOfInspection)}</Text>
-                    <Text style={styles.tableCell}>{history.outcome}</Text>
-                    <Text style={[styles.tableCell, styles.lastCell]}>{history.referenceNumber}</Text>
+                    <Text style={styles.tableCell}>{history?.establishment}</Text>
+                    <Text style={styles.tableCell}>{formatDate(history?.dateOfInspection)}</Text>
+                    <Text style={styles.tableCell}>{history?.outcome}</Text>
+                    <Text style={[styles.tableCell, styles.lastCell]}>{history?.referenceNumber}</Text>
                   </View>
                 ))}
               </View>
