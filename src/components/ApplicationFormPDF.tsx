@@ -460,11 +460,14 @@ const ApplicationFormPDF = ({ application }: any) => {
               Include permanent, temporary and voluntary work since leaving school (continue on a separate sheet if necessary). 
               Please list most recent first.
             </Text>
+
+            {previousEmployments && previousEmployments.length > 0 && (
+              <EmploymentHistory 
+                employments={previousEmployments.slice(0, 1)} 
+                title="Previous Employment History" 
+              />
+            )}
             
-            <EmploymentHistory 
-              employments={previousEmployments.slice(0, 1)} 
-              title="Previous Employment History" 
-            />
           </View>
         </View>
         
